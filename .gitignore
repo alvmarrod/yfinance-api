@@ -173,3 +173,6 @@ cython_debug/
 # Project based
 yfinance.cache
 test_env
+
+# Data
+data/*.csv
