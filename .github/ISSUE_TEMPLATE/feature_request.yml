@@ -1,0 +1,83 @@
+name: Feature Request
+description: Describe a new feature or improvement
+title: "[Feature] <short description>"
+labels: []
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🧩 Feature Request Template
+
+  - type: input
+    id: summary
+    attributes:
+      label: 📝 Feature Summary
+      description: Short description of the requested feature or improvement.
+      placeholder: e.g. "Add version control support for datasets"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 📘 Description
+      description: Describe the purpose and scope of this feature in detail.
+      placeholder: Explain what this feature is and why it's needed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: functional_criteria
+    attributes:
+      label: ✅ Functional Acceptance Criteria
+      description: List the expected functional behavior for this feature.
+      placeholder: |
+        - [ ] Users can do X
+        - [ ] Clicking button Y results in Z
+    validations:
+      required: false
+
+  - type: textarea
+    id: technical_criteria
+    attributes:
+      label: 🛠️ Technical Acceptance Criteria
+      description: List backend/data/infrastructure conditions that must be met.
+      placeholder: |
+        - [ ] New table added to store dataset versions
+        - [ ] API endpoint returns correct diff between versions
+    validations:
+      required: false
+
+  - type: textarea
+    id: subtasks
+    attributes:
+      label: 🗂️ Subtasks (optional)
+      description: Breakdown of implementation steps if needed.
+      placeholder: |
+        - [ ] Design database schema
+        - [ ] Create API endpoints
+        - [ ] Implement UI view
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 📎 Additional Notes
+      description: Any context, links, or design decisions worth mentioning.
+      placeholder: Related issues, constraints, API ideas, etc.
+    validations:
+      required: false
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: 🧪 Testing Plan
+      description: How will this be tested? Any edge cases?
+      placeholder: |
+        - Try restoring a version after adding/deleting samples
+        - Check if metadata remains intact
+    validations:
+      required: false
