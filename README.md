@@ -7,11 +7,13 @@
 </p>
 
 ## Overview
+
 This project provides a RESTful API to interact with Yahoo Finance data. It allows users to fetch stock information, historical data, and perform calculations such as ROI, intrinsic value, and more.
 
 Notice that this API is not a complete replacement for Yahoo Finance, but rather a simplified interface to access some of its features for personal use.
 
 ## Features
+
 - Fetch real-time stock data.
 - Calculate financial metrics like ROI, intrinsic value, and growth ratios.
   - These metrics are 
@@ -19,6 +21,7 @@ Notice that this API is not a complete replacement for Yahoo Finance, but rather
 - Rate-limited API to prevent excessive requests.
 
 ## Requirements
+
 - Flask
 - yfinance
   - Beware that an outdated `yfinance` version may break all your requests to the API.
@@ -60,6 +63,7 @@ Notice that this API is not a complete replacement for Yahoo Finance, but rather
 `http://<host>:<port>`
 
 ### Endpoints
+
 - **GET `/symbol/<tag>`**: Fetch all available data for a stock symbol.
 - **GET `/symbol/<tag>/<field>/raw`**: Fetch a specific field's raw value for a stock symbol.
 - **GET `/symbol/<tag>/<field>/`**: Fetch a specific field's value in JSON format.
@@ -82,13 +86,18 @@ curl http://localhost:5001/symbol/AAPL/ROIRatio/
 
 ## Development
 
-- The project doesn't use yfinance `CachedSession`, as it has been tested and did not work as expected.
+- The project doesn't use `yfinance` `CachedSession`, as it has been tested and did not work as expected.
 - To counter this issue, we have implemented some `caching` mechanisms to avoid excessive requests to Yahoo Finance.
 - Calculations for financial metrics are implemented in `app.py`.
 
+## FAQ / Troubleshooting
+
+- Q: The service was working fine, and suddenly it has stopped retrieving the data! What can I do?
+  - A: Most probably, if nothing else changed, `Yahoo Finance` updates broke the current `yfinance` version that you are using. Go to the [requirements.txt](requirements.txt) file and update the version of `yfinance`, which is fixed to the latest one available. Do not forget to install the new dependency version or re-build your docker image, before running your service again.
+
 ## Version
 
-Find the version of the API in the [version.py](version.py) file.
+Find the version of the API in the [version.txt](version.txt) file.
 
 ## License
 
