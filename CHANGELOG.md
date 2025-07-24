@@ -1,13 +1,27 @@
 # Changelog
 
+## [0.3.0] - 2025-07-24
+
+### Added
+
+- Added `balance_sheet` and `financials` data into ticker full retrieval.
+
+### Changed
+
+- Split single script file `app.py` into API structure: api, services, utils.
+- Added fallback string default value `-` for `get_symbol_value_raw` and `exdividend_to_datetime` in case it doesn't exist.
+- Rework of `ROI` calculation to `ROE`, as `ROI` had the same calculation as `Anual Growth`.
+
 ## [0.2.0] - 2025-05-22
 
 ### Added
+
 - Support for exporting historical stock data as CSV files.
 - Endpoints to fetch candlestick historical data.
   - Note this generates a CSV file with the last 60 days of data in the `./data` directory.
 
 ### Changed
+
 - Added missing docstrings.
 - Enhanced README with detailed setup instructions, API endpoints, and usage examples.
 
