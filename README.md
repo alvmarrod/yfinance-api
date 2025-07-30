@@ -65,8 +65,8 @@ Notice that this API is not a complete replacement for Yahoo Finance, but rather
 ### Endpoints
 
 - **GET `/symbol/<tag>`**: Fetch all available data for a stock symbol.
-- **GET `/symbol/<tag>/<field>/raw`**: Fetch a specific field's raw value for a stock symbol.
 - **GET `/symbol/<tag>/<field>/`**: Fetch a specific field's value in JSON format.
+- **GET `/symbol/<tag>/<field>/raw`**: Fetch a specific field's raw value for a stock symbol.
 - **GET `/symbol/historic/candle/<tag>`**: Download historical stock data as a CSV file, using the `5m` interval resolution and the maximum available period of 60 days.
 
 ### Example Usage
@@ -74,7 +74,7 @@ Notice that this API is not a complete replacement for Yahoo Finance, but rather
 Fetch the ROI ratio for a stock:
 
 ```bash
-curl http://localhost:5001/symbol/AAPL/ROIRatio/
+curl http://localhost:5001/symbol/AAPL/ROE/
 ```
 
 ### Alias and Calculated Fields
@@ -88,7 +88,7 @@ curl http://localhost:5001/symbol/AAPL/ROIRatio/
 
 - The project doesn't use `yfinance` `CachedSession`, as it has been tested and did not work as expected.
 - To counter this issue, we have implemented some `caching` mechanisms to avoid excessive requests to Yahoo Finance.
-- Calculations for financial metrics are implemented in `app.py`.
+- Calculations for financial metrics are implemented at [calculations.py](services/calculations.py).
 
 ## FAQ / Troubleshooting
 
