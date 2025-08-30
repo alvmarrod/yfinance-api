@@ -4,6 +4,8 @@ Customised calculations
 import logging
 import datetime
 from typing import Callable, Optional
+
+import pandas as pd
 import yfinance as yf
 
 
@@ -182,6 +184,65 @@ def calculate_target_ratio(data: yf.Ticker) -> float:
     return (target_mean_price - current_price) / current_price
 
 
+def calculate_dividend_frequency(data: yf.Ticker) -> str:
+    """
+    Determines the frequency of dividend payments for a given stock based on
+    t.dividends data.
+    """
+    freq: str = "-"
+    divs: pd.Series = data.dividends
+    if not divs.empty:
+        diffs = divs.index.to_series().diff().dt.days.dropna()
+        avg_gap = diffs.mean()
+
+        if avg_gap < 100:
+            freq = "Quarterly"
+        elif avg_gap < 250:
+            freq = "Semesterly"
+        else:
+            freq = "Annual"
+
+    return freq
+
+
+def _growth_to_pct(g: Optional[float]) -> Optional[float]:
+    """
+    Converts a growth value to a percentage.
+    """
+    if g is None:
+        return None
+
+    try:
+        g = float(g)
+
+        if g <= 0:
+            return None
+
+        return g * 100 if g < 1 else g  # 0.10 -> 10, 10 -> 10
+
+    except Exception as err:
+        logging.warning("Error converting growth to percentage: %s", err)
+
+    return None
+
+
+def calculate_peg_ratio(data: yf.Ticker) -> Optional[float]:
+    """
+    Calculates the Price/Earnings to Growth (PEG) ratio for a given stock.
+    """
+    peg: Optional[float] = float("nan")
+    pe: Optional[float] = data.info.get("forwardPE", None)
+    eps_growth: Optional[float] = data.info.get("earningsGrowth", None)
+
+    if pe is not None and pe > 0 and eps_growth is not None and eps_growth > 0:
+        g_pct = _growth_to_pct(eps_growth)
+        if g_pct is not None:
+            peg = pe / g_pct
+    else:
+        logging.warning("Insufficient data to calculate PEG ratio (PE: %s, Growth: %s)", pe, eps_growth)
+
+    return peg
+
 ##############################################################################
 #                           CALCULATIONS MAPPIGN                             #
 ##############################################################################
@@ -192,7 +253,10 @@ CALCULATED_FIELDS: dict[str, Callable] = {
     "annualGrowthRatio": calculate_annual_growth_ratio,
     "intrinsicValue": calculate_intrinsic_value,
     "discountToIntrinsicValueRatio": calculate_discount_to_intrinsic_value_ratio,
-    "targetRatio": calculate_target_ratio
+    "targetRatio": calculate_target_ratio,
+    "dividendFrequency": calculate_dividend_frequency,
+    "pegRatio": calculate_peg_ratio,
+    "peToGrowth": calculate_peg_ratio,  # Alias
 }
 
 

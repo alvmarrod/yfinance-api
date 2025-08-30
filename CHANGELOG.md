@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0] - 2025-08-30
+
+### Added
+
+- Calculated `dividendFrequency` which returns an string: `[-|A|S|Q]`
+- Calculated `pegRatio` which returns an string: `[-|A|S|Q]`
+  - Included alias `peToGrowth`
+
+### Changed
+
+- Updated usage example `sp100_analysis` to avoid showing calculation error and show `-` instead on some columns.
+
 ## [0.3.0] - 2025-07-24
 
 ### Added
