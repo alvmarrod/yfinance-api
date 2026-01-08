@@ -176,3 +176,6 @@ test_env
 
 # Data
 data/*.csv
+
+# Mac
+*.DS_Store

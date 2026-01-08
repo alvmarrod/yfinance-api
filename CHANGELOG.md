@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.5.0] - 2026-01-08
+
+### Changed
+
+- Updated `yfinance` dependency to version `1.0`
+
 ## [0.4.0] - 2025-08-30
 
 ### Added
