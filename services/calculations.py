@@ -3,10 +3,13 @@ Customised calculations
 """
 import logging
 import datetime
+import dateutil.parser as dateparser
 from typing import Callable, Optional
 
 import pandas as pd
 import yfinance as yf
+
+import services.yf_info as yfi
 
 
 ##############################################################################
@@ -30,10 +33,33 @@ def _epoch_to_datetime(epoch: int) -> str:
         >>> _epoch_to_datetime(1704067200)
         '01/01/2024'
     """
-    return datetime.datetime.fromtimestamp(epoch).strftime('%d/%m/%Y')
+    try:
+        return datetime.datetime.fromtimestamp(epoch).strftime('%d/%m/%Y')
+    except Exception as e:
+        logging.error(f"Error converting epoch {epoch} to datetime: {e}")
+        return "-"
 
 
-def exdividend_to_datetime(data: yf.Ticker) -> str:
+def _ensure_datetime_format(date_string: str) -> str:
+    """
+    Ensures that a date string is in 'DD/MM/YYYY' format.
+
+    Args:
+        date_string (str): The date string to format.
+    Returns:
+        str: The date in 'DD/MM/YYYY' format.
+    """
+
+    try:
+        # Try to auto-detect the format
+        parsed_date = dateparser.parse(date_string)
+        return parsed_date.strftime('%d/%m/%Y')
+    except ValueError as ve:
+        logging.error(f"Error parsing date string '{date_string}': {ve}")
+        return "-"
+
+
+def exdividend_to_datetime(data: yfi.FullTickerData) -> str:
     """
     Converts the ex-dividend date from a yfinance Ticker object to a human-readable datetime string.
 
@@ -49,12 +75,24 @@ def exdividend_to_datetime(data: yf.Ticker) -> str:
     """
     ex_dividend_date: Optional[int] = data.info.get("exDividendDate", None)
     if ex_dividend_date:
-        return _epoch_to_datetime(ex_dividend_date)
+        # If we detect int/epoch or we can convert to int
+        if isinstance(ex_dividend_date, (int, float)) or \
+              (isinstance(ex_dividend_date, str) and ex_dividend_date.isdigit()):
+            return _epoch_to_datetime(int(ex_dividend_date))
+        
+        # If it's a string not convertible to int, it may have date format
+        elif isinstance(ex_dividend_date, str):
+            return _ensure_datetime_format(ex_dividend_date)
+        
+        else:
+            logging.warning(f"Unexpected type for exDividendDate: {type(ex_dividend_date)}")
+            return "-"
+
     else:
         return "-"
 
 
-def calculate_roe_ratio(data: yf.Ticker) -> float:
+def calculate_roe_ratio(data: yfi.FullTickerData) -> float:
     """
     Calculates the Return on Equity (ROE) ratio for a given stock ticker.
 
@@ -91,7 +129,7 @@ def calculate_roe_ratio(data: yf.Ticker) -> float:
     return net_income / total_equity
 
 
-def calculate_annual_growth_ratio(data: yf.Ticker) -> float:
+def calculate_annual_growth_ratio(data: yfi.FullTickerData) -> float:
     """
     Calculates the annual growth ratio of a stock based on its current price and the closing price from one year ago.
 
@@ -107,7 +145,7 @@ def calculate_annual_growth_ratio(data: yf.Ticker) -> float:
         IndexError: If historical data for one year ago is not available.
     """
     current_price: Optional[int] = data.info.get("currentPrice", None)
-    one_year_ago: int = data.history(period="1y").iloc[0]['Close']
+    one_year_ago: int = data.history.iloc[0]['Close']
 
     if current_price is None or one_year_ago is None:
         logging.warning("Current price or historical price is None")
@@ -116,7 +154,7 @@ def calculate_annual_growth_ratio(data: yf.Ticker) -> float:
     return (current_price - one_year_ago) / one_year_ago
 
 
-def calculate_intrinsic_value(data: yf.Ticker) -> float:
+def calculate_intrinsic_value(data: yfi.FullTickerData) -> float:
     """
     Calculates the intrinsic value of a stock using a variation of the Buffett formula.
 
@@ -142,7 +180,7 @@ def calculate_intrinsic_value(data: yf.Ticker) -> float:
     return intrinsic_value
 
 
-def calculate_discount_to_intrinsic_value_ratio(data: yf.Ticker) -> float:
+def calculate_discount_to_intrinsic_value_ratio(data: yfi.FullTickerData) -> float:
     """
     Calculates the discount ratio of the current price to the intrinsic value of a stock.
 
@@ -164,7 +202,7 @@ def calculate_discount_to_intrinsic_value_ratio(data: yf.Ticker) -> float:
     return (intrinsic_value - current_price) / intrinsic_value
 
 
-def calculate_target_ratio(data: yf.Ticker) -> float:
+def calculate_target_ratio(data: yfi.FullTickerData) -> float:
     """
     Calculates the target ratio for a given stock based on its current price and target mean price.
 
@@ -184,7 +222,7 @@ def calculate_target_ratio(data: yf.Ticker) -> float:
     return (target_mean_price - current_price) / current_price
 
 
-def calculate_dividend_frequency(data: yf.Ticker) -> str:
+def calculate_dividend_frequency(data: yfi.FullTickerData) -> str:
     """
     Determines the frequency of dividend payments for a given stock based on
     t.dividends data.
@@ -226,7 +264,7 @@ def _growth_to_pct(g: Optional[float]) -> Optional[float]:
     return None
 
 
-def calculate_peg_ratio(data: yf.Ticker) -> Optional[float]:
+def calculate_peg_ratio(data: yfi.FullTickerData) -> Optional[float]:
     """
     Calculates the Price/Earnings to Growth (PEG) ratio for a given stock.
     """
@@ -264,13 +302,13 @@ CALCULATED_FIELDS: dict[str, Callable] = {
 #                                PUBLIC APPLY                                #
 ##############################################################################
 
-def calculate_fields(ticker_data: yf.Ticker) -> dict:
+def calculate_fields(ticker_data: yfi.FullTickerData) -> dict:
     """
     Applies the calculation fields to the given ticker, and returns all the
     results as a dictionary.
 
     Args:
-        data (yf.Ticker): A yfinance Ticker
+        data (yfi.FullTickerData): A FullTickerData instance
 
     Returns:
         dict: The dictionary with the fields specified in CALCULATED_FIELDS

@@ -16,9 +16,8 @@ Notice that this API is not a complete replacement for Yahoo Finance, but rather
 
 - Fetch real-time stock data.
 - Calculate financial metrics like ROI, intrinsic value, and growth ratios.
-  - These metrics are 
 - Export historical stock data in CSV format.
-- Rate-limited API to prevent excessive requests.
+- **Rate limiting with intelligent caching** to prevent API abuse and improve performance.
 
 ## Requirements
 
@@ -84,11 +83,44 @@ curl http://localhost:5001/symbol/AAPL/ROE/
 - The calculated fields are defined in the `CALCULATED_FIELDS` constant map.
 - The API will return the calculated value for these fields as part of the response.
 
+## Rate Limiting
+
+The API includes intelligent rate limiting to prevent hitting yfinance API limits while maintaining performance.
+
+### Default Configuration
+- **20 requests per 2 minutes** to yfinance
+- **1-hour cache** for all ticker data  
+- **180-second timeout** for requests
+- **Automatic retries** for HTTP 500 errors
+
+### Key Features
+- **Cache-first optimization**: Cached data bypasses rate limiting entirely
+- **Queue management**: Requests are queued when rate limits are hit
+- **Intelligent retries**: HTTP 500 errors auto-retry with exponential backoff
+- **Thread-safe**: Single rate limiter instance handles all requests
+
+### Monitoring
+```bash
+# Check rate limit status
+curl http://localhost:5000/status/rate-limit
+
+# Configure rate limits (optional)
+curl -X POST http://localhost:5000/config/rate-limit \
+  -H "Content-Type: application/json" \
+  -d '{"max_requests_per_2min": 15, "cache_expiry_hours": 2}'
+```
+
+### HTTP Status Codes
+- **200**: Success (cache hit or fresh data)
+- **408**: Request timeout (queue backed up)  
+- **500**: Server error (after retries failed)
+
 ## Development
 
-- The project doesn't use `yfinance` `CachedSession`, as it has been tested and did not work as expected.
-- To counter this issue, we have implemented some `caching` mechanisms to avoid excessive requests to Yahoo Finance.
-- Calculations for financial metrics are implemented at [calculations.py](services/calculations.py).
+- The project implements intelligent **rate limiting and caching** instead of `yfinance`'s `CachedSession` (which didn't work as expected)
+- **Cache-first strategy**: Popular tickers get instant responses, reducing API calls
+- **Queue-based processing**: Handles high load gracefully without hitting rate limits
+- Calculations for financial metrics are implemented at [calculations.py](services/calculations.py)
 
 ## FAQ / Troubleshooting
 

@@ -1,4 +1,5 @@
 import logging
+import atexit
 
 from flask import Flask
 
@@ -8,6 +9,18 @@ logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 app.register_blueprint(api)
+
+# Register cleanup function for graceful shutdown
+def cleanup():
+    """Clean up resources on shutdown."""
+    try:
+        from services.rate_limiter import cleanup_rate_limiter
+        cleanup_rate_limiter()
+        logging.info("Rate limiter cleaned up successfully")
+    except Exception as e:
+        logging.error(f"Error during cleanup: {e}")
+
+atexit.register(cleanup)
 
 ##############################################################################
 #                                    MAIN                                    #
@@ -25,5 +38,7 @@ if __name__ == "__main__":
         )
     except KeyboardInterrupt:
         logging.info("User used (Ctrl+C). Shutting down gracefully.")
+        cleanup()
     except Exception as e:
         logging.exception("An error occurred while running the server: %s", e)
+        cleanup()

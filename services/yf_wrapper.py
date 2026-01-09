@@ -82,6 +82,7 @@ def get_ticker_as_dict(tag: str) -> dict:
         "financials": dfu.df_to_json_safe(data.financials),
         "balance_sheet": dfu.df_to_json_safe(data.balance_sheet),
         "cashflow": dfu.df_to_json_safe(data.cashflow),
+        "dividends": dfu.series_to_json_safe(data.dividends),
         "quarterly_income_stmt": dfu.df_to_json_safe(data.quarterly_income_stmt),
         "quarterly_balance_sheet": dfu.df_to_json_safe(data.quarterly_balance_sheet),
     })

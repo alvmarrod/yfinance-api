@@ -38,3 +38,25 @@ def df_to_json_safe(df: pd.DataFrame, index_as: str = "rows") -> dict:
         return df.to_dict(orient="index")
     else:
         raise ValueError("index_as debe ser 'rows'")
+
+
+def series_to_json_safe(series: pd.Series) -> dict:
+    """
+    Convierte una Series en un dict JSON-safe, transformando índices
+    Timestamp a str.
+
+    Args:
+        series (pd.Series): Series a convertir.
+
+    Returns:
+        dict: Diccionario serializable a JSON.
+    """
+    if series.empty:
+        return {}
+
+    series = series.copy()
+
+    # Asegurar que los índices (que suelen ser Timestamp) se convierten a str
+    series.index = [str(idx.date()) if isinstance(idx, pd.Timestamp) else str(idx) for idx in series.index]
+
+    return series.to_dict()

@@ -2,11 +2,46 @@
 
 ## [0.6.0] - 2026-01-09
 
+### Added
+
+- **Advanced Rate Limiting System**: Complete queue-based rate limiting to prevent yfinance API abuse
+  - Configurable rate limits (default: 20 requests per 2 minutes)
+  - Thread-safe atomic operations to prevent race conditions
+  - Intelligent queue management with FIFO processing
+  - Background thread for rate-limited request processing
+- **Cache-First Optimization**: Cache hits bypass rate limiting entirely for instant responses
+  - Configurable cache expiry (default: 1 hour)
+  - Complete `FullTickerData` caching for maximum efficiency
+  - Thread-safe cache operations with automatic cleanup
+- **HTTP 500 Retry Logic**: Automatic retry system for yfinance server errors
+  - Exponential backoff retry strategy (5s, 10s, 20s delays)
+  - Configurable retry attempts (default: 3 retries)
+  - Request position maintained during retries (no queue jumping)
+- **Enhanced Error Handling**: Proper HTTP status codes and timeout management
+  - HTTP 408 for request timeouts (180s default)
+  - HTTP 500 for server errors after retries exhausted
+  - Detailed error logging with request tracking
+- **Monitoring & Configuration**: Real-time rate limiting status and configuration
+  - `GET /status/rate-limit` endpoint for monitoring
+  - `POST /config/rate-limit` endpoint for dynamic configuration
+  - Comprehensive logging with cache hits, queue status, and rate limit details
+- **Thread-Safe Singleton**: Single rate limiter instance across all requests
+  - Double-checked locking pattern for thread safety
+  - Graceful shutdown handling with proper cleanup
+
 ### Changed
 
 - Removed unused functions at `services/yf_info.py` to retrieve yfinance ticker sub-objects.
 - Consolidate yfinance ticker data into a single `FullTickerData` dataclass for easier access to all relevant data.
 - Updated functions to return and use such `FullTickerData` instead of separate yfinance objects.
+- **Replaced simple `@cache` decorator** with sophisticated rate-limited caching system
+- **Updated timeout handling** from 30s to 180s to accommodate queue delays
+- **Enhanced API routes** with proper timeout and error handling
+- **Integrated rate limiting documentation** into main README.md for better discoverability
+
+### Removed
+
+- Separate `RATE_LIMITING.md` documentation file (integrated into README.md)
 
 ## [0.5.0] - 2026-01-08
 

@@ -40,11 +40,21 @@ def get_symbol_value_raw(tag, field):
         - If the requested field is in USUAL_FIELDS, it is mapped to its corresponding real field name.
         - If the field is not found in the symbol's data, returns 'null' (as a string).
     """
-    real_field: str = yfw.get_real_field_name(field)
-    logging.debug("Field name: %s", real_field)
+    try:
+        real_field: str = yfw.get_real_field_name(field)
+        logging.debug(f"Processing {tag}/{field} -> {real_field}")
 
-    info: dict = yfw.get_ticker_as_dict(tag)
-    return json.dumps((info.get(real_field, '-'))).strip('"')
+        info: dict = yfw.get_ticker_as_dict(tag)
+        result = json.dumps((info.get(real_field, '-'))).strip('"')
+        logging.debug(f"Successfully processed {tag}/{field}")
+        return result
+        
+    except TimeoutError as e:
+        logging.error(f"Timeout error for {tag}/{field}: {e}")
+        return json.dumps({"error": f"Request timeout for {tag}"}), 408
+    except Exception as e:
+        logging.error(f"Error processing {tag}/{field}: {e}")
+        return json.dumps({"error": f"Server error for {tag}: {str(e)}"}), 500
 
 
 @api.route('/symbol/<tag>/<field>/', methods=['GET'])
@@ -143,3 +153,91 @@ def get_symbol_historic_as_candle(tag):
     return json.dumps({
         "result": "Data saved to file: " + filename,
     })
+
+
+@api.route('/status/rate-limit', methods=['GET'])
+def get_rate_limit_status():
+    """
+    Endpoint to get current rate limiting status and statistics.
+    
+    Returns:
+        JSON object containing rate limiting information including:
+        - requests_last_2min: Number of requests in the last 2 minutes
+        - max_requests_per_2min: Maximum allowed requests per 2 minutes
+        - can_make_request: Whether we can currently make a request
+        - queue_size: Number of pending requests in queue
+        - cache_size: Number of cached ticker data entries
+    
+    Example:
+        GET /status/rate-limit
+    """
+    try:
+        status = yfi.get_rate_limit_status()
+        return json.dumps(status)
+    except Exception as e:
+        logging.error("Error getting rate limit status: %s", e)
+        return json.dumps({
+            "error": f"Error getting rate limit status: {str(e)}"
+        })
+
+
+@api.route('/config/rate-limit', methods=['POST'])
+def configure_rate_limit():
+    """
+    Endpoint to configure rate limiting parameters.
+    
+    Expected JSON payload (all optional):
+    {
+        "max_requests_per_2min": 20,
+        "cache_expiry_hours": 1,
+        "check_interval": 2.0,
+        "max_retries": 3,
+        "retry_delay": 5.0,
+        "retry_backoff_factor": 2.0
+    }
+    
+    Returns:
+        JSON confirmation of the configuration.
+    """
+    try:
+        from flask import request
+        
+        if not request.is_json:
+            return json.dumps({"error": "Content-Type must be application/json"})
+        
+        data = request.get_json()
+        
+        # Set defaults if not provided
+        max_requests = data.get('max_requests_per_2min', 20)
+        cache_expiry = data.get('cache_expiry_hours', 24)
+        check_interval = data.get('check_interval', 1.0)
+        max_retries = data.get('max_retries', 3)
+        retry_delay = data.get('retry_delay', 5.0)
+        retry_backoff_factor = data.get('retry_backoff_factor', 2.0)
+        
+        yfi.configure_rate_limiter(
+            max_requests_per_2min=max_requests,
+            cache_expiry_hours=cache_expiry,
+            check_interval=check_interval,
+            max_retries=max_retries,
+            retry_delay=retry_delay,
+            retry_backoff_factor=retry_backoff_factor,
+        )
+        
+        return json.dumps({
+            "result": "Rate limiter configured successfully",
+            "config": {
+                "max_requests_per_2min": max_requests,
+                "cache_expiry_hours": cache_expiry,
+                "check_interval": check_interval,
+                "max_retries": max_retries,
+                "retry_delay": retry_delay,
+                "retry_backoff_factor": retry_backoff_factor
+            }
+        })
+        
+    except Exception as e:
+        logging.error("Error configuring rate limiter: %s", e)
+        return json.dumps({
+            "error": f"Error configuring rate limiter: {str(e)}"
+        })
