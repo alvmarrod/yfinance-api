@@ -2,18 +2,28 @@
 Business logic for the yfinance wrapper
 - Section for ticker data retrieval from yfinance API
 """
-
 from typing import Optional
+from functools import cache
+from dataclasses import dataclass
 
 import pandas as pd
 import yfinance as yf
 
+@dataclass
+class FullTickerData:
+    info: dict
+    financials: pd.DataFrame
+    balance_sheet: pd.DataFrame
+    cashflow: pd.DataFrame
+    quarterly_income_stmt: pd.DataFrame
+    quarterly_balance_sheet: pd.DataFrame
 
 ##############################################################################
 #                                 FUNCTIONS                                  #
 ##############################################################################
 
-def get_ticker(ticker: str) -> yf.Ticker:
+@cache
+def get_ticker(ticker: str) -> FullTickerData:
     """
     Retrieves a yfinance Ticker object for the given ticker symbol.
 
@@ -23,85 +33,16 @@ def get_ticker(ticker: str) -> yf.Ticker:
     Returns:
         yf.Ticker: A yfinance Ticker object containing stock information.
     """
-    return yf.Ticker(ticker)
+    yfinance_ticker: yf.Ticker = yf.Ticker(ticker)
 
-
-def get_ticker_info(ticker: yf.Ticker) -> dict:
-    """
-    Retrieves the subobject info from a ticker
-
-    Args:
-        ticker (yf.Ticker): The stock ticker symbol to retrieve data for.
-
-    Returns:
-        dict: A Ticker.info object containing stock general information.
-    """
-    return ticker.info
-
-
-def get_ticker_financials(ticker: yf.Ticker) -> pd.DataFrame:
-    """
-    Retrieves the subobject financials from a ticker
-
-    Args:
-        ticker (yf.Ticker): The stock ticker symbol to retrieve data for.
-
-    Returns:
-        dict: A Ticker.financials Dataframe.
-    """
-    return ticker.financials
-
-
-def get_ticker_balance_sheet(ticker: yf.Ticker) -> pd.DataFrame:
-    """
-    Retrieves the subobject balance_sheet from a ticker
-
-    Args:
-        ticker (yf.Ticker): The stock ticker symbol to retrieve data for.
-
-    Returns:
-        dict: A Ticker.balance_sheet Dataframe.
-    """
-    return ticker.balance_sheet
-
-
-def get_ticker_cashflow(ticker: yf.Ticker) -> pd.DataFrame:
-    """
-    Retrieves the subobject cashflow from a ticker
-
-    Args:
-        ticker (yf.Ticker): The stock ticker symbol to retrieve data for.
-
-    Returns:
-        dict: A Ticker.cashflow Dataframe.
-    """
-    return ticker.cashflow
-
-
-def get_ticker_quarterly_income_stmt(ticker: yf.Ticker) -> pd.DataFrame:
-    """
-    Retrieves the subobject quarterly_income_stmt from a ticker
-
-    Args:
-        ticker (yf.Ticker): The stock ticker symbol to retrieve data for.
-
-    Returns:
-        dict: A Ticker.quarterly_income_stmt Dataframe.
-    """
-    return ticker.quarterly_income_stmt
-
-
-def get_ticker_quarterly_balance_sheet(ticker: yf.Ticker) -> pd.DataFrame:
-    """
-    Retrieves the subobject quarterly_balance_sheet from a ticker
-
-    Args:
-        ticker (yf.Ticker): The stock ticker symbol to retrieve data for.
-
-    Returns:
-        dict: A Ticker.quarterly_balance_sheet Dataframe.
-    """
-    return ticker.quarterly_balance_sheet
+    return FullTickerData(
+        info=yfinance_ticker.info,
+        financials=yfinance_ticker.financials,
+        balance_sheet=yfinance_ticker.balance_sheet,
+        cashflow=yfinance_ticker.cashflow,
+        quarterly_income_stmt=yfinance_ticker.quarterly_income_stmt,
+        quarterly_balance_sheet=yfinance_ticker.quarterly_balance_sheet
+    )
 
 
 def get_ticker_historic_candle(

@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.0] - 2026-01-09
+
+### Changed
+
+- Removed unused functions at `services/yf_info.py` to retrieve yfinance ticker sub-objects.
+- Consolidate yfinance ticker data into a single `FullTickerData` dataclass for easier access to all relevant data.
+- Updated functions to return and use such `FullTickerData` instead of separate yfinance objects.
+
 ## [0.5.0] - 2026-01-08
 
 ### Changed

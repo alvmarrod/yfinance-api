@@ -2,7 +2,6 @@
 Business logic for the yfinance wrapper
 - Section for ticker data composition back to the routes
 """
-from functools import cache
 
 from yfinance import Ticker
 
@@ -31,6 +30,7 @@ def get_usual_fields(ticker_data: Ticker) -> dict:
 
     return result
 
+
 def get_real_field_name(field: str) -> str:
     """
     Returns the real field name for a given field if it exists in USUAL_FIELDS,
@@ -42,7 +42,7 @@ def get_real_field_name(field: str) -> str:
 #                               COMPOSITION                                  #
 ##############################################################################
 
-@cache
+
 def get_ticker_as_dict(tag: str) -> dict:
     """
     Fetches and returns comprehensive information for a given stock symbol,
@@ -70,7 +70,7 @@ def get_ticker_as_dict(tag: str) -> dict:
         - Requires global CALCULATED_FIELDS and USUAL_FIELDS to be defined.
     """
     result: dict = {}
-    data: Ticker = yfi.get_ticker(tag)
+    data: yfi.FullTickerData = yfi.get_ticker(tag)
 
     if data.info is None:
         return result
