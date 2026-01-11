@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.7.0] - 2026-01-11
+
+### Added
+
+- Added `progressbar` painting to `utils` package.
+- Added `cache`, `rate_limiter` and `queue` services and classess.
+  - All items are thread-safe.
+- Encapsulated the usage of those modules via `JobDispatcher` and rely on it to retrieve the ticker data.
+
+### Removed
+
+- Deprecated the previous rate-limit and cache logic, AI generated.
+
 ## [0.6.0] - 2026-01-09
 
 ### Added

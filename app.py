@@ -14,9 +14,9 @@ app.register_blueprint(api)
 def cleanup():
     """Clean up resources on shutdown."""
     try:
-        from services.rate_limiter import cleanup_rate_limiter
-        cleanup_rate_limiter()
-        logging.info("Rate limiter cleaned up successfully")
+        from services.job_dispatcher import shutdown_dispatcher
+        shutdown_dispatcher()
+        logging.info("Job dispatcher cleaned up successfully")
     except Exception as e:
         logging.error(f"Error during cleanup: {e}")
 

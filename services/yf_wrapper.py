@@ -3,8 +3,6 @@ Business logic for the yfinance wrapper
 - Section for ticker data composition back to the routes
 """
 
-from yfinance import Ticker
-
 import utils.dataframe as dfu
 import services.yf_info as yfi
 import services.calculations as calc
@@ -19,7 +17,7 @@ USUAL_FIELDS: dict[str, str] = {
 }
 
 
-def get_usual_fields(ticker_data: Ticker) -> dict:
+def get_usual_fields(ticker_data: yfi.FullTickerData) -> dict:
     """
     Extracts usual fields from the ticker data and returns them as a
     dictionary.

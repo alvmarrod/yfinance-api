@@ -8,8 +8,9 @@ import datetime
 
 from typing import Optional
 
-from pandas import DataFrame
+from flask import request
 from flask import Blueprint
+from pandas import DataFrame
 
 import services.yf_info as yfi
 import services.yf_wrapper as yfw
@@ -174,6 +175,7 @@ def get_rate_limit_status():
     try:
         status = yfi.get_rate_limit_status()
         return json.dumps(status)
+
     except Exception as e:
         logging.error("Error getting rate limit status: %s", e)
         return json.dumps({
@@ -200,8 +202,6 @@ def configure_rate_limit():
         JSON confirmation of the configuration.
     """
     try:
-        from flask import request
-        
         if not request.is_json:
             return json.dumps({"error": "Content-Type must be application/json"})
         
