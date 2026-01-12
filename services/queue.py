@@ -12,6 +12,8 @@ from utils.progressbar import create_progress_bar
 
 from services.queued_request import QueuedRequest
 
+app_logger = logging.getLogger('yfinance-api')
+
 ##############################################################################
 #                                CONSTANTS                                   #
 ##############################################################################
@@ -33,7 +35,7 @@ class tsQueue:
     item_queue: Queue[QueuedRequest]
 
     def __init__(self):
-        logging.info("🆕 Initializating a queue")
+        app_logger.info("🆕 Initializating a queue")
         self.lock = tg.Lock()
         self.item_queue = Queue()
 
@@ -50,7 +52,7 @@ class tsQueue:
             width=10
         )
 
-        logging.info(report_msg)
+        app_logger.info(report_msg)
 
     def get_job(self) -> Optional[QueuedRequest]:
         """Thread-safely get a request from the queue"""
@@ -58,16 +60,17 @@ class tsQueue:
         with self.lock:
             try:
                 result = self.item_queue.get(block=False)
-                logging.debug(f"📤 Retrieved job for ticker: {result.ticker if result else 'None'}")
+                app_logger.debug(f"📤 Retrieved job for ticker: {result.ticker if result else 'None'}")
             except Empty:
-                logging.debug("🈚 There is nothing in the job queue")
+                app_logger.debug("🈚 There is nothing in the job queue")
         
         return result
 
-    def add_job(self, ticker: str) -> QueuedRequest:
+    def add_job(self, ticker: str, sections: set[str]) -> QueuedRequest:
         """Thread-safely add a request to the queue and return the request object"""
         request = QueuedRequest(
             ticker=ticker,
+            sections=sections,
             timestamp=datetime.now(),
             result_event=tg.Event()
         )
@@ -75,9 +78,9 @@ class tsQueue:
         with self.lock:
             try:
                 self.item_queue.put(request, block=False)
-                logging.debug(f"📥 Added job for ticker: {ticker}")
+                app_logger.debug(f"📥 Added job for ticker: {ticker} - Sections: {sections}")
             except Full:
-                logging.debug("🈵 Tried to add a job to the queue but it's full!")
+                app_logger.debug("🈵 Tried to add a job to the queue but it's full!")
                 request.set_error(Exception("Queue is full"))
 
         return request

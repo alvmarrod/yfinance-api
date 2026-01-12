@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.8.0] - 2026-01-12
+
+### Added
+
+- Lazy loading to avoid hitting `yfinance` limits.
+
+### Changed
+
+- Calculated fields now raise exceptions instead of returning `-1` values for lazy loading logic.
+
+### Removed
+
+- `Cache report` printing on cache checking, remains on cache writing.
+- Deprecated `rate_limiter` endpoints from the old limiter API.
+
 ## [0.7.0] - 2026-01-11
 
 ### Added

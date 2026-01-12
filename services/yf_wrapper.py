@@ -4,8 +4,9 @@ Business logic for the yfinance wrapper
 """
 
 import utils.dataframe as dfu
-import services.yf_info as yfi
-import services.calculations as calc
+
+from services.full_ticker_data import FullTickerData
+from services.missing_data import MissingDataException
 
 ##############################################################################
 #                                PARAMETERS                                  #
@@ -17,11 +18,14 @@ USUAL_FIELDS: dict[str, str] = {
 }
 
 
-def get_usual_fields(ticker_data: yfi.FullTickerData) -> dict:
+def get_usual_fields(ticker_data: FullTickerData) -> dict:
     """
     Extracts usual fields from the ticker data and returns them as a
     dictionary.
     """
+    if ticker_data.info is None:
+        raise MissingDataException(ticker_data.ticker, {"info"})
+    
     result: dict = {}
     for field, real_field in USUAL_FIELDS.items():
         result[field] = ticker_data.info.get(real_field, None)
@@ -40,55 +44,39 @@ def get_real_field_name(field: str) -> str:
 #                               COMPOSITION                                  #
 ##############################################################################
 
-
-def get_ticker_as_dict(tag: str) -> dict:
+def compose_ticker_dict(ticker_data: FullTickerData) -> dict:
     """
-    Fetches and returns comprehensive information for a given stock symbol,
-    including calculated and mapped fields.
-
-    From the default API info, `.info` is used as base, while `.financials`,
-    `.balance_sheet` and `.cashflow` are added as well as subsets.
-
-    Quarterly statements and sheets are included as well.
-
-    This function retrieves the data for the specified symbol using yfinance,
-    augments the data with additional
-    calculated fields defined in CALCULATED_FIELDS, and maps usual fields from
-    USUAL_FIELDS to the result.
-
-    Args:
-        tag (str): The stock symbol (ticker) to fetch data for.
-
-    Returns:
-        dict: A dictionary containing the symbol's information, including both
-        original, calculated, and mapped fields.
-
-    Note:
-        - The function is cached to avoid redundant API calls.
-        - Requires global CALCULATED_FIELDS and USUAL_FIELDS to be defined.
+    Composes a dictionary representation of the ticker data, including usual
+    fields and all available sections.
     """
     result: dict = {}
-    data: yfi.FullTickerData = yfi.get_ticker(tag)
 
-    if data.info is None:
-        return result
+    # Add usual fields
+    result.update(get_usual_fields(ticker_data))
 
-    result = data.info
+    # Add all other sections
+    if ticker_data.info is not None:
+        result["info"] = ticker_data.info
 
-    result.update({
-        #"info": dfu.df_to_json_safe(data.info),     # type: ignore
-        "financials": dfu.df_to_json_safe(data.financials),
-        "balance_sheet": dfu.df_to_json_safe(data.balance_sheet),
-        "cashflow": dfu.df_to_json_safe(data.cashflow),
-        "dividends": dfu.series_to_json_safe(data.dividends),
-        "quarterly_income_stmt": dfu.df_to_json_safe(data.quarterly_income_stmt),
-        "quarterly_balance_sheet": dfu.df_to_json_safe(data.quarterly_balance_sheet),
-    })
+    if ticker_data.financials is not None:
+        result["financials"] = dfu.df_to_json_safe(ticker_data.financials)
 
-    extra_data: dict = calc.calculate_fields(data)
-    result.update(extra_data)
+    if ticker_data.balance_sheet is not None:
+        result["balance_sheet"] = dfu.df_to_json_safe(ticker_data.balance_sheet)
 
-    usual_fields: dict = get_usual_fields(data)
-    result.update(usual_fields)
+    if ticker_data.cashflow is not None:
+        result["cashflow"] = dfu.df_to_json_safe(ticker_data.cashflow)
+
+    if ticker_data.dividends is not None:
+        result["dividends"] = dfu.series_to_json_safe(ticker_data.dividends)
+
+    if ticker_data.history is not None:
+        result["history"] = dfu.df_to_json_safe(ticker_data.history)
+
+    if ticker_data.quarterly_income_stmt is not None:
+        result["quarterly_income_stmt"] = dfu.df_to_json_safe(ticker_data.quarterly_income_stmt)
+
+    if ticker_data.quarterly_balance_sheet is not None:
+        result["quarterly_balance_sheet"] = dfu.df_to_json_safe(ticker_data.quarterly_balance_sheet)
 
     return result

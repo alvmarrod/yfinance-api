@@ -17,7 +17,12 @@ Notice that this API is not a complete replacement for Yahoo Finance, but rather
 - Fetch real-time stock data.
 - Calculate financial metrics like ROI, intrinsic value, and growth ratios.
 - Export historical stock data in CSV format.
-- **Rate limiting with intelligent caching** to prevent API abuse and improve performance.
+
+Systems:
+
+- Rate limiter
+- Cache
+- Job Queue
 
 ## Requirements
 
@@ -82,38 +87,6 @@ curl http://localhost:5001/symbol/AAPL/ROE/
 - `yfinance` provides a set of parameters, but sometimes we want non-inmediate values that can be calculated from the data. Aiming to provide a more user-friendly experience, we have created a set of calculated fields that can be accessed via the API.
 - The calculated fields are defined in the `CALCULATED_FIELDS` constant map.
 - The API will return the calculated value for these fields as part of the response.
-
-## Rate Limiting
-
-The API includes intelligent rate limiting to prevent hitting yfinance API limits while maintaining performance.
-
-### Default Configuration
-- **20 requests per 2 minutes** to yfinance
-- **1-hour cache** for all ticker data  
-- **180-second timeout** for requests
-- **Automatic retries** for HTTP 500 errors
-
-### Key Features
-- **Cache-first optimization**: Cached data bypasses rate limiting entirely
-- **Queue management**: Requests are queued when rate limits are hit
-- **Intelligent retries**: HTTP 500 errors auto-retry with exponential backoff
-- **Thread-safe**: Single rate limiter instance handles all requests
-
-### Monitoring
-```bash
-# Check rate limit status
-curl http://localhost:5000/status/rate-limit
-
-# Configure rate limits (optional)
-curl -X POST http://localhost:5000/config/rate-limit \
-  -H "Content-Type: application/json" \
-  -d '{"max_requests_per_2min": 15, "cache_expiry_hours": 2}'
-```
-
-### HTTP Status Codes
-- **200**: Success (cache hit or fresh data)
-- **408**: Request timeout (queue backed up)  
-- **500**: Server error (after retries failed)
 
 ## Development
 

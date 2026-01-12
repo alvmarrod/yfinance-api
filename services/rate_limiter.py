@@ -9,12 +9,17 @@ from datetime import datetime, timedelta
 
 from utils.progressbar import create_progress_bar
 
+app_logger = logging.getLogger("yfinance_api")
+
 ##############################################################################
 #                                CONSTANTS                                   #
 ##############################################################################
 
+IMMEDIATE_REQUEST_PERIOD_SECONDS: int = 20
+IMMEDIATE_MAX_REQUESTS_PER_PERIOD: int = 10
+
 REQUEST_PERIOD_SECONDS: int = 120
-MAX_REQUESTS_PER_PERIOD: int = 20
+MAX_REQUESTS_PER_PERIOD: int = 65
 
 RATE_LIMITER_LOG_MSG: str = "📊 Rate Limiter status: %s"
 
@@ -23,7 +28,14 @@ RATE_LIMITER_LOG_MSG: str = "📊 Rate Limiter status: %s"
 ##############################################################################
 
 class tsRateLimiter:
-    """Thread-safe rate limiter"""
+    """Thread-safe rate limiter.
+    
+    To avoid hitting API rate limits, this class tracks the number of events
+    and ensures an immediate rate of events and a more averaged rate.
+    
+    Immediate rate: per 20 secons
+    Averaged rate: per 2 minutes
+    """
 
     lock: tg.Lock
     event_register: list[datetime]
@@ -31,7 +43,7 @@ class tsRateLimiter:
     max_ratio: float
 
     def __init__(self):
-        logging.info("🆕 Initializating the Rate Limiter")
+        app_logger.info("🆕 Initializating the Rate Limiter")
         self.lock = tg.Lock()
         self.event_register = []
 
@@ -57,7 +69,7 @@ class tsRateLimiter:
             width=10
         )
 
-        logging.info(report_msg)
+        app_logger.info(report_msg)
 
     def ratio_allows(self) -> bool:
         """Returns if given the current ratio we should proceed.

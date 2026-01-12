@@ -9,6 +9,7 @@ from services.full_ticker_data import FullTickerData
 class QueuedRequest:
     """Represents a queued API request."""
     ticker: str
+    sections: set[str]
     timestamp: datetime
     result_event: tg.Event  # Used to signal when processing is complete
     result: Optional[FullTickerData] = None

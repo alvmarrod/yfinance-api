@@ -3,9 +3,15 @@ import atexit
 
 from flask import Flask
 
-from api.routes import api
+app_logger = logging.getLogger('yfinance-api')
 
-logging.basicConfig(level=logging.INFO)
+app_logger.setLevel(logging.DEBUG)
+handler = logging.StreamHandler()
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+app_logger.addHandler(handler)
+
+from api.routes import api
 
 app = Flask(__name__)
 app.register_blueprint(api)
@@ -28,17 +34,17 @@ atexit.register(cleanup)
 
 if __name__ == "__main__":
     try:
-        logging.info("Starting yfinance-api Flask server...")
-        logging.info("Listening on http://0.0.0.0:5000")
+        app_logger.info("Starting yfinance-api Flask server...")
+        app_logger.info("Listening on http://0.0.0.0:5000")
         app.run(
             host="0.0.0.0",
             port=5000,
-            debug=True,
+            debug=False,
             use_reloader=False
         )
     except KeyboardInterrupt:
-        logging.info("User used (Ctrl+C). Shutting down gracefully.")
+        app_logger.info("User used (Ctrl+C). Shutting down gracefully.")
         cleanup()
     except Exception as e:
-        logging.exception("An error occurred while running the server: %s", e)
+        app_logger.exception("An error occurred while running the server: %s", e)
         cleanup()

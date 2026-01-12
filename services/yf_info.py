@@ -4,7 +4,7 @@ Wrapper to get the yfinance Ticker information.
 It abstracts away the rate limiting and caching logic, providing a simple
 interface to get ticker data without hitting API limits.
 """
-from typing import Optional
+from typing import Optional, Any
 
 import pandas as pd
 import yfinance as yf
@@ -16,27 +16,37 @@ from services.full_ticker_data import FullTickerData
 #                              PUBLIC FUNCTIONS                              #
 ##############################################################################
 
-def get_ticker(ticker: str) -> FullTickerData:
+def get_field_value(ticker: str, field_name: str) -> Any:
     """
-    Retrieves a yfinance Ticker object for the given ticker symbol.
-    
-    Abstracts the usage of:
-    - Job queue
-    - Cache
-    - Rate limiter
-
-    Args:
-        ticker (str): The stock ticker symbol to retrieve data for.
-
-    Returns:
-        FullTickerData: A dataclass containing complete stock information.
-        
-    Raises:
-        Exception: If there's an error fetching the data
+    Get a single field value using lazy loading.
+    Fetches minimal data needed for this field.
     """
-    # TODO: review the propagatio of exceptions or None
     dispatcher = get_dispatcher()
-    return dispatcher.get_ticker_data(ticker)
+    return dispatcher.get_field_value(ticker, field_name)
+
+def get_basic_ticker_info(ticker: str) -> FullTickerData:
+    """
+    Get only basic ticker info (info section).
+    Fast operation for basic data.
+    """
+    dispatcher = get_dispatcher()
+    return dispatcher.get_basic_ticker_data(ticker)
+
+def get_full_ticker_data(ticker: str) -> FullTickerData:
+    """
+    Get complete ticker data (all sections).
+    Backwards compatible with current implementation.
+    """
+    dispatcher = get_dispatcher()
+    return dispatcher.get_complete_ticker_data(ticker)
+
+def get_specific_sections(ticker: str, sections: set[str]) -> FullTickerData:
+    """
+    Get specific data sections only.
+    For advanced use cases.
+    """
+    dispatcher = get_dispatcher()
+    return dispatcher.get_specific_sections(ticker, sections)
 
 def get_ticker_historic_candle(
         ticker: yf.Ticker,

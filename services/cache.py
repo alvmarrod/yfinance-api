@@ -12,6 +12,8 @@ from services.full_ticker_data import FullTickerData
 
 from utils.progressbar import create_progress_bar
 
+app_logger = logging.getLogger('yfinance-api')
+
 ##############################################################################
 #                                CONSTANTS                                   #
 ##############################################################################
@@ -30,7 +32,7 @@ def _cache_has_expired(entry: CacheEntry) -> Optional[CacheEntry]:
 
     Logs accordingly."""
     if entry.retrieval_time - datetime.now() > timedelta(hours=1):
-        logging.info(f"⏳ Cache entry for {entry.ticker} has expired.")
+        app_logger.info(f"⏳ Cache entry for {entry.ticker} has expired.")
         return None
     else:
         return entry
@@ -39,7 +41,7 @@ def _get_oldest_ticker(entries: list[CacheEntry]) -> str:
     """Returns the ticker of the oldest entry"""
     sorted_entries: list[CacheEntry] = sorted(entries, key=lambda x: x.retrieval_time)
 
-    logging.info("Returning the oldest ticker %s vs newest %s" % (
+    app_logger.info("Returning the oldest ticker %s vs newest %s" % (
         sorted_entries[0].retrieval_time,
         sorted_entries[-1].retrieval_time
     ))
@@ -57,7 +59,7 @@ class tsCache:
     cache: dict[str, CacheEntry]
 
     def __init__(self):
-        logging.info("🆕 Initializating the cache")
+        app_logger.info("🆕 Initializating the cache")
         self.lock = tg.Lock()
         self.cache = {}
 
@@ -69,7 +71,7 @@ class tsCache:
             width=10
         )
 
-        logging.info(report_msg)
+        app_logger.info(report_msg)
 
     def get_ticker(self, ticker: str) -> Optional[FullTickerData]:
         """Thread-safely return a ticker if it exists in the cache.
@@ -87,10 +89,8 @@ class tsCache:
                 result = cache_result.data
 
             else:
-                logging.info(f"🔥 Removed expired cache entry in memory")
+                app_logger.info(f"🔥 Removed expired cache entry in memory")
                 del self.cache[ticker]
-
-        self._cache_usage_report()
         
         self.lock.release()
         return result
