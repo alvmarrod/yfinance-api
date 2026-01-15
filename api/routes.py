@@ -1,6 +1,7 @@
 """
 Routes served by the API.
 """
+
 import os
 import json
 import logging
@@ -8,22 +9,22 @@ import datetime
 
 from typing import Optional
 
-from flask import request
 from flask import Blueprint
 from pandas import DataFrame
 
 import services.yf_info as yfi
 import services.yf_wrapper as yfw
 
-api = Blueprint('api', __name__)
+api = Blueprint("api", __name__)
 
-app_logger = logging.getLogger('yfinance-api')
+app_logger = logging.getLogger("yfinance-api")
 
 ##############################################################################
 #                                    API                                     #
 ##############################################################################
 
-@api.route('/symbol/<tag>/<field>/raw', methods=['GET'])
+
+@api.route("/symbol/<tag>/<field>/raw", methods=["GET"])
 def get_symbol_value_raw(tag, field):
     """
     Endpoint to retrieve the raw value of a specific field for a given symbol.
@@ -51,7 +52,7 @@ def get_symbol_value_raw(tag, field):
 
         result = json.dumps(field_value).strip('"')
         return result
-        
+
     except TimeoutError as e:
         app_logger.error(f"Timeout error for {tag}/{field}: {e}")
         return json.dumps({"error": f"Request timeout for {tag}"}), 408
@@ -60,7 +61,7 @@ def get_symbol_value_raw(tag, field):
         return json.dumps({"error": f"Server error for {tag}: {str(e)}"}), 500
 
 
-@api.route('/symbol/<tag>/<field>/', methods=['GET'])
+@api.route("/symbol/<tag>/<field>/", methods=["GET"])
 def get_symbol_value(tag, field):
     """
     Endpoint to retrieve a specific field value for a given symbol tag.
@@ -82,7 +83,7 @@ def get_symbol_value(tag, field):
     return json.dumps({field: field_value})
 
 
-@api.route('/symbol/<tag>', methods=['GET'])
+@api.route("/symbol/<tag>", methods=["GET"])
 def get_symbol(tag):
     """
     Endpoint to retrieve detailed information for a given stock symbol.
@@ -102,11 +103,11 @@ def get_symbol(tag):
     """
     full_data = yfi.get_full_ticker_data(tag)
     composed_dict = yfw.compose_ticker_dict(full_data)
-    
+
     return json.dumps(composed_dict)
 
 
-@api.route('/symbol/historic/candle/<tag>', methods=['GET'])
+@api.route("/symbol/historic/candle/<tag>", methods=["GET"])
 def get_symbol_historic_as_candle(tag):
     """
     Endpoint to download and save historical candlestick data for a given symbol.
@@ -124,12 +125,8 @@ def get_symbol_historic_as_candle(tag):
     """
 
     try:
-
         data: Optional[DataFrame] = yfi.get_ticker_historic_candle(
-            ticker=tag,
-            period="60d",
-            interval="5m",
-            prepost=False
+            ticker=tag, period="60d", interval="5m", prepost=False
         )
 
         assert data is not None, "Couldn't download the historic for the ticker"
@@ -137,22 +134,23 @@ def get_symbol_historic_as_candle(tag):
         today = datetime.datetime.now()
         today_str: str = today.strftime("%Y%m%d")
         sixty = datetime.timedelta(days=60)
-        sixty_str: str = (today-sixty).strftime("%Y%m%d")
+        sixty_str: str = (today - sixty).strftime("%Y%m%d")
         filename: str = f"{tag}_5m_{sixty_str}_{today_str}.csv"
 
         # Full path to save the file
         cwd = os.getcwd()
-        full_filepath = os.path.join(cwd, 'data', filename)
+        full_filepath = os.path.join(cwd, "data", filename)
         data.to_csv(full_filepath)
 
     except Exception as e:
         app_logger.error("Error downloading or saving data for %s", tag)
         app_logger.error("Error details: %s", str(e))
-        return json.dumps({
-            "result": "Couldn't download data for ticker: " + tag,
-            "error": str(e)
-        })
+        return json.dumps(
+            {"result": "Couldn't download data for ticker: " + tag, "error": str(e)}
+        )
 
-    return json.dumps({
-        "result": "Data saved to file: " + filename,
-    })
+    return json.dumps(
+        {
+            "result": "Data saved to file: " + filename,
+        }
+    )

@@ -9,6 +9,7 @@ import pandas as pd
 #                                DF MANIPULATION                             #
 ##############################################################################
 
+
 def df_to_json_safe(df: pd.DataFrame, index_as: str = "rows") -> dict:
     """
     Convierte un DataFrame en un dict JSON-safe, transformando columnas
@@ -29,7 +30,10 @@ def df_to_json_safe(df: pd.DataFrame, index_as: str = "rows") -> dict:
     df = df.copy()
 
     # Asegurar que las columnas (que suelen ser Timestamp) se convierten a str
-    df.columns = [str(col.date()) if isinstance(col, pd.Timestamp) else str(col) for col in df.columns]
+    df.columns = [
+        str(col.date()) if isinstance(col, pd.Timestamp) else str(col)
+        for col in df.columns
+    ]
 
     # También podemos asegurar que el índice es string
     df.index = [str(idx) for idx in df.index]
@@ -57,6 +61,9 @@ def series_to_json_safe(series: pd.Series) -> dict:
     series = series.copy()
 
     # Asegurar que los índices (que suelen ser Timestamp) se convierten a str
-    series.index = [str(idx.date()) if isinstance(idx, pd.Timestamp) else str(idx) for idx in series.index]
+    series.index = [
+        str(idx.date()) if isinstance(idx, pd.Timestamp) else str(idx)
+        for idx in series.index
+    ]
 
     return series.to_dict()

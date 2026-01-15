@@ -4,6 +4,7 @@ Wrapper to get the yfinance Ticker information.
 It abstracts away the rate limiting and caching logic, providing a simple
 interface to get ticker data without hitting API limits.
 """
+
 from typing import Optional, Any
 
 import pandas as pd
@@ -16,6 +17,7 @@ from services.full_ticker_data import FullTickerData
 #                              PUBLIC FUNCTIONS                              #
 ##############################################################################
 
+
 def get_field_value(ticker: str, field_name: str) -> Any:
     """
     Get a single field value using lazy loading.
@@ -23,6 +25,7 @@ def get_field_value(ticker: str, field_name: str) -> Any:
     """
     dispatcher = get_dispatcher()
     return dispatcher.get_field_value(ticker, field_name)
+
 
 def get_basic_ticker_info(ticker: str) -> FullTickerData:
     """
@@ -32,6 +35,7 @@ def get_basic_ticker_info(ticker: str) -> FullTickerData:
     dispatcher = get_dispatcher()
     return dispatcher.get_basic_ticker_data(ticker)
 
+
 def get_full_ticker_data(ticker: str) -> FullTickerData:
     """
     Get complete ticker data (all sections).
@@ -39,6 +43,7 @@ def get_full_ticker_data(ticker: str) -> FullTickerData:
     """
     dispatcher = get_dispatcher()
     return dispatcher.get_complete_ticker_data(ticker)
+
 
 def get_specific_sections(ticker: str, sections: set[str]) -> FullTickerData:
     """
@@ -48,12 +53,10 @@ def get_specific_sections(ticker: str, sections: set[str]) -> FullTickerData:
     dispatcher = get_dispatcher()
     return dispatcher.get_specific_sections(ticker, sections)
 
+
 def get_ticker_historic_candle(
-        ticker: yf.Ticker,
-        period: str = "60d",
-        interval: str = "5m",
-        prepost: bool = False
-    ) -> Optional[pd.DataFrame]:
+    ticker: yf.Ticker, period: str = "60d", interval: str = "5m", prepost: bool = False
+) -> Optional[pd.DataFrame]:
     """
     Retrieves the price data for a ticker with the given parameters.
 
@@ -68,8 +71,5 @@ def get_ticker_historic_candle(
         dict: A Ticker.quarterly_balance_sheet Dataframe.
     """
     return yf.download(
-        tickers=ticker,
-        period=period,
-        interval=interval,
-        prepost=prepost
+        tickers=ticker, period=period, interval=interval, prepost=prepost
     )

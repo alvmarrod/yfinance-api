@@ -104,6 +104,52 @@ curl http://localhost:5001/symbol/AAPL/ROE/
 
 Find the version of the API in the [version.txt](version.txt) file.
 
+## Contribute
+
+### Setting up pre-commit hooks
+
+**Pre-commit hooks** run automatically when you try to commit changes (`git commit`). They check and reformat any staged files that do not conform to our style guides.
+
+1. To set up the hooks, you first need to install `pre-commit`. On **macOS**, you can use Homebrew:
+
+   ```bash
+   brew install pre-commit
+   ```
+
+   Alternatively, install it via pip:
+
+   ```bash
+   pip install pre-commit
+   ```
+
+2. Once `pre-commit` is installed, set up the git hooks by running the following command from the project¡s root directory:
+
+   ```bash
+   pre-commit install
+   ```
+
+   On success, it will display:
+
+   ```bash
+   pre-commit installed at .git/hooks/pre-commit
+   ```
+
+Now, the hooks will automatically check your staged files every time you commit.
+
+### Manually run pre-commit hooks
+
+To run all configured hooks on every file in the repository:
+
+```bash
+pre-commit run --all-files
+```
+
+You can select a specific rule instead of all hooks:
+
+```bash
+pre-commit run ruff --all-files
+```
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

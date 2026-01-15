@@ -14,7 +14,7 @@ from services.missing_data import MissingDataException
 
 USUAL_FIELDS: dict[str, str] = {
     "PERatio": "trailingPE",
-    "debtToEquityPercentage": "debtToEquity"
+    "debtToEquityPercentage": "debtToEquity",
 }
 
 
@@ -25,7 +25,7 @@ def get_usual_fields(ticker_data: FullTickerData) -> dict:
     """
     if ticker_data.info is None:
         raise MissingDataException(ticker_data.ticker, {"info"})
-    
+
     result: dict = {}
     for field, real_field in USUAL_FIELDS.items():
         result[field] = ticker_data.info.get(real_field, None)
@@ -40,9 +40,11 @@ def get_real_field_name(field: str) -> str:
     """
     return USUAL_FIELDS.get(field, field)
 
+
 ##############################################################################
 #                               COMPOSITION                                  #
 ##############################################################################
+
 
 def compose_ticker_dict(ticker_data: FullTickerData) -> dict:
     """
@@ -74,9 +76,13 @@ def compose_ticker_dict(ticker_data: FullTickerData) -> dict:
         result["history"] = dfu.df_to_json_safe(ticker_data.history)
 
     if ticker_data.quarterly_income_stmt is not None:
-        result["quarterly_income_stmt"] = dfu.df_to_json_safe(ticker_data.quarterly_income_stmt)
+        result["quarterly_income_stmt"] = dfu.df_to_json_safe(
+            ticker_data.quarterly_income_stmt
+        )
 
     if ticker_data.quarterly_balance_sheet is not None:
-        result["quarterly_balance_sheet"] = dfu.df_to_json_safe(ticker_data.quarterly_balance_sheet)
+        result["quarterly_balance_sheet"] = dfu.df_to_json_safe(
+            ticker_data.quarterly_balance_sheet
+        )
 
     return result

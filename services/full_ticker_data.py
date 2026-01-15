@@ -7,6 +7,7 @@ import pandas as pd
 #                           FULL TICKER DATA CLASS                           #
 ##############################################################################
 
+
 @dataclass
 class FullTickerData:
     ticker: str
@@ -26,7 +27,7 @@ class FullTickerData:
                 return False
         return True
 
-    def update_with_data(self, other: 'FullTickerData'):
+    def update_with_data(self, other: "FullTickerData"):
         """Update current data with another FullTickerData instance."""
         for field in self.__dataclass_fields__:
             other_value = getattr(other, field)

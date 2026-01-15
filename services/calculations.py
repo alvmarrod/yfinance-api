@@ -1,6 +1,7 @@
 """
 Customised calculations
 """
+
 import logging
 import datetime
 import dateutil.parser as dateparser
@@ -11,11 +12,12 @@ import pandas as pd
 from services.full_ticker_data import FullTickerData
 from services.missing_data import MissingDataException
 
-app_logger = logging.getLogger('yfinance-api')
+app_logger = logging.getLogger("yfinance-api")
 
 ##############################################################################
 #                               Calculations                                 #
 ##############################################################################
+
 
 def _epoch_to_datetime(epoch: int) -> str:
     """
@@ -35,7 +37,7 @@ def _epoch_to_datetime(epoch: int) -> str:
         '01/01/2024'
     """
     try:
-        return datetime.datetime.fromtimestamp(epoch).strftime('%d/%m/%Y')
+        return datetime.datetime.fromtimestamp(epoch).strftime("%d/%m/%Y")
     except Exception as e:
         app_logger.error(f"Error converting epoch {epoch} to datetime: {e}")
         return "-"
@@ -54,7 +56,7 @@ def _ensure_datetime_format(date_string: str) -> str:
     try:
         # Try to auto-detect the format
         parsed_date = dateparser.parse(date_string)
-        return parsed_date.strftime('%d/%m/%Y')
+        return parsed_date.strftime("%d/%m/%Y")
     except ValueError as ve:
         app_logger.error(f"Error parsing date string '{date_string}': {ve}")
         return "-"
@@ -80,16 +82,19 @@ def exdividend_to_datetime(data: FullTickerData) -> str:
     ex_dividend_date: Optional[int] = data.info.get("exDividendDate", None)
     if ex_dividend_date:
         # If we detect int/epoch or we can convert to int
-        if isinstance(ex_dividend_date, (int, float)) or \
-              (isinstance(ex_dividend_date, str) and ex_dividend_date.isdigit()):
+        if isinstance(ex_dividend_date, (int, float)) or (
+            isinstance(ex_dividend_date, str) and ex_dividend_date.isdigit()
+        ):
             return _epoch_to_datetime(int(ex_dividend_date))
-        
+
         # If it's a string not convertible to int, it may have date format
         elif isinstance(ex_dividend_date, str):
             return _ensure_datetime_format(ex_dividend_date)
-        
+
         else:
-            app_logger.warning(f"Unexpected type for exDividendDate: {type(ex_dividend_date)}")
+            app_logger.warning(
+                f"Unexpected type for exDividendDate: {type(ex_dividend_date)}"
+            )
             return "-"
 
     else:
@@ -114,26 +119,28 @@ def calculate_roe_ratio(data: FullTickerData) -> float:
     """
     if data.info is None:
         raise MissingDataException(data.ticker, {"info"})
-    
+
     if data.financials is None:
         raise MissingDataException(data.ticker, {"financials"})
-    
+
     if data.balance_sheet is None:
         raise MissingDataException(data.ticker, {"balance_sheet"})
 
     try:
-        net_income = data.financials.loc['Net Income Applicable To Common Shares'].iloc[0]
+        net_income = data.financials.loc["Net Income Applicable To Common Shares"].iloc[
+            0
+        ]
     except KeyError:
-        net_income = data.info.get('netIncomeToCommon', None)
+        net_income = data.info.get("netIncomeToCommon", None)
 
     try:
-        total_equity = data.balance_sheet.loc['Total Stockholder Equity'].iloc[0]
+        total_equity = data.balance_sheet.loc["Total Stockholder Equity"].iloc[0]
     except KeyError:
         # Intentar con 'Stockholders Equity' si no existe 'Total Stockholder Equity'
         try:
-            total_equity = data.balance_sheet.loc['Stockholders Equity'].iloc[0]
+            total_equity = data.balance_sheet.loc["Stockholders Equity"].iloc[0]
         except KeyError:
-            total_equity = data.info.get('totalStockholderEquity', None)
+            total_equity = data.info.get("totalStockholderEquity", None)
 
     if not isinstance(net_income, (int, float)):
         app_logger.warning("🈚 NetIncome is needed to calculate ROE")
@@ -164,12 +171,12 @@ def calculate_annual_growth_ratio(data: FullTickerData) -> float:
     """
     if data.info is None:
         raise MissingDataException(data.ticker, {"info"})
-    
+
     if data.history is None:
         raise MissingDataException(data.ticker, {"history"})
 
     current_price: Optional[int] = data.info.get("currentPrice", None)
-    one_year_ago: int = data.history.iloc[0]['Close']
+    one_year_ago: int = data.history.iloc[0]["Close"]
 
     if current_price is None or one_year_ago is None:
         app_logger.warning("⚠️ Current price or historical price is None")
@@ -247,7 +254,7 @@ def calculate_target_ratio(data: FullTickerData) -> float:
     """
     if data.info is None:
         raise MissingDataException(data.ticker, {"info"})
-    
+
     current_price: float = data.info.get("currentPrice", 0)
     target_mean_price: float = data.info.get("targetMeanPrice", 0)
     if target_mean_price == 0:
@@ -309,7 +316,7 @@ def calculate_peg_ratio(data: FullTickerData) -> Optional[float]:
     """
     if data.info is None:
         raise MissingDataException(data.ticker, {"info"})
-    
+
     peg: Optional[float] = float("nan")
     pe: Optional[float] = data.info.get("forwardPE", None)
     eps_growth: Optional[float] = data.info.get("earningsGrowth", None)
@@ -319,9 +326,14 @@ def calculate_peg_ratio(data: FullTickerData) -> Optional[float]:
         if g_pct is not None:
             peg = pe / g_pct
     else:
-        app_logger.warning("Insufficient data to calculate PEG ratio (PE: %s, Growth: %s)", pe, eps_growth)
+        app_logger.warning(
+            "Insufficient data to calculate PEG ratio (PE: %s, Growth: %s)",
+            pe,
+            eps_growth,
+        )
 
     return peg
+
 
 ##############################################################################
 #                           CALCULATIONS MAPPIGN                             #
@@ -344,10 +356,13 @@ CALCULATED_FIELDS: dict[str, Callable] = {
 #                                PUBLIC APPLY                                #
 ##############################################################################
 
-def try_calculate_field(field_name: str, data: FullTickerData) -> tuple[bool, Any, Optional[set[str]]]:
+
+def try_calculate_field(
+    field_name: str, data: FullTickerData
+) -> tuple[bool, Any, Optional[set[str]]]:
     """
     Try to calculate a field and return result or missing sections.
-    
+
     Returns:
         tuple: (success, value, missing_sections)
             - success: True if calculation succeeded
@@ -365,7 +380,7 @@ def try_calculate_field(field_name: str, data: FullTickerData) -> tuple[bool, An
                 return (False, None, {"info"})
             value = data.info.get(field_name, None)
             return (True, value, None)
-            
+
     except MissingDataException as e:
         return (False, None, e.missing_sections)
     except Exception as e:
