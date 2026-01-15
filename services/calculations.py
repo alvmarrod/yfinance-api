@@ -344,63 +344,30 @@ CALCULATED_FIELDS: dict[str, Callable] = {
 #                                PUBLIC APPLY                                #
 ##############################################################################
 
-def calculate_fields(ticker_data: FullTickerData) -> dict:
+def try_calculate_field(field_name: str, data: FullTickerData) -> tuple[bool, Any, Optional[set[str]]]:
     """
-    Applies the calculation fields to the given ticker, and returns all the
-    results as a dictionary.
-
-    Args:
-        data (FullTickerData): A FullTickerData instance
-
+    Try to calculate a field and return result or missing sections.
+    
     Returns:
-        dict: The dictionary with the fields specified in CALCULATED_FIELDS
-                and all their values
+        tuple: (success, value, missing_sections)
+            - success: True if calculation succeeded
+            - value: The calculated value (or None if failed)
+            - missing_sections: Set of sections needed (or None if succeeded)
     """
-    result: dict = {}
-    for field, func in CALCULATED_FIELDS.items():
-        try:
-            result[field] = func(ticker_data)
-        except Exception as err:
-            app_logger.warning("Error while calculating %s", field)
-            app_logger.info("Detail:\n%s", str(err))
-
-    return result
-
-def safe_calculate_field(field_name: str, data: FullTickerData, dispatcher) -> Any:
-    """
-    Calculate field with automatic missing data fetching.
-    """
-    max_retries = 3
-    
-    for _ in range(max_retries):
-        try:
-            if field_name in CALCULATED_FIELDS:
-                calc_func = CALCULATED_FIELDS[field_name]
-                return calc_func(data)
-            else:
-                # Direct field access from info
-                if data.info is None:
-                    raise MissingDataException(data.ticker, {"info"})
-                return data.info.get(field_name, None)
-                
-        except MissingDataException as e:
-            app_logger.debug(f"🔍 Field {field_name} needs: {e.missing_sections}")
+    try:
+        if field_name in CALCULATED_FIELDS:
+            calc_func = CALCULATED_FIELDS[field_name]
+            result = calc_func(data)
+            return (True, result, None)
+        else:
+            # Direct field access from info
+            if data.info is None:
+                return (False, None, {"info"})
+            value = data.info.get(field_name, None)
+            return (True, value, None)
             
-            # Fetch missing sections and merge into current data
-            updated_data = dispatcher.fetch_missing_sections(data.ticker, e.missing_sections)
-            data = _merge_ticker_data(data, updated_data)
-            
-            # Update cache
-            dispatcher.cache.add_ticker(data.ticker, data)
-            continue
-            
-    raise Exception(f"Failed to calculate {field_name} after {max_retries} attempts")
-
-def _merge_ticker_data(existing: FullTickerData, new_data: FullTickerData) -> FullTickerData:
-    """Merge new sections into existing data."""
-    for section in new_data.__dict__.keys():
-        if new_data.__dict__[section] is not None:
-            # Update only if the section is newly fetched
-            existing.__dict__[section] = new_data.__dict__[section]
-    
-    return existing
+    except MissingDataException as e:
+        return (False, None, e.missing_sections)
+    except Exception as e:
+        app_logger.warning(f"Error calculating {field_name}: {e}")
+        return (False, None, None)

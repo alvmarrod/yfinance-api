@@ -180,3 +180,6 @@ data/*.csv
 
 # Mac
 *.DS_Store
+
+# VSCode
+.vscode

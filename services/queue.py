@@ -6,11 +6,13 @@ import logging
 import threading as tg
 from typing import Optional
 from datetime import datetime
-from queue import Queue, Empty, Full
+from collections import deque
 
 from utils.progressbar import create_progress_bar
 
+from services.cache import tsCache
 from services.queued_request import QueuedRequest
+from services.full_ticker_data import FullTickerData
 
 app_logger = logging.getLogger('yfinance-api')
 
@@ -28,21 +30,21 @@ QUEUE_SIZE_LOG_MSG: str = "📊 Queue status [approximated]: %s"
 
 class tsQueue:
     """
-    Thread safe Queue object for processing ticker data requests
+    Thread safe Deque object for processing ticker data requests
     """
 
     lock: tg.Lock
-    item_queue: Queue[QueuedRequest]
+    item_deque: deque[QueuedRequest]
 
     def __init__(self):
         app_logger.info("🆕 Initializating a queue")
         self.lock = tg.Lock()
-        self.item_queue = Queue()
+        self.item_deque = deque()
 
     def queue_size(self) -> int:
         """Return the current size of the queue"""
         with self.lock:
-            return self.item_queue.qsize()
+            return len(self.item_deque)
         
     def _queue_usage_report(self) -> None:
         """Reports the current status of the queue usage"""
@@ -59,9 +61,9 @@ class tsQueue:
         result: Optional[QueuedRequest] = None
         with self.lock:
             try:
-                result = self.item_queue.get(block=False)
-                app_logger.debug(f"📤 Retrieved job for ticker: {result.ticker if result else 'None'}")
-            except Empty:
+                result = self.item_deque.popleft()
+                app_logger.debug(f"📤 Retrieved job for ticker: {result.ticker if result else 'None'} for sections {result.sections if result else 'None'}")
+            except IndexError:
                 app_logger.debug("🈚 There is nothing in the job queue")
         
         return result
@@ -76,11 +78,26 @@ class tsQueue:
         )
 
         with self.lock:
-            try:
-                self.item_queue.put(request, block=False)
+            if len(self.item_deque) < QUEUE_MAX_SIZE:
+                self.item_deque.append(request)
                 app_logger.debug(f"📥 Added job for ticker: {ticker} - Sections: {sections}")
-            except Full:
+            else:
                 app_logger.debug("🈵 Tried to add a job to the queue but it's full!")
                 request.set_error(Exception("Queue is full"))
 
         return request
+
+    def get_cache_ready_job(self, cache: tsCache) -> Optional[QueuedRequest]:
+        """Scan and extract cache-ready job without full reconstruction."""
+        with self.lock:
+            for i, job in enumerate(self.item_deque):
+                cached_data: Optional[FullTickerData] = cache.get_ticker(job.ticker)
+                if cached_data and cached_data.has_required_sections(job.sections):
+                    del self.item_deque[i]
+                    return job
+            return None
+        
+    def put_job_back(self, job: QueuedRequest) -> None:
+        """Put job back at front (O(1) operation)."""
+        with self.lock:
+            self.item_deque.appendleft(job)

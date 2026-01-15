@@ -7,6 +7,8 @@ import threading as tg
 from typing import Optional
 from datetime import datetime, timedelta
 
+from dataclasses import replace
+
 from services.cache_entry import CacheEntry
 from services.full_ticker_data import FullTickerData
 
@@ -79,36 +81,49 @@ class tsCache:
         result: Optional[FullTickerData] = None
         cache_result: Optional[CacheEntry] = None
 
-        self.lock.acquire()
-        cache_result = self.cache.get(ticker, None)
-
-        if cache_result:
-            cache_result = _cache_has_expired(cache_result)
+        with self.lock:
+            cache_result = self.cache.get(ticker, None)
 
             if cache_result:
-                result = cache_result.data
+                cache_result = _cache_has_expired(cache_result)
 
-            else:
-                app_logger.info(f"🔥 Removed expired cache entry in memory")
-                del self.cache[ticker]
+                if cache_result:
+                    result = cache_result.data
+
+                else:
+                    app_logger.info(f"🔥 Removed expired cache entry in memory")
+                    del self.cache[ticker]
         
-        self.lock.release()
         return result
     
     def add_ticker(self, ticker: str, data: FullTickerData):
-        """Thread-safely adds a ticker to the cache"""
-        self.lock.acquire()
+        """Thread-safely adds a ticker to the cache.
+        
+        If the ticker already exists, it is overwritten and complemented
+        """
+        with self.lock:
 
-        if len(self.cache) > MAX_MEM_CACHE_SIZE:
-            oldest_ticker: str = _get_oldest_ticker(list(self.cache.values()))
-            del self.cache[oldest_ticker]
+            if ticker in self.cache:
+                app_logger.info(f"♻️ Updating existing cache entry for ticker {ticker}")
 
-        self.cache[ticker] = CacheEntry(
-            ticker=ticker,
-            retrieval_time=datetime.now(),
-            data=data
-        )
+                self.cache[ticker].retrieval_time = datetime.now()
+                
+                for item in FullTickerData.__dataclass_fields__.keys():
+                    new_value = getattr(data, item)
+                    if new_value is not None:
+                        self.cache[ticker].data = replace(self.cache[ticker].data, **{item: new_value})
 
-        self._cache_usage_report()
+            else:
+                app_logger.info(f"➕ Adding new cache entry for ticker {ticker}")
 
-        self.lock.release()
+                if len(self.cache) > MAX_MEM_CACHE_SIZE:
+                    oldest_ticker: str = _get_oldest_ticker(list(self.cache.values()))
+                    del self.cache[oldest_ticker]
+
+                self.cache[ticker] = CacheEntry(
+                    ticker=ticker,
+                    retrieval_time=datetime.now(),
+                    data=data
+                )
+
+            self._cache_usage_report()

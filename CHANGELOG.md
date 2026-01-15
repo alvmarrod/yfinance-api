@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.9.0] - 2026-01-15
+
+### Changed
+
+- Improved concern separation between `calculations` and `job_dispatcher` modules.
+- Enforced a clearer workflow based on first-cache check instead of depending on the cache in a less transparent way.
+- Improved exception manage control for HTTP Error 408 from `yfinance`.
+- Worker loop reworked:
+  - First try to answer any pending job for which we have chached results
+  - If none, then proceed to the next `API call` job
+- Switch from `queue` to `deque` for less expensive left re-append jobs.
+
 ## [0.8.0] - 2026-01-12
 
 ### Added
