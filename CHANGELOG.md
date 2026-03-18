@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.10.0] - 2026-03-18
+
+### Added
+
+- **Request Bucketing**: Time-windowed request batching to reduce yfinance API calls
+  - 3-second window collects incoming requests before processing
+  - Deduplication: duplicate requests for the same ticker within the window are merged
+  - Union of sections: merged requests fetch all needed sections in one API call
+  - Parallel fetching: up to 10 concurrent threads process batched requests
+  - Configurable bucket size (default: 100 unique tickers)
+
+### Changed
+
+- Increased `MAX_BUCKET_SIZE` from 50 to 100
+- Reduced log verbosity: many cache, queue, and rate-limiter status messages changed from INFO to DEBUG
+- Bucket creation and processing now logged at INFO level for observability
+
+### Files Added
+
+- `services/request_bucket.py`: Request bucket with deduplication logic
+- `services/batch_processor.py`: Parallel batch processing and result distribution
+
 ## [0.9.0] - 2026-01-15
 
 ### Changed

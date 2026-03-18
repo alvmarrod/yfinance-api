@@ -46,7 +46,7 @@ ALL_SECTIONS: set[str] = {
 }
 
 BUCKET_WINDOW_SECONDS: float = 3.0
-MAX_BUCKET_SIZE: int = 50
+MAX_BUCKET_SIZE: int = 100
 
 ##############################################################################
 #                             PRIVATE FUNCTIONS                              #
@@ -228,7 +228,7 @@ class JobDispatcher:
             cached_data: Optional[FullTickerData] = self.cache.get_ticker(job.ticker)
             if cached_data and cached_data.has_required_sections(job.sections):
                 job.set_result(cached_data)
-                app_logger.info(f"🚀 Fast-serving cached job for {job.ticker}")
+                app_logger.debug(f"🚀 Fast-serving cached job for {job.ticker}")
             else:
                 # Cache state changed, put back in queue
                 self.queue.add_job(job.ticker, job.sections)

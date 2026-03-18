@@ -36,7 +36,7 @@ def _cache_has_expired(entry: CacheEntry) -> Optional[CacheEntry]:
 
     Logs accordingly."""
     if entry.retrieval_time - datetime.now() > timedelta(hours=1):
-        app_logger.info(f"⏳ Cache entry for {entry.ticker} has expired.")
+        app_logger.debug(f"⏳ Cache entry for {entry.ticker} has expired.")
         return None
     else:
         return entry
@@ -46,7 +46,7 @@ def _get_oldest_ticker(entries: list[CacheEntry]) -> str:
     """Returns the ticker of the oldest entry"""
     sorted_entries: list[CacheEntry] = sorted(entries, key=lambda x: x.retrieval_time)
 
-    app_logger.info(
+    app_logger.debug(
         "Returning the oldest ticker %s vs newest %s"
         % (sorted_entries[0].retrieval_time, sorted_entries[-1].retrieval_time)
     )
@@ -76,7 +76,7 @@ class tsCache:
             current=len(self.cache), total=MAX_MEM_CACHE_SIZE, width=10
         )
 
-        app_logger.info(report_msg)
+        app_logger.debug(report_msg)
 
     def get_ticker(self, ticker: str) -> Optional[FullTickerData]:
         """Thread-safely return a ticker if it exists in the cache."""
@@ -93,7 +93,7 @@ class tsCache:
                     result = cache_result.data
 
                 else:
-                    app_logger.info("🔥 Removed expired cache entry in memory")
+                    app_logger.debug("🔥 Removed expired cache entry in memory")
                     del self.cache[ticker]
 
         return result
@@ -105,7 +105,7 @@ class tsCache:
         """
         with self.lock:
             if ticker in self.cache:
-                app_logger.info(f"♻️ Updating existing cache entry for ticker {ticker}")
+                app_logger.debug(f"♻️ Updating existing cache entry for ticker {ticker}")
 
                 self.cache[ticker].retrieval_time = datetime.now()
 
@@ -117,7 +117,7 @@ class tsCache:
                         )
 
             else:
-                app_logger.info(f"➕ Adding new cache entry for ticker {ticker}")
+                app_logger.debug(f"➕ Adding new cache entry for ticker {ticker}")
 
                 if len(self.cache) > MAX_MEM_CACHE_SIZE:
                     oldest_ticker: str = _get_oldest_ticker(list(self.cache.values()))

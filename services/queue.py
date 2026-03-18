@@ -54,7 +54,7 @@ class tsQueue:
             current=self.queue_size(), total=QUEUE_MAX_SIZE, width=10
         )
 
-        app_logger.info(report_msg)
+        app_logger.debug(report_msg)
 
     def get_job(self) -> Optional[QueuedRequest]:
         """Thread-safely get a request from the queue"""

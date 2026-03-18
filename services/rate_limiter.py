@@ -73,7 +73,7 @@ class tsRateLimiter:
             current=len(self.event_register), total=MAX_REQUESTS_PER_PERIOD, width=10
         )
 
-        app_logger.info(report_msg)
+        app_logger.debug(report_msg)
 
     def yfinance_api_report_rate_limit_hit(self) -> None:
         """Registers a hit to the yfinance API rate limit (HTTP 408)"""
