@@ -1,0 +1,4877 @@
+{
+    "PERatio": 27.1424,
+    "debtToEquityPercentage": 17.84,
+    "info": {
+        "address1": "Dietmar-Hopp-Allee 16",
+        "city": "Walldorf",
+        "zip": "69190",
+        "country": "Germany",
+        "phone": "49 6227 7 47474",
+        "fax": "49 6227 7 57575",
+        "website": "https://www.sap.com",
+        "industry": "Software - Application",
+        "industryKey": "software-application",
+        "industryDisp": "Software - Application",
+        "sector": "Technology",
+        "sectorKey": "technology",
+        "sectorDisp": "Technology",
+        "longBusinessSummary": "SAP SE, together with its subsidiaries, provides enterprise application and business solutions worldwide. It offers SAP S/4HANA that provides software capabilities for finance, risk and project management, procurement, manufacturing, supply chain and asset management, and research and development; SAP SuccessFactors solutions for human resources, including HR, time, payroll, talent and employee experience management, and analytics and planning; and spend management solutions that covers direct and indirect spend, travel and expense, and external workforce management. The company also provides SAP customer experience solutions; SAP Business Technology platform that enables customers and partners to build, integrate, and automate applications; and SAP Business Network, a business-to-business collaboration platform that helps digitalize key business processes across the supply chain and enables communication between trading partners. In addition, it offers SAP Signavio to help customers to discover, analyze, and understand their business process operations; industry solutions that provides customers and partners with industry-specific solutions; and SAP LeanIX to visualize their as-is enterprise architecture, assess interdependencies and the potential impact of IT modernization, and manage the transition toward the target landscape with established practices and a detailed roadmap. Further, the company provides WalkMe to execute workflows across various number of applications; SAP Enable Now, which offers e-learning content embedded in SAP workflows; Taulia solutions for working capital management to help businesses create and deliver the right cash flow strategy, and the flexibility to adjust it to meet liquidity challenges; and sustainability solutions and services. Additionally, it provides services and support solutions. SAP SE was founded in 1972 and is headquartered in Walldorf, Germany.",
+        "fullTimeEmployees": 110650,
+        "companyOfficers": [
+            {
+                "maxAge": 1,
+                "name": "Mr. Christian Klein",
+                "age": 45,
+                "title": "CEO & Member of Executive Board",
+                "yearBorn": 1980,
+                "fiscalYear": 2024,
+                "totalPay": 4828200,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            },
+            {
+                "maxAge": 1,
+                "name": "Mr. Lars Lamade",
+                "age": 54,
+                "title": "Head of Global Sponsorships & Deputy Chairperson of the Supervisory Board",
+                "yearBorn": 1971,
+                "fiscalYear": 2024,
+                "totalPay": 319200,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            },
+            {
+                "maxAge": 1,
+                "name": "Dr. Hasso C. Plattner",
+                "age": 81,
+                "title": "Co-Founder",
+                "yearBorn": 1944,
+                "fiscalYear": 2024,
+                "totalPay": 179200,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            },
+            {
+                "maxAge": 1,
+                "name": "Mr. Dominik Asam",
+                "age": 56,
+                "title": "CFO & Member of Executive Board",
+                "yearBorn": 1969,
+                "fiscalYear": 2024,
+                "totalPay": 3281100,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            },
+            {
+                "maxAge": 1,
+                "name": "Mr. Thomas Saueressig",
+                "age": 40,
+                "title": "Customer Services & Delivery and Member of Executive Board",
+                "yearBorn": 1985,
+                "fiscalYear": 2024,
+                "totalPay": 2645700,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            },
+            {
+                "maxAge": 1,
+                "name": "Ms. Gina Vargiu-Breuer",
+                "age": 49,
+                "title": "Chief People Officer, Labor Director & Member of Executive Board",
+                "yearBorn": 1976,
+                "fiscalYear": 2024,
+                "totalPay": 2175430,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            },
+            {
+                "maxAge": 1,
+                "name": "Mr. Muhammad Alam",
+                "age": 47,
+                "title": "Lead Product Engineering & Member of Executive Board",
+                "yearBorn": 1978,
+                "fiscalYear": 2024,
+                "totalPay": 2135700,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            },
+            {
+                "maxAge": 1,
+                "name": "Ms. Margret Klein-Magar",
+                "age": 61,
+                "title": "VP, Head of SAP Alumni Relations & Member of Supervisory Board",
+                "yearBorn": 1964,
+                "fiscalYear": 2024,
+                "totalPay": 264600,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            },
+            {
+                "maxAge": 1,
+                "name": "Dr. Christine Regitz",
+                "age": 59,
+                "title": "VP & Global Head of SAP Women in Tech",
+                "yearBorn": 1966,
+                "fiscalYear": 2024,
+                "totalPay": 116000,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            },
+            {
+                "maxAge": 1,
+                "name": "Ms. Monika Kovachka-Dimitrova",
+                "age": 50,
+                "title": "Chief Operations Expert",
+                "yearBorn": 1975,
+                "fiscalYear": 2024,
+                "totalPay": 112500,
+                "exercisedValue": 0,
+                "unexercisedValue": 0
+            }
+        ],
+        "auditRisk": 10,
+        "boardRisk": 2,
+        "compensationRisk": 3,
+        "shareHolderRightsRisk": 1,
+        "overallRisk": 4,
+        "governanceEpochDate": 1769904000,
+        "compensationAsOfEpochDate": 1735603200,
+        "executiveTeam": [],
+        "maxAge": 86400,
+        "priceHint": 2,
+        "previousClose": 168.36,
+        "open": 167.5,
+        "dayLow": 166.3,
+        "dayHigh": 172.14,
+        "regularMarketPreviousClose": 168.36,
+        "regularMarketOpen": 167.5,
+        "regularMarketDayLow": 166.3,
+        "regularMarketDayHigh": 172.14,
+        "dividendRate": 2.35,
+        "dividendYield": 1.4,
+        "exDividendDate": 1747180800,
+        "payoutRatio": 0.3766,
+        "fiveYearAvgDividendYield": 1.45,
+        "beta": 0.706,
+        "trailingPE": 27.1424,
+        "forwardPE": 19.897066,
+        "volume": 3608965,
+        "regularMarketVolume": 3608965,
+        "averageVolume": 2247911,
+        "averageVolume10days": 4364704,
+        "averageDailyVolume10Day": 4364704,
+        "bid": 0.0,
+        "ask": 170.14,
+        "bidSize": 767,
+        "askSize": 565,
+        "marketCap": 197563465728,
+        "fiftyTwoWeekLow": 159.6,
+        "fiftyTwoWeekHigh": 283.5,
+        "allTimeHigh": 283.5,
+        "allTimeLow": 9.95,
+        "priceToSalesTrailing12Months": 5.368572,
+        "fiftyDayAverage": 196.113,
+        "twoHundredDayAverage": 228.656,
+        "trailingAnnualDividendRate": 0.0,
+        "trailingAnnualDividendYield": 0.0,
+        "currency": "EUR",
+        "tradeable": false,
+        "enterpriseValue": 196587241472,
+        "profitMargins": 0.1991,
+        "floatShares": 1041191360,
+        "sharesOutstanding": 1164604232,
+        "heldPercentInsiders": 0.113129996,
+        "heldPercentInstitutions": 0.40164003,
+        "impliedSharesOutstanding": 1164604232,
+        "bookValue": 38.381,
+        "priceToBook": 4.419895,
+        "lastFiscalYearEnd": 1767139200,
+        "nextFiscalYearEnd": 1798675200,
+        "mostRecentQuarter": 1767139200,
+        "earningsQuarterlyGrowth": 0.153,
+        "netIncomeToCommon": 7327000064,
+        "trailingEps": 6.25,
+        "forwardEps": 8.52588,
+        "lastSplitFactor": "3:1",
+        "lastSplitDate": 961977600,
+        "enterpriseToRevenue": 5.342,
+        "enterpriseToEbitda": 16.761,
+        "52WeekChange": -0.39515,
+        "SandP52WeekChange": 0.11527538,
+        "lastDividendValue": 2.35,
+        "lastDividendDate": 1747180800,
+        "quoteType": "EQUITY",
+        "currentPrice": 169.64,
+        "targetHighPrice": 315.0,
+        "targetLowPrice": 187.0,
+        "targetMeanPrice": 252.11893,
+        "targetMedianPrice": 256.5,
+        "recommendationMean": 1.51724,
+        "recommendationKey": "buy",
+        "numberOfAnalystOpinions": 28,
+        "totalCash": 9772000256,
+        "totalCashPerShare": 8.381,
+        "ebitda": 11729000448,
+        "totalDebt": 8071000064,
+        "quickRatio": 0.988,
+        "currentRatio": 1.174,
+        "totalRevenue": 36800000000,
+        "debtToEquity": 17.84,
+        "revenuePerShare": 31.561,
+        "returnOnAssets": 0.090129994,
+        "returnOnEquity": 0.16457,
+        "grossProfits": 27145000960,
+        "freeCashflow": 7799625216,
+        "operatingCashflow": 9155999744,
+        "earningsGrowth": 0.15,
+        "revenueGrowth": 0.033,
+        "grossMargins": 0.73764,
+        "ebitdaMargins": 0.31871998,
+        "operatingMargins": 0.29213,
+        "financialCurrency": "EUR",
+        "symbol": "SAP.DE",
+        "language": "en-US",
+        "region": "US",
+        "typeDisp": "Equity",
+        "quoteSourceName": "Delayed Quote",
+        "triggerable": false,
+        "customPriceAlertConfidence": "LOW",
+        "regularMarketChangePercent": 0.7602749,
+        "regularMarketPrice": 169.64,
+        "longName": "SAP SE",
+        "exchange": "GER",
+        "messageBoardId": "finmb_126475",
+        "exchangeTimezoneName": "Europe/Berlin",
+        "exchangeTimezoneShortName": "CET",
+        "gmtOffSetMilliseconds": 3600000,
+        "market": "de_market",
+        "esgPopulated": false,
+        "corporateActions": [],
+        "epsTrailingTwelveMonths": 6.25,
+        "epsForward": 8.52588,
+        "epsCurrentYear": 7.24564,
+        "priceEpsCurrentYear": 23.4127,
+        "fiftyDayAverageChange": -26.473007,
+        "fiftyDayAverageChangePercent": -0.13498853,
+        "twoHundredDayAverageChange": -59.016006,
+        "twoHundredDayAverageChangePercent": -0.25809953,
+        "sourceInterval": 15,
+        "exchangeDataDelayedBy": 15,
+        "averageAnalystRating": "1.5 - Buy",
+        "hasPrePostMarketData": false,
+        "firstTradeDateMilliseconds": 892105200000,
+        "regularMarketChange": 1.2799988,
+        "regularMarketDayRange": "166.3 - 172.14",
+        "fullExchangeName": "XETRA",
+        "averageDailyVolume3Month": 2247911,
+        "fiftyTwoWeekLowChange": 10.039993,
+        "fiftyTwoWeekLowChangePercent": 0.06290723,
+        "fiftyTwoWeekRange": "159.6 - 283.5",
+        "fiftyTwoWeekHighChange": -113.86,
+        "fiftyTwoWeekHighChangePercent": -0.40162256,
+        "fiftyTwoWeekChangePercent": -39.515,
+        "earningsTimestamp": 1776961800,
+        "earningsTimestampStart": 1776961800,
+        "earningsTimestampEnd": 1776961800,
+        "earningsCallTimestampStart": 1769677200,
+        "earningsCallTimestampEnd": 1769677200,
+        "isEarningsDateEstimate": false,
+        "marketState": "PRE",
+        "shortName": "SAP SE I",
+        "regularMarketTime": 1771346118,
+        "cryptoTradeable": false,
+        "trailingPegRatio": 0.8322
+    },
+    "financials": {
+        "Tax Effect Of Unusual Items": {
+            "2024-12-31": -1155312000.0,
+            "2023-12-31": -59006000.0,
+            "2022-12-31": -33963217.372036,
+            "2021-12-31": -20963198.118754
+        },
+        "Tax Rate For Calcs": {
+            "2024-12-31": 0.339,
+            "2023-12-31": 0.326,
+            "2022-12-31": 0.320408,
+            "2021-12-31": 0.197766
+        },
+        "Normalized EBITDA": {
+            "2024-12-31": 10483000000.0,
+            "2023-12-31": 8208000000.0,
+            "2022-12-31": 8388000000.0,
+            "2021-12-31": 11093000000.0
+        },
+        "Total Unusual Items": {
+            "2024-12-31": -3408000000.0,
+            "2023-12-31": -181000000.0,
+            "2022-12-31": -106000000.0,
+            "2021-12-31": -106000000.0
+        },
+        "Total Unusual Items Excluding Goodwill": {
+            "2024-12-31": -3408000000.0,
+            "2023-12-31": -181000000.0,
+            "2022-12-31": -106000000.0,
+            "2021-12-31": -106000000.0
+        },
+        "Net Income From Continuing Operation Net Minority Interest": {
+            "2024-12-31": 3124000000.0,
+            "2023-12-31": 3776000000.0,
+            "2022-12-31": 3643000000.0,
+            "2021-12-31": 6703000000.0
+        },
+        "Reconciled Depreciation": {
+            "2024-12-31": 1280000000.0,
+            "2023-12-31": 1373000000.0,
+            "2022-12-31": 1569000000.0,
+            "2021-12-31": 1537000000.0
+        },
+        "Reconciled Cost Of Revenue": {
+            "2024-12-31": 9243000000.0,
+            "2023-12-31": 8674000000.0,
+            "2022-12-31": 8038000000.0,
+            "2021-12-31": 7219000000.0
+        },
+        "EBITDA": {
+            "2024-12-31": 7075000000.0,
+            "2023-12-31": 8027000000.0,
+            "2022-12-31": 8282000000.0,
+            "2021-12-31": 10987000000.0
+        },
+        "EBIT": {
+            "2024-12-31": 5795000000.0,
+            "2023-12-31": 6654000000.0,
+            "2022-12-31": 6713000000.0,
+            "2021-12-31": 9450000000.0
+        },
+        "Net Interest Income": {
+            "2024-12-31": 398000000.0,
+            "2023-12-31": -456000000.0,
+            "2022-12-31": -1389000000.0,
+            "2021-12-31": 2178000000.0
+        },
+        "Interest Expense": {
+            "2024-12-31": 1031000000.0,
+            "2023-12-31": 1313000000.0,
+            "2022-12-31": 2200000000.0,
+            "2021-12-31": 945000000.0
+        },
+        "Interest Income": {
+            "2024-12-31": 1429000000.0,
+            "2023-12-31": 857000000.0,
+            "2022-12-31": 811000000.0,
+            "2021-12-31": 3123000000.0
+        },
+        "Normalized Income": {
+            "2024-12-31": 5376688000.0,
+            "2023-12-31": 3897994000.0,
+            "2022-12-31": 3715036782.627964,
+            "2021-12-31": 6788036801.881246
+        },
+        "Net Income From Continuing And Discontinued Operation": {
+            "2024-12-31": 3124000000.0,
+            "2023-12-31": 6139000000.0,
+            "2022-12-31": 2284000000.0,
+            "2021-12-31": 5256000000.0
+        },
+        "Total Expenses": {
+            "2024-12-31": 26367000000.0,
+            "2023-12-31": 25194000000.0,
+            "2022-12-31": 23469000000.0,
+            "2021-12-31": 20488000000.0
+        },
+        "Total Operating Income As Reported": {
+            "2024-12-31": 4665000000.0,
+            "2023-12-31": 5799000000.0,
+            "2022-12-31": 5914000000.0,
+            "2021-12-31": 6308000000.0
+        },
+        "Diluted Average Shares": {
+            "2024-12-31": 1180000000.0,
+            "2023-12-31": 1180000000.0,
+            "2022-12-31": 1175000000.0,
+            "2021-12-31": 1179579340.0
+        },
+        "Basic Average Shares": {
+            "2024-12-31": 1166000000.0,
+            "2023-12-31": 1167000000.0,
+            "2022-12-31": 1170000000.0,
+            "2021-12-31": 1179579340.0
+        },
+        "Diluted EPS": {
+            "2024-12-31": 2.65,
+            "2023-12-31": 5.17,
+            "2022-12-31": 1.95,
+            "2021-12-31": 4.560948
+        },
+        "Basic EPS": {
+            "2024-12-31": 2.68,
+            "2023-12-31": 5.23,
+            "2022-12-31": 1.96,
+            "2021-12-31": 4.560948
+        },
+        "Diluted NI Availto Com Stockholders": {
+            "2024-12-31": 3124000000.0,
+            "2023-12-31": 6139000000.0,
+            "2022-12-31": 2284000000.0,
+            "2021-12-31": 5256000000.0
+        },
+        "Net Income Common Stockholders": {
+            "2024-12-31": 3124000000.0,
+            "2023-12-31": 6139000000.0,
+            "2022-12-31": 2284000000.0,
+            "2021-12-31": 5256000000.0
+        },
+        "Net Income": {
+            "2024-12-31": 3124000000.0,
+            "2023-12-31": 6139000000.0,
+            "2022-12-31": 2284000000.0,
+            "2021-12-31": 5256000000.0
+        },
+        "Minority Interests": {
+            "2024-12-31": -26000000.0,
+            "2023-12-31": 175000000.0,
+            "2022-12-31": 576000000.0,
+            "2021-12-31": -121000000.0
+        },
+        "Net Income Including Noncontrolling Interests": {
+            "2024-12-31": 3150000000.0,
+            "2023-12-31": 5963000000.0,
+            "2022-12-31": 1709000000.0,
+            "2021-12-31": 5377000000.0
+        },
+        "Net Income Discontinuous Operations": {
+            "2024-12-31": 0.0,
+            "2023-12-31": 2363000000.0,
+            "2022-12-31": -1359000000.0,
+            "2021-12-31": -1447000000.0
+        },
+        "Net Income Continuous Operations": {
+            "2024-12-31": 3150000000.0,
+            "2023-12-31": 3600000000.0,
+            "2022-12-31": 3068000000.0,
+            "2021-12-31": 6824000000.0
+        },
+        "Tax Provision": {
+            "2024-12-31": 1614000000.0,
+            "2023-12-31": 1741000000.0,
+            "2022-12-31": 1446000000.0,
+            "2021-12-31": 1682000000.0
+        },
+        "Pretax Income": {
+            "2024-12-31": 4764000000.0,
+            "2023-12-31": 5341000000.0,
+            "2022-12-31": 4513000000.0,
+            "2021-12-31": 8505000000.0
+        },
+        "Other Income Expense": {
+            "2024-12-31": -3442000000.0,
+            "2023-12-31": -217000000.0,
+            "2022-12-31": -149000000.0,
+            "2021-12-31": -138000000.0
+        },
+        "Other Non Operating Income Expenses": {
+            "2024-12-31": -34000000.0,
+            "2023-12-31": -36000000.0,
+            "2022-12-31": -43000000.0,
+            "2021-12-31": -32000000.0
+        },
+        "Special Income Charges": {
+            "2024-12-31": -3162000000.0,
+            "2023-12-31": -227000000.0,
+            "2022-12-31": 38000000.0,
+            "2021-12-31": -157000000.0
+        },
+        "Gain On Sale Of Business": {
+            "2024-12-31": -18000000.0,
+            "2023-12-31": -12000000.0,
+            "2022-12-31": 176000000.0,
+            "2021-12-31": NaN
+        },
+        "Restructuring And Mergern Acquisition": {
+            "2024-12-31": 3144000000.0,
+            "2023-12-31": 215000000.0,
+            "2022-12-31": 138000000.0,
+            "2021-12-31": 157000000.0
+        },
+        "Gain On Sale Of Security": {
+            "2024-12-31": -246000000.0,
+            "2023-12-31": 46000000.0,
+            "2022-12-31": -144000000.0,
+            "2021-12-31": 51000000.0
+        },
+        "Net Non Operating Interest Income Expense": {
+            "2024-12-31": 398000000.0,
+            "2023-12-31": -456000000.0,
+            "2022-12-31": -1389000000.0,
+            "2021-12-31": 2178000000.0
+        },
+        "Total Other Finance Cost": {
+            "2024-12-31": 241000000.0,
+            "2023-12-31": 345000000.0,
+            "2022-12-31": 143000000.0,
+            "2021-12-31": NaN
+        },
+        "Interest Expense Non Operating": {
+            "2024-12-31": 1031000000.0,
+            "2023-12-31": 1313000000.0,
+            "2022-12-31": 2200000000.0,
+            "2021-12-31": 945000000.0
+        },
+        "Interest Income Non Operating": {
+            "2024-12-31": 1429000000.0,
+            "2023-12-31": 857000000.0,
+            "2022-12-31": 811000000.0,
+            "2021-12-31": 3123000000.0
+        },
+        "Operating Income": {
+            "2024-12-31": 7808000000.0,
+            "2023-12-31": 6014000000.0,
+            "2022-12-31": 6051000000.0,
+            "2021-12-31": 6465000000.0
+        },
+        "Operating Expense": {
+            "2024-12-31": 17124000000.0,
+            "2023-12-31": 16520000000.0,
+            "2022-12-31": 15431000000.0,
+            "2021-12-31": 13269000000.0
+        },
+        "Other Operating Expenses": {
+            "2024-12-31": 85000000.0,
+            "2023-12-31": 4000000.0,
+            "2022-12-31": 116000000.0,
+            "2021-12-31": -44000000.0
+        },
+        "Research And Development": {
+            "2024-12-31": 6514000000.0,
+            "2023-12-31": 6324000000.0,
+            "2022-12-31": 6080000000.0,
+            "2021-12-31": 5270000000.0
+        },
+        "Selling General And Administration": {
+            "2024-12-31": 10525000000.0,
+            "2023-12-31": 10192000000.0,
+            "2022-12-31": 9235000000.0,
+            "2021-12-31": 8043000000.0
+        },
+        "Selling And Marketing Expense": {
+            "2024-12-31": 9090000000.0,
+            "2023-12-31": 8828000000.0,
+            "2022-12-31": 7946000000.0,
+            "2021-12-31": 6856000000.0
+        },
+        "General And Administrative Expense": {
+            "2024-12-31": 1435000000.0,
+            "2023-12-31": 1364000000.0,
+            "2022-12-31": 1289000000.0,
+            "2021-12-31": 1187000000.0
+        },
+        "Other Gand A": {
+            "2024-12-31": 1435000000.0,
+            "2023-12-31": 1364000000.0,
+            "2022-12-31": 1289000000.0,
+            "2021-12-31": 1187000000.0
+        },
+        "Gross Profit": {
+            "2024-12-31": 24932000000.0,
+            "2023-12-31": 22534000000.0,
+            "2022-12-31": 21482000000.0,
+            "2021-12-31": 19734000000.0
+        },
+        "Cost Of Revenue": {
+            "2024-12-31": 9243000000.0,
+            "2023-12-31": 8674000000.0,
+            "2022-12-31": 8038000000.0,
+            "2021-12-31": 7219000000.0
+        },
+        "Total Revenue": {
+            "2024-12-31": 34176000000.0,
+            "2023-12-31": 31207000000.0,
+            "2022-12-31": 29519000000.0,
+            "2021-12-31": 26953000000.0
+        },
+        "Operating Revenue": {
+            "2024-12-31": 34176000000.0,
+            "2023-12-31": 31207000000.0,
+            "2022-12-31": 29519000000.0,
+            "2021-12-31": 26953000000.0
+        }
+    },
+    "balance_sheet": {
+        "Treasury Shares Number": {
+            "2024-12-31": 61914771.0,
+            "2023-12-31": 61275176.0,
+            "2022-12-31": 61386685.0,
+            "2021-12-31": 48900000.0
+        },
+        "Ordinary Shares Number": {
+            "2024-12-31": 1166589461.0,
+            "2023-12-31": 1167229056.0,
+            "2022-12-31": 1167117547.0,
+            "2021-12-31": 1179579340.0
+        },
+        "Share Issued": {
+            "2024-12-31": 1228504232.0,
+            "2023-12-31": 1228504232.0,
+            "2022-12-31": 1228504232.0,
+            "2021-12-31": 1228479340.0
+        },
+        "Net Debt": {
+            "2024-12-31": NaN,
+            "2023-12-31": NaN,
+            "2022-12-31": 1937000000.0,
+            "2021-12-31": 4102000000.0
+        },
+        "Total Debt": {
+            "2024-12-31": 10651000000.0,
+            "2023-12-31": 8791000000.0,
+            "2022-12-31": 13085000000.0,
+            "2021-12-31": 15143000000.0
+        },
+        "Tangible Book Value": {
+            "2024-12-31": 11587000000.0,
+            "2023-12-31": 11571000000.0,
+            "2022-12-31": 3274000000.0,
+            "2021-12-31": 3800000000.0
+        },
+        "Invested Capital": {
+            "2024-12-31": 54376000000.0,
+            "2023-12-31": 50327000000.0,
+            "2022-12-31": 51131000000.0,
+            "2021-12-31": 51853000000.0
+        },
+        "Working Capital": {
+            "2024-12-31": 2322000000.0,
+            "2023-12-31": 5930000000.0,
+            "2022-12-31": 1069000000.0,
+            "2021-12-31": 3908000000.0
+        },
+        "Net Tangible Assets": {
+            "2024-12-31": 11587000000.0,
+            "2023-12-31": 11571000000.0,
+            "2022-12-31": 3274000000.0,
+            "2021-12-31": 3800000000.0
+        },
+        "Capital Lease Obligations": {
+            "2024-12-31": 1715000000.0,
+            "2023-12-31": 1621000000.0,
+            "2022-12-31": 2140000000.0,
+            "2021-12-31": 2143000000.0
+        },
+        "Common Stock Equity": {
+            "2024-12-31": 45440000000.0,
+            "2023-12-31": 43157000000.0,
+            "2022-12-31": 40186000000.0,
+            "2021-12-31": 38853000000.0
+        },
+        "Total Capitalization": {
+            "2024-12-31": 50740000000.0,
+            "2023-12-31": 49184000000.0,
+            "2022-12-31": 47147000000.0,
+            "2021-12-31": 48097000000.0
+        },
+        "Total Equity Gross Minority Interest": {
+            "2024-12-31": 45808000000.0,
+            "2023-12-31": 43406000000.0,
+            "2022-12-31": 42848000000.0,
+            "2021-12-31": 41523000000.0
+        },
+        "Minority Interest": {
+            "2024-12-31": 368000000.0,
+            "2023-12-31": 249000000.0,
+            "2022-12-31": 2662000000.0,
+            "2021-12-31": 2670000000.0
+        },
+        "Stockholders Equity": {
+            "2024-12-31": 45440000000.0,
+            "2023-12-31": 43157000000.0,
+            "2022-12-31": 40186000000.0,
+            "2021-12-31": 38853000000.0
+        },
+        "Other Equity Interest": {
+            "2024-12-31": 4694000000.0,
+            "2023-12-31": 2367000000.0,
+            "2022-12-31": 3799000000.0,
+            "2021-12-31": 1756000000.0
+        },
+        "Treasury Stock": {
+            "2024-12-31": 5954000000.0,
+            "2023-12-31": 4741000000.0,
+            "2022-12-31": 4341000000.0,
+            "2021-12-31": 3072000000.0
+        },
+        "Retained Earnings": {
+            "2024-12-31": 42907000000.0,
+            "2023-12-31": 42457000000.0,
+            "2022-12-31": 36418000000.0,
+            "2021-12-31": 37022000000.0
+        },
+        "Additional Paid In Capital": {
+            "2024-12-31": 2564000000.0,
+            "2023-12-31": 1845000000.0,
+            "2022-12-31": 3081000000.0,
+            "2021-12-31": 1918000000.0
+        },
+        "Capital Stock": {
+            "2024-12-31": 1229000000.0,
+            "2023-12-31": 1229000000.0,
+            "2022-12-31": 1229000000.0,
+            "2021-12-31": 1229000000.0
+        },
+        "Common Stock": {
+            "2024-12-31": 1229000000.0,
+            "2023-12-31": 1229000000.0,
+            "2022-12-31": 1229000000.0,
+            "2021-12-31": 1229000000.0
+        },
+        "Total Liabilities Net Minority Interest": {
+            "2024-12-31": 28314000000.0,
+            "2023-12-31": 24925000000.0,
+            "2022-12-31": 29311000000.0,
+            "2021-12-31": 29651000000.0
+        },
+        "Total Non Current Liabilities Net Minority Interest": {
+            "2024-12-31": 9235000000.0,
+            "2023-12-31": 10284000000.0,
+            "2022-12-31": 11858000000.0,
+            "2021-12-31": 13515000000.0
+        },
+        "Other Non Current Liabilities": {
+            "2024-12-31": 450000000.0,
+            "2023-12-31": 587000000.0,
+            "2022-12-31": 796000000.0,
+            "2021-12-31": 62000000.0
+        },
+        "Derivative Product Liabilities": {
+            "2024-12-31": NaN,
+            "2023-12-31": 0.0,
+            "2022-12-31": 0.0,
+            "2021-12-31": 0.0
+        },
+        "Employee Benefits": {
+            "2024-12-31": 749000000.0,
+            "2023-12-31": 698000000.0,
+            "2022-12-31": 705000000.0,
+            "2021-12-31": 860000000.0
+        },
+        "Tradeand Other Payables Non Current": {
+            "2024-12-31": 519000000.0,
+            "2023-12-31": 913000000.0,
+            "2022-12-31": 972000000.0,
+            "2021-12-31": 949000000.0
+        },
+        "Non Current Deferred Liabilities": {
+            "2024-12-31": 303000000.0,
+            "2023-12-31": 300000000.0,
+            "2022-12-31": 274000000.0,
+            "2021-12-31": 309000000.0
+        },
+        "Non Current Deferred Revenue": {
+            "2024-12-31": 88000000.0,
+            "2023-12-31": 33000000.0,
+            "2022-12-31": 33000000.0,
+            "2021-12-31": 13000000.0
+        },
+        "Non Current Deferred Taxes Liabilities": {
+            "2024-12-31": 215000000.0,
+            "2023-12-31": 267000000.0,
+            "2022-12-31": 241000000.0,
+            "2021-12-31": 296000000.0
+        },
+        "Long Term Debt And Capital Lease Obligation": {
+            "2024-12-31": 6720000000.0,
+            "2023-12-31": 7354000000.0,
+            "2022-12-31": 8752000000.0,
+            "2021-12-31": 10980000000.0
+        },
+        "Long Term Capital Lease Obligation": {
+            "2024-12-31": 1420000000.0,
+            "2023-12-31": 1327000000.0,
+            "2022-12-31": 1791000000.0,
+            "2021-12-31": 1736000000.0
+        },
+        "Long Term Debt": {
+            "2024-12-31": 5300000000.0,
+            "2023-12-31": 6027000000.0,
+            "2022-12-31": 6961000000.0,
+            "2021-12-31": 9244000000.0
+        },
+        "Long Term Provisions": {
+            "2024-12-31": 494000000.0,
+            "2023-12-31": 432000000.0,
+            "2022-12-31": 359000000.0,
+            "2021-12-31": 355000000.0
+        },
+        "Current Liabilities": {
+            "2024-12-31": 19079000000.0,
+            "2023-12-31": 14641000000.0,
+            "2022-12-31": 17453000000.0,
+            "2021-12-31": 16136000000.0
+        },
+        "Other Current Liabilities": {
+            "2024-12-31": 359000000.0,
+            "2023-12-31": 315000000.0,
+            "2022-12-31": 474000000.0,
+            "2021-12-31": 367000000.0
+        },
+        "Current Deferred Liabilities": {
+            "2024-12-31": 5978000000.0,
+            "2023-12-31": 4975000000.0,
+            "2022-12-31": 5309000000.0,
+            "2021-12-31": 4431000000.0
+        },
+        "Current Deferred Revenue": {
+            "2024-12-31": 5978000000.0,
+            "2023-12-31": 4975000000.0,
+            "2022-12-31": 5309000000.0,
+            "2021-12-31": 4431000000.0
+        },
+        "Current Debt And Capital Lease Obligation": {
+            "2024-12-31": 3931000000.0,
+            "2023-12-31": 1437000000.0,
+            "2022-12-31": 4333000000.0,
+            "2021-12-31": 4163000000.0
+        },
+        "Current Capital Lease Obligation": {
+            "2024-12-31": 295000000.0,
+            "2023-12-31": 294000000.0,
+            "2022-12-31": 349000000.0,
+            "2021-12-31": 407000000.0
+        },
+        "Current Debt": {
+            "2024-12-31": 3636000000.0,
+            "2023-12-31": 1143000000.0,
+            "2022-12-31": 3984000000.0,
+            "2021-12-31": 3756000000.0
+        },
+        "Other Current Borrowings": {
+            "2024-12-31": 3138000000.0,
+            "2023-12-31": 1143000000.0,
+            "2022-12-31": 3056000000.0,
+            "2021-12-31": 2826000000.0
+        },
+        "Commercial Paper": {
+            "2024-12-31": 498000000.0,
+            "2023-12-31": 0.0,
+            "2022-12-31": 928000000.0,
+            "2021-12-31": 930000000.0
+        },
+        "Pensionand Other Post Retirement Benefit Plans Current": {
+            "2024-12-31": 4511000000.0,
+            "2023-12-31": 4760000000.0,
+            "2022-12-31": 4156000000.0,
+            "2021-12-31": 4556000000.0
+        },
+        "Current Provisions": {
+            "2024-12-31": 716000000.0,
+            "2023-12-31": 235000000.0,
+            "2022-12-31": 90000000.0,
+            "2021-12-31": 89000000.0
+        },
+        "Payables And Accrued Expenses": {
+            "2024-12-31": 3584000000.0,
+            "2023-12-31": 2919000000.0,
+            "2022-12-31": 3091000000.0,
+            "2021-12-31": 2530000000.0
+        },
+        "Payables": {
+            "2024-12-31": 3584000000.0,
+            "2023-12-31": 2919000000.0,
+            "2022-12-31": 3091000000.0,
+            "2021-12-31": 2530000000.0
+        },
+        "Total Tax Payable": {
+            "2024-12-31": 1594000000.0,
+            "2023-12-31": 1136000000.0,
+            "2022-12-31": 945000000.0,
+            "2021-12-31": 950000000.0
+        },
+        "Accounts Payable": {
+            "2024-12-31": 1990000000.0,
+            "2023-12-31": 1783000000.0,
+            "2022-12-31": 2146000000.0,
+            "2021-12-31": 1580000000.0
+        },
+        "Total Assets": {
+            "2024-12-31": 74122000000.0,
+            "2023-12-31": 68331000000.0,
+            "2022-12-31": 72159000000.0,
+            "2021-12-31": 71174000000.0
+        },
+        "Total Non Current Assets": {
+            "2024-12-31": 52721000000.0,
+            "2023-12-31": 47760000000.0,
+            "2022-12-31": 53638000000.0,
+            "2021-12-31": 51130000000.0
+        },
+        "Other Non Current Assets": {
+            "2024-12-31": 1000000.0,
+            "2023-12-31": 1000000.0,
+            "2022-12-31": -1000000.0,
+            "2021-12-31": 2347000000.0
+        },
+        "Non Current Prepaid Assets": {
+            "2024-12-31": 430000000.0,
+            "2023-12-31": 386000000.0,
+            "2022-12-31": 512000000.0,
+            "2021-12-31": 242000000.0
+        },
+        "Non Current Deferred Assets": {
+            "2024-12-31": 6168000000.0,
+            "2023-12-31": 5351000000.0,
+            "2022-12-31": 5114000000.0,
+            "2021-12-31": 1786000000.0
+        },
+        "Non Current Deferred Taxes Assets": {
+            "2024-12-31": 2676000000.0,
+            "2023-12-31": 2197000000.0,
+            "2022-12-31": 2095000000.0,
+            "2021-12-31": 1786000000.0
+        },
+        "Non Current Accounts Receivable": {
+            "2024-12-31": 635000000.0,
+            "2023-12-31": 618000000.0,
+            "2022-12-31": 541000000.0,
+            "2021-12-31": 463000000.0
+        },
+        "Financial Assets": {
+            "2024-12-31": 593000000.0,
+            "2023-12-31": 294000000.0,
+            "2022-12-31": 332000000.0,
+            "2021-12-31": 308000000.0
+        },
+        "Investments And Advances": {
+            "2024-12-31": 6548000000.0,
+            "2023-12-31": 5249000000.0,
+            "2022-12-31": 5294000000.0,
+            "2021-12-31": 5954000000.0
+        },
+        "Investmentin Financial Assets": {
+            "2024-12-31": 6404000000.0,
+            "2023-12-31": 5114000000.0,
+            "2022-12-31": 5143000000.0,
+            "2021-12-31": 5954000000.0
+        },
+        "Available For Sale Securities": {
+            "2024-12-31": 6404000000.0,
+            "2023-12-31": 5114000000.0,
+            "2022-12-31": 5143000000.0,
+            "2021-12-31": 5954000000.0
+        },
+        "Long Term Equity Investment": {
+            "2024-12-31": 144000000.0,
+            "2023-12-31": 135000000.0,
+            "2022-12-31": 151000000.0,
+            "2021-12-31": NaN
+        },
+        "Investmentsin Associatesat Cost": {
+            "2024-12-31": 144000000.0,
+            "2023-12-31": 135000000.0,
+            "2022-12-31": 151000000.0,
+            "2021-12-31": NaN
+        },
+        "Goodwill And Other Intangible Assets": {
+            "2024-12-31": 33853000000.0,
+            "2023-12-31": 31586000000.0,
+            "2022-12-31": 36912000000.0,
+            "2021-12-31": 35053000000.0
+        },
+        "Other Intangible Assets": {
+            "2024-12-31": 2706000000.0,
+            "2023-12-31": 2505000000.0,
+            "2022-12-31": 3835000000.0,
+            "2021-12-31": 3965000000.0
+        },
+        "Goodwill": {
+            "2024-12-31": 31147000000.0,
+            "2023-12-31": 29081000000.0,
+            "2022-12-31": 33077000000.0,
+            "2021-12-31": 31088000000.0
+        },
+        "Net PPE": {
+            "2024-12-31": 4493000000.0,
+            "2023-12-31": 4276000000.0,
+            "2022-12-31": 4934000000.0,
+            "2021-12-31": 4977000000.0
+        },
+        "Gross PPE": {
+            "2024-12-31": 4493000000.0,
+            "2023-12-31": 4276000000.0,
+            "2022-12-31": 4934000000.0,
+            "2021-12-31": 4977000000.0
+        },
+        "Leases": {
+            "2024-12-31": 1391000000.0,
+            "2023-12-31": 1320000000.0,
+            "2022-12-31": 1758000000.0,
+            "2021-12-31": 1801000000.0
+        },
+        "Construction In Progress": {
+            "2024-12-31": 156000000.0,
+            "2023-12-31": 162000000.0,
+            "2022-12-31": 142000000.0,
+            "2021-12-31": 77000000.0
+        },
+        "Other Properties": {
+            "2024-12-31": 66000000.0,
+            "2023-12-31": 55000000.0,
+            "2022-12-31": 43000000.0,
+            "2021-12-31": 40000000.0
+        },
+        "Machinery Furniture Equipment": {
+            "2024-12-31": 1379000000.0,
+            "2023-12-31": 1309000000.0,
+            "2022-12-31": 1406000000.0,
+            "2021-12-31": 1450000000.0
+        },
+        "Land And Improvements": {
+            "2024-12-31": 1501000000.0,
+            "2023-12-31": 1430000000.0,
+            "2022-12-31": 1585000000.0,
+            "2021-12-31": 1609000000.0
+        },
+        "Properties": {
+            "2024-12-31": 0.0,
+            "2023-12-31": 0.0,
+            "2022-12-31": 0.0,
+            "2021-12-31": 0.0
+        },
+        "Current Assets": {
+            "2024-12-31": 21401000000.0,
+            "2023-12-31": 20571000000.0,
+            "2022-12-31": 18522000000.0,
+            "2021-12-31": 20044000000.0
+        },
+        "Other Current Assets": {
+            "2024-12-31": 88000000.0,
+            "2023-12-31": 44000000.0,
+            "2022-12-31": 30000000.0,
+            "2021-12-31": 826000000.0
+        },
+        "Current Deferred Assets": {
+            "2024-12-31": 1350000000.0,
+            "2023-12-31": 1246000000.0,
+            "2022-12-31": 1036000000.0,
+            "2021-12-31": NaN
+        },
+        "Prepaid Assets": {
+            "2024-12-31": 988000000.0,
+            "2023-12-31": 844000000.0,
+            "2022-12-31": 828000000.0,
+            "2021-12-31": 588000000.0
+        },
+        "Receivables": {
+            "2024-12-31": 7737000000.0,
+            "2023-12-31": 6969000000.0,
+            "2022-12-31": 6767000000.0,
+            "2021-12-31": 6974000000.0
+        },
+        "Other Receivables": {
+            "2024-12-31": 543000000.0,
+            "2023-12-31": 429000000.0,
+            "2022-12-31": 454000000.0,
+            "2021-12-31": 465000000.0
+        },
+        "Taxes Receivable": {
+            "2024-12-31": 963000000.0,
+            "2023-12-31": 648000000.0,
+            "2022-12-31": 531000000.0,
+            "2021-12-31": 622000000.0
+        },
+        "Accounts Receivable": {
+            "2024-12-31": 6231000000.0,
+            "2023-12-31": 5892000000.0,
+            "2022-12-31": 5782000000.0,
+            "2021-12-31": 5887000000.0
+        },
+        "Cash Cash Equivalents And Short Term Investments": {
+            "2024-12-31": 11238000000.0,
+            "2023-12-31": 11468000000.0,
+            "2022-12-31": 9861000000.0,
+            "2021-12-31": 11656000000.0
+        },
+        "Other Short Term Investments": {
+            "2024-12-31": 1629000000.0,
+            "2023-12-31": 3344000000.0,
+            "2022-12-31": 853000000.0,
+            "2021-12-31": 2758000000.0
+        },
+        "Cash And Cash Equivalents": {
+            "2024-12-31": 9609000000.0,
+            "2023-12-31": 8124000000.0,
+            "2022-12-31": 9008000000.0,
+            "2021-12-31": 8898000000.0
+        },
+        "Cash Equivalents": {
+            "2024-12-31": 5647000000.0,
+            "2023-12-31": 4755000000.0,
+            "2022-12-31": 5831000000.0,
+            "2021-12-31": 5748000000.0
+        },
+        "Cash Financial": {
+            "2024-12-31": 3962000000.0,
+            "2023-12-31": 3369000000.0,
+            "2022-12-31": 3176000000.0,
+            "2021-12-31": 3149000000.0
+        }
+    },
+    "cashflow": {
+        "Free Cash Flow": {
+            "2024-12-31": 4423000000.0,
+            "2023-12-31": 5547000000.0,
+            "2022-12-31": 4770000000.0,
+            "2021-12-31": 5522000000.0
+        },
+        "Repurchase Of Capital Stock": {
+            "2024-12-31": -2106000000.0,
+            "2023-12-31": -949000000.0,
+            "2022-12-31": -1500000000.0,
+            "2021-12-31": 0.0
+        },
+        "Repayment Of Debt": {
+            "2024-12-31": -1495000000.0,
+            "2023-12-31": -4413000000.0,
+            "2022-12-31": -1855000000.0,
+            "2021-12-31": -2327000000.0
+        },
+        "Issuance Of Debt": {
+            "2024-12-31": 2767000000.0,
+            "2023-12-31": 13000000.0,
+            "2022-12-31": 158000000.0,
+            "2021-12-31": 1680000000.0
+        },
+        "Capital Expenditure": {
+            "2024-12-31": -797000000.0,
+            "2023-12-31": -785000000.0,
+            "2022-12-31": -877000000.0,
+            "2021-12-31": -701000000.0
+        },
+        "End Cash Position": {
+            "2024-12-31": 9609000000.0,
+            "2023-12-31": 8124000000.0,
+            "2022-12-31": 9008000000.0,
+            "2021-12-31": 8898000000.0
+        },
+        "Beginning Cash Position": {
+            "2024-12-31": 8124000000.0,
+            "2023-12-31": 9008000000.0,
+            "2022-12-31": 8898000000.0,
+            "2021-12-31": 5311000000.0
+        },
+        "Effect Of Exchange Rate Changes": {
+            "2024-12-31": 333000000.0,
+            "2023-12-31": -388000000.0,
+            "2022-12-31": 134000000.0,
+            "2021-12-31": 484000000.0
+        },
+        "Changes In Cash": {
+            "2024-12-31": 1152000000.0,
+            "2023-12-31": -496000000.0,
+            "2022-12-31": -24000000.0,
+            "2021-12-31": 3103000000.0
+        },
+        "Financing Cash Flow": {
+            "2024-12-31": -3412000000.0,
+            "2023-12-31": -7734000000.0,
+            "2022-12-31": -6337000000.0,
+            "2021-12-31": -56000000.0
+        },
+        "Cash From Discontinued Financing Activities": {
+            "2024-12-31": 0.0,
+            "2023-12-31": 24000000.0,
+            "2022-12-31": -263000000.0,
+            "2021-12-31": 2828000000.0
+        },
+        "Cash Flow From Continuing Financing Activities": {
+            "2024-12-31": -3411000000.0,
+            "2023-12-31": -7757000000.0,
+            "2022-12-31": -6074000000.0,
+            "2021-12-31": -2885000000.0
+        },
+        "Net Other Financing Charges": {
+            "2024-12-31": -13000000.0,
+            "2023-12-31": -14000000.0,
+            "2022-12-31": -12000000.0,
+            "2021-12-31": -55000000.0
+        },
+        "Cash Dividends Paid": {
+            "2024-12-31": -2565000000.0,
+            "2023-12-31": -2395000000.0,
+            "2022-12-31": -2865000000.0,
+            "2021-12-31": -2182000000.0
+        },
+        "Common Stock Dividend Paid": {
+            "2024-12-31": -2565000000.0,
+            "2023-12-31": -2395000000.0,
+            "2022-12-31": -2865000000.0,
+            "2021-12-31": -2182000000.0
+        },
+        "Net Common Stock Issuance": {
+            "2024-12-31": -2106000000.0,
+            "2023-12-31": -949000000.0,
+            "2022-12-31": -1500000000.0,
+            "2021-12-31": 0.0
+        },
+        "Common Stock Payments": {
+            "2024-12-31": -2106000000.0,
+            "2023-12-31": -949000000.0,
+            "2022-12-31": -1500000000.0,
+            "2021-12-31": 0.0
+        },
+        "Net Issuance Payments Of Debt": {
+            "2024-12-31": 1272000000.0,
+            "2023-12-31": -4400000000.0,
+            "2022-12-31": -1697000000.0,
+            "2021-12-31": -647000000.0
+        },
+        "Net Long Term Debt Issuance": {
+            "2024-12-31": 1272000000.0,
+            "2023-12-31": -4400000000.0,
+            "2022-12-31": -1697000000.0,
+            "2021-12-31": -647000000.0
+        },
+        "Long Term Debt Payments": {
+            "2024-12-31": -1495000000.0,
+            "2023-12-31": -4413000000.0,
+            "2022-12-31": -1855000000.0,
+            "2021-12-31": -2327000000.0
+        },
+        "Long Term Debt Issuance": {
+            "2024-12-31": 2767000000.0,
+            "2023-12-31": 13000000.0,
+            "2022-12-31": 158000000.0,
+            "2021-12-31": 1680000000.0
+        },
+        "Investing Cash Flow": {
+            "2024-12-31": -656000000.0,
+            "2023-12-31": 906000000.0,
+            "2022-12-31": 667000000.0,
+            "2021-12-31": -3063000000.0
+        },
+        "Cash From Discontinued Investing Activities": {
+            "2024-12-31": 0.0,
+            "2023-12-31": 5510000000.0,
+            "2022-12-31": -32000000.0,
+            "2021-12-31": -208000000.0
+        },
+        "Cash Flow From Continuing Investing Activities": {
+            "2024-12-31": -657000000.0,
+            "2023-12-31": -4604000000.0,
+            "2022-12-31": 698000000.0,
+            "2021-12-31": -2855000000.0
+        },
+        "Net Other Investing Changes": {
+            "2024-12-31": 1000000.0,
+            "2023-12-31": NaN,
+            "2022-12-31": 1000000.0,
+            "2021-12-31": -1000000.0
+        },
+        "Net Investment Purchase And Sale": {
+            "2024-12-31": 1132000000.0,
+            "2023-12-31": -2659000000.0,
+            "2022-12-31": 1870000000.0,
+            "2021-12-31": -1139000000.0
+        },
+        "Sale Of Investment": {
+            "2024-12-31": 7533000000.0,
+            "2023-12-31": 907000000.0,
+            "2022-12-31": 4190000000.0,
+            "2021-12-31": 3229000000.0
+        },
+        "Purchase Of Investment": {
+            "2024-12-31": -6401000000.0,
+            "2023-12-31": -3566000000.0,
+            "2022-12-31": -2320000000.0,
+            "2021-12-31": -4368000000.0
+        },
+        "Net Business Purchase And Sale": {
+            "2024-12-31": -1114000000.0,
+            "2023-12-31": -1259000000.0,
+            "2022-12-31": -390000000.0,
+            "2021-12-31": -1104000000.0
+        },
+        "Sale Of Business": {
+            "2024-12-31": 0.0,
+            "2023-12-31": 0.0,
+            "2022-12-31": 289000000.0,
+            "2021-12-31": NaN
+        },
+        "Purchase Of Business": {
+            "2024-12-31": -1114000000.0,
+            "2023-12-31": -1259000000.0,
+            "2022-12-31": -679000000.0,
+            "2021-12-31": -1104000000.0
+        },
+        "Net Intangibles Purchase And Sale": {
+            "2024-12-31": -675000000.0,
+            "2023-12-31": -686000000.0,
+            "2022-12-31": -782000000.0,
+            "2021-12-31": -612000000.0
+        },
+        "Sale Of Intangibles": {
+            "2024-12-31": 122000000.0,
+            "2023-12-31": 99000000.0,
+            "2022-12-31": 95000000.0,
+            "2021-12-31": 89000000.0
+        },
+        "Purchase Of Intangibles": {
+            "2024-12-31": -797000000.0,
+            "2023-12-31": -785000000.0,
+            "2022-12-31": -877000000.0,
+            "2021-12-31": -701000000.0
+        },
+        "Operating Cash Flow": {
+            "2024-12-31": 5220000000.0,
+            "2023-12-31": 6332000000.0,
+            "2022-12-31": 5647000000.0,
+            "2021-12-31": 6223000000.0
+        },
+        "Cash From Discontinued Operating Activities": {
+            "2024-12-31": 0.0,
+            "2023-12-31": 122000000.0,
+            "2022-12-31": -29000000.0,
+            "2021-12-31": 41000000.0
+        },
+        "Cash Flow From Continuing Operating Activities": {
+            "2024-12-31": 5218000000.0,
+            "2023-12-31": 6211000000.0,
+            "2022-12-31": 5674000000.0,
+            "2021-12-31": 6182000000.0
+        },
+        "Taxes Refund Paid": {
+            "2024-12-31": -2277000000.0,
+            "2023-12-31": -2161000000.0,
+            "2022-12-31": -1642000000.0,
+            "2021-12-31": -2047000000.0
+        },
+        "Interest Received Cfo": {
+            "2024-12-31": 563000000.0,
+            "2023-12-31": 469000000.0,
+            "2022-12-31": 156000000.0,
+            "2021-12-31": 56000000.0
+        },
+        "Interest Paid Cfo": {
+            "2024-12-31": -550000000.0,
+            "2023-12-31": -393000000.0,
+            "2022-12-31": -244000000.0,
+            "2021-12-31": -198000000.0
+        },
+        "Change In Working Capital": {
+            "2024-12-31": 623000000.0,
+            "2023-12-31": -27000000.0,
+            "2022-12-31": -143000000.0,
+            "2021-12-31": 213000000.0
+        },
+        "Change In Other Working Capital": {
+            "2024-12-31": 899000000.0,
+            "2023-12-31": 433000000.0,
+            "2022-12-31": 720000000.0,
+            "2021-12-31": -68000000.0
+        },
+        "Change In Other Current Assets": {
+            "2024-12-31": -632000000.0,
+            "2023-12-31": -700000000.0,
+            "2022-12-31": -1213000000.0,
+            "2021-12-31": -645000000.0
+        },
+        "Change In Payables And Accrued Expense": {
+            "2024-12-31": 603000000.0,
+            "2023-12-31": 633000000.0,
+            "2022-12-31": 154000000.0,
+            "2021-12-31": 429000000.0
+        },
+        "Change In Payable": {
+            "2024-12-31": 603000000.0,
+            "2023-12-31": 633000000.0,
+            "2022-12-31": 154000000.0,
+            "2021-12-31": 429000000.0
+        },
+        "Change In Account Payable": {
+            "2024-12-31": 603000000.0,
+            "2023-12-31": 633000000.0,
+            "2022-12-31": 154000000.0,
+            "2021-12-31": 429000000.0
+        },
+        "Change In Receivables": {
+            "2024-12-31": -247000000.0,
+            "2023-12-31": -393000000.0,
+            "2022-12-31": 196000000.0,
+            "2021-12-31": 497000000.0
+        },
+        "Other Non Cash Items": {
+            "2024-12-31": -1568000000.0,
+            "2023-12-31": -613000000.0,
+            "2022-12-31": 36000000.0,
+            "2021-12-31": -3219000000.0
+        },
+        "Stock Based Compensation": {
+            "2024-12-31": 2385000000.0,
+            "2023-12-31": 2220000000.0,
+            "2022-12-31": 1431000000.0,
+            "2021-12-31": 1335000000.0
+        },
+        "Deferred Tax": {
+            "2024-12-31": 1614000000.0,
+            "2023-12-31": 1741000000.0,
+            "2022-12-31": 1446000000.0,
+            "2021-12-31": 1682000000.0
+        },
+        "Deferred Income Tax": {
+            "2024-12-31": 1614000000.0,
+            "2023-12-31": 1741000000.0,
+            "2022-12-31": 1446000000.0,
+            "2021-12-31": 1682000000.0
+        },
+        "Depreciation Amortization Depletion": {
+            "2024-12-31": 1280000000.0,
+            "2023-12-31": 1373000000.0,
+            "2022-12-31": 1569000000.0,
+            "2021-12-31": 1537000000.0
+        },
+        "Depreciation And Amortization": {
+            "2024-12-31": 1280000000.0,
+            "2023-12-31": 1373000000.0,
+            "2022-12-31": 1569000000.0,
+            "2021-12-31": 1537000000.0
+        },
+        "Net Income From Continuing Operations": {
+            "2024-12-31": 3150000000.0,
+            "2023-12-31": 3601000000.0,
+            "2022-12-31": 3067000000.0,
+            "2021-12-31": 6823000000.0
+        }
+    },
+    "dividends": {
+        "1999-05-07": 0.523333,
+        "2000-05-08": 0.523333,
+        "2001-05-04": 0.57,
+        "2002-05-06": 0.58,
+        "2003-05-12": 0.6,
+        "2004-05-07": 0.8,
+        "2005-05-13": 1.1,
+        "2006-05-10": 1.45,
+        "2007-05-11": 0.46,
+        "2008-06-04": 0.5,
+        "2009-05-20": 0.5,
+        "2010-06-09": 0.5,
+        "2011-05-26": 0.6,
+        "2012-05-24": 1.1,
+        "2013-06-05": 0.85,
+        "2014-05-22": 1.0,
+        "2015-05-21": 1.1,
+        "2016-05-13": 1.15,
+        "2017-05-11": 1.25,
+        "2018-05-18": 1.4,
+        "2019-05-16": 1.5,
+        "2020-05-21": 1.58,
+        "2021-05-13": 1.85,
+        "2022-05-19": 2.45,
+        "2023-05-12": 2.05,
+        "2024-05-16": 2.2,
+        "2025-05-14": 2.35
+    },
+    "history": {
+        "2025-02-17 00:00:00+01:00": {
+            "Open": 274.4692256691942,
+            "High": 277.6901137143554,
+            "Low": 273.47818319375995,
+            "Close": 277.59100341796875,
+            "Volume": 694626,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-02-18 00:00:00+01:00": {
+            "Open": 276.9468422659157,
+            "High": 278.43340603493465,
+            "Low": 274.8656469404457,
+            "Close": 275.856689453125,
+            "Volume": 1004027,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-02-19 00:00:00+01:00": {
+            "Open": 280.712800500961,
+            "High": 280.9605611368842,
+            "Low": 272.88357045463226,
+            "Close": 273.8250427246094,
+            "Volume": 1348986,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-02-20 00:00:00+01:00": {
+            "Open": 274.5187771614203,
+            "High": 275.80712033561,
+            "Low": 271.8429502682971,
+            "Close": 272.4871520996094,
+            "Volume": 1100167,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-02-21 00:00:00+01:00": {
+            "Open": 271.2483412547445,
+            "High": 274.0232481254165,
+            "Low": 270.75282001039477,
+            "Close": 271.14923095703125,
+            "Volume": 1741545,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-02-24 00:00:00+01:00": {
+            "Open": 271.49611584944705,
+            "High": 273.37909062603995,
+            "Low": 268.47341795682064,
+            "Close": 271.84295654296875,
+            "Volume": 1391375,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-02-25 00:00:00+01:00": {
+            "Open": 269.167139064595,
+            "High": 272.1898064797881,
+            "Low": 267.48235477940216,
+            "Close": 269.9599609375,
+            "Volume": 1531017,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-02-26 00:00:00+01:00": {
+            "Open": 271.5951707882076,
+            "High": 273.1313047292019,
+            "Low": 270.4059379970865,
+            "Close": 272.7348937988281,
+            "Volume": 1318253,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-02-27 00:00:00+01:00": {
+            "Open": 267.53194817847736,
+            "High": 271.49611837415495,
+            "Low": 264.2614896205123,
+            "Close": 265.1038818359375,
+            "Volume": 1909796,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-02-28 00:00:00+01:00": {
+            "Open": 262.77490314611623,
+            "High": 264.7569880731006,
+            "Low": 259.90088605083196,
+            "Close": 262.9235534667969,
+            "Volume": 2933951,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-03 00:00:00+01:00": {
+            "Open": 261.5856852713242,
+            "High": 272.14028206127307,
+            "Low": 260.5450724787156,
+            "Close": 269.1175842285156,
+            "Volume": 1926257,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-04 00:00:00+01:00": {
+            "Open": 264.5588024973837,
+            "High": 267.03640870078976,
+            "Low": 256.6304626464844,
+            "Close": 256.6304626464844,
+            "Volume": 2328384,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-05 00:00:00+01:00": {
+            "Open": 262.08118836176754,
+            "High": 265.1038557407516,
+            "Low": 260.4459441216392,
+            "Close": 262.3289489746094,
+            "Volume": 1803420,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-06 00:00:00+01:00": {
+            "Open": 262.77492169742015,
+            "High": 264.4101358287815,
+            "Low": 254.4501704652205,
+            "Close": 259.00897216796875,
+            "Volume": 2280232,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-07 00:00:00+01:00": {
+            "Open": 253.26091852954673,
+            "High": 257.12599342347323,
+            "Low": 251.4770389725121,
+            "Close": 252.07167053222656,
+            "Volume": 2248943,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-10 00:00:00+01:00": {
+            "Open": 251.97255204006294,
+            "High": 252.66627875577126,
+            "Low": 238.04840208874697,
+            "Close": 240.03048706054688,
+            "Volume": 3105826,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-11 00:00:00+01:00": {
+            "Open": 239.63407623055002,
+            "High": 240.27824779785223,
+            "Low": 235.81855660915255,
+            "Close": 236.5122833251953,
+            "Volume": 2824964,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-12 00:00:00+01:00": {
+            "Open": 236.51229022933944,
+            "High": 241.12064699878545,
+            "Low": 234.57976034891115,
+            "Close": 240.3773651123047,
+            "Volume": 2400746,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-13 00:00:00+01:00": {
+            "Open": 238.59347364377444,
+            "High": 241.9630119786855,
+            "Low": 232.84542431765445,
+            "Close": 234.7779541015625,
+            "Volume": 2178182,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-14 00:00:00+01:00": {
+            "Open": 234.43110040430017,
+            "High": 240.77376619325537,
+            "Low": 232.79587124785292,
+            "Close": 240.42691040039062,
+            "Volume": 1755926,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-17 00:00:00+01:00": {
+            "Open": 240.42691040039062,
+            "High": 240.42691040039062,
+            "Low": 240.42691040039062,
+            "Close": 240.42691040039062,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-18 00:00:00+01:00": {
+            "Open": 246.1749425076364,
+            "High": 247.56241103331288,
+            "Low": 241.51704594181862,
+            "Close": 244.49017333984375,
+            "Volume": 1960463,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-19 00:00:00+01:00": {
+            "Open": 244.53973793160992,
+            "High": 246.86869386551626,
+            "Low": 242.30989229697516,
+            "Close": 246.1254119873047,
+            "Volume": 1528343,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-20 00:00:00+01:00": {
+            "Open": 248.35525245557068,
+            "High": 250.1391168284831,
+            "Low": 244.73793831692444,
+            "Close": 247.90927124023438,
+            "Volume": 2172782,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-21 00:00:00+01:00": {
+            "Open": 246.81914373868088,
+            "High": 249.6931610107422,
+            "Low": 245.13437447153774,
+            "Close": 249.6931610107422,
+            "Volume": 6042210,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-24 00:00:00+01:00": {
+            "Open": 249.6931610107422,
+            "High": 249.6931610107422,
+            "Low": 249.6931610107422,
+            "Close": 249.6931610107422,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-25 00:00:00+01:00": {
+            "Open": 253.95464468693388,
+            "High": 256.8782322063826,
+            "Low": 251.77435417648243,
+            "Close": 256.4322509765625,
+            "Volume": 1416756,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-26 00:00:00+01:00": {
+            "Open": 257.3241852140021,
+            "High": 257.3737554867147,
+            "Low": 247.61198058002776,
+            "Close": 247.8597412109375,
+            "Volume": 1748846,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-27 00:00:00+01:00": {
+            "Open": 244.68839326163675,
+            "High": 247.06690439381316,
+            "Low": 242.35945240221824,
+            "Close": 247.01734924316406,
+            "Volume": 1427031,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-28 00:00:00+01:00": {
+            "Open": 244.638844184351,
+            "High": 247.51286135038708,
+            "Low": 243.8460071696178,
+            "Close": 244.53973388671875,
+            "Volume": 1518176,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-03-31 00:00:00+02:00": {
+            "Open": 242.85497162090905,
+            "High": 245.03526213214238,
+            "Low": 240.03049440087608,
+            "Close": 242.21078491210938,
+            "Volume": 1852241,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-01 00:00:00+02:00": {
+            "Open": 244.53973284461287,
+            "High": 248.85077369740372,
+            "Low": 243.6973406846534,
+            "Close": 247.90927124023438,
+            "Volume": 1345059,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-02 00:00:00+02:00": {
+            "Open": 247.06690359996782,
+            "High": 247.61198001113868,
+            "Low": 242.60721225383884,
+            "Close": 246.8686981201172,
+            "Volume": 1308048,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-03 00:00:00+02:00": {
+            "Open": 243.64780310943667,
+            "High": 243.64780310943667,
+            "Low": 236.36363473236327,
+            "Close": 236.80960083007812,
+            "Volume": 2255341,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-04 00:00:00+02:00": {
+            "Open": 234.87707797881498,
+            "High": 238.24661650857047,
+            "Low": 225.85858496960344,
+            "Close": 229.1290283203125,
+            "Volume": 4883372,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-07 00:00:00+02:00": {
+            "Open": 214.75891223691775,
+            "High": 231.80484064994425,
+            "Low": 208.317135821603,
+            "Close": 219.41680908203125,
+            "Volume": 6895323,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-08 00:00:00+02:00": {
+            "Open": 218.62398556961253,
+            "High": 223.33143753118847,
+            "Low": 214.80846582559695,
+            "Close": 221.79531860351562,
+            "Volume": 4029655,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-09 00:00:00+02:00": {
+            "Open": 213.07413899931663,
+            "High": 220.40784750207757,
+            "Low": 211.19116428491026,
+            "Close": 212.47950744628906,
+            "Volume": 3052992,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-10 00:00:00+02:00": {
+            "Open": 232.89498602825662,
+            "High": 233.6878230476681,
+            "Low": 226.849620767616,
+            "Close": 227.9397735595703,
+            "Volume": 2914854,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-11 00:00:00+02:00": {
+            "Open": 231.21022312091188,
+            "High": 231.2597782713723,
+            "Low": 220.40785057121394,
+            "Close": 222.78636169433594,
+            "Volume": 2391069,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-14 00:00:00+02:00": {
+            "Open": 226.65140850358006,
+            "High": 229.47588557496283,
+            "Low": 225.75947633477915,
+            "Close": 226.75051879882812,
+            "Volume": 1607482,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-15 00:00:00+02:00": {
+            "Open": 226.9487258107359,
+            "High": 230.7146902241566,
+            "Low": 226.9487258107359,
+            "Close": 230.56602478027344,
+            "Volume": 1598526,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-16 00:00:00+02:00": {
+            "Open": 227.5928957839846,
+            "High": 231.2102098504556,
+            "Low": 225.46216053545967,
+            "Close": 230.2687225341797,
+            "Volume": 1678238,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-17 00:00:00+02:00": {
+            "Open": 228.9803687607163,
+            "High": 230.16961671609795,
+            "Low": 223.77739572407683,
+            "Close": 223.97560119628906,
+            "Volume": 1970187,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-22 00:00:00+02:00": {
+            "Open": 220.01143438483265,
+            "High": 221.05203203134477,
+            "Low": 213.66876845141059,
+            "Close": 216.54278564453125,
+            "Volume": 2817969,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-23 00:00:00+02:00": {
+            "Open": 240.2286998814594,
+            "High": 242.01257943506656,
+            "Low": 234.08423930535358,
+            "Close": 239.53497314453125,
+            "Volume": 3410054,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-24 00:00:00+02:00": {
+            "Open": 236.51229237093685,
+            "High": 239.18811928418398,
+            "Low": 230.6155923758837,
+            "Close": 238.98989868164062,
+            "Volume": 2100276,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-25 00:00:00+02:00": {
+            "Open": 239.63408514838537,
+            "High": 243.40004976119033,
+            "Low": 238.6430426251266,
+            "Close": 242.5081024169922,
+            "Volume": 2030654,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-28 00:00:00+02:00": {
+            "Open": 242.90452633625577,
+            "High": 249.89136396531813,
+            "Low": 242.90452633625577,
+            "Close": 246.57138061523438,
+            "Volume": 1643224,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-29 00:00:00+02:00": {
+            "Open": 248.7021132784733,
+            "High": 253.5086754702497,
+            "Low": 247.6615156251692,
+            "Close": 252.31942749023438,
+            "Volume": 1898792,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-04-30 00:00:00+02:00": {
+            "Open": 253.06270822555473,
+            "High": 254.54927197438994,
+            "Low": 248.10749572943743,
+            "Close": 253.01315307617188,
+            "Volume": 2773915,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-02 00:00:00+02:00": {
+            "Open": 254.94568907961133,
+            "High": 263.91461181640625,
+            "Low": 253.80599622683562,
+            "Close": 263.91461181640625,
+            "Volume": 2834565,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-05 00:00:00+02:00": {
+            "Open": 263.4190966201121,
+            "High": 265.1038810459419,
+            "Low": 260.8424101959748,
+            "Close": 264.9552307128906,
+            "Volume": 982242,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-06 00:00:00+02:00": {
+            "Open": 264.60834271025874,
+            "High": 264.7569930337246,
+            "Low": 258.1665665768629,
+            "Close": 261.9820861816406,
+            "Volume": 1174864,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-07 00:00:00+02:00": {
+            "Open": 260.84240770072853,
+            "High": 261.53611932973774,
+            "Low": 259.1576232910156,
+            "Close": 259.1576232910156,
+            "Volume": 1456896,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-08 00:00:00+02:00": {
+            "Open": 261.73432674819287,
+            "High": 264.50923361286215,
+            "Low": 258.6125489643859,
+            "Close": 260.4459533691406,
+            "Volume": 1595441,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-09 00:00:00+02:00": {
+            "Open": 260.54507758845057,
+            "High": 261.98210136842795,
+            "Low": 258.16658154246915,
+            "Close": 259.3062744140625,
+            "Volume": 1394204,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-12 00:00:00+02:00": {
+            "Open": 261.6847548700869,
+            "High": 265.99579570896924,
+            "Low": 254.8465678036958,
+            "Close": 260.1486511230469,
+            "Volume": 1641823,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-13 00:00:00+02:00": {
+            "Open": 262.1307352776099,
+            "High": 262.27938560037967,
+            "Low": 258.2656756645149,
+            "Close": 260.0,
+            "Volume": 1057229,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-14 00:00:00+02:00": {
+            "Open": 262.3500061035156,
+            "High": 262.3500061035156,
+            "Low": 262.3500061035156,
+            "Close": 262.3500061035156,
+            "Volume": 0,
+            "Dividends": 2.35,
+            "Stock Splits": 0.0
+        },
+        "2025-05-15 00:00:00+02:00": {
+            "Open": 258.1499938964844,
+            "High": 263.20001220703125,
+            "Low": 258.1499938964844,
+            "Close": 263.20001220703125,
+            "Volume": 1520683,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-16 00:00:00+02:00": {
+            "Open": 263.25,
+            "High": 268.29998779296875,
+            "Low": 263.25,
+            "Close": 266.25,
+            "Volume": 1663316,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-19 00:00:00+02:00": {
+            "Open": 263.20001220703125,
+            "High": 265.45001220703125,
+            "Low": 260.8999938964844,
+            "Close": 265.45001220703125,
+            "Volume": 1284305,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-20 00:00:00+02:00": {
+            "Open": 264.79998779296875,
+            "High": 267.8999938964844,
+            "Low": 263.70001220703125,
+            "Close": 265.1000061035156,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-21 00:00:00+02:00": {
+            "Open": 262.1499938964844,
+            "High": 266.29998779296875,
+            "Low": 262.0,
+            "Close": 265.79998779296875,
+            "Volume": 1446191,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-22 00:00:00+02:00": {
+            "Open": 264.3500061035156,
+            "High": 265.95001220703125,
+            "Low": 262.0,
+            "Close": 265.5,
+            "Volume": 1088521,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-23 00:00:00+02:00": {
+            "Open": 265.45001220703125,
+            "High": 269.04998779296875,
+            "Low": 256.1499938964844,
+            "Close": 260.54998779296875,
+            "Volume": 2412491,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-26 00:00:00+02:00": {
+            "Open": 264.8999938964844,
+            "High": 266.1000061035156,
+            "Low": 261.6499938964844,
+            "Close": 262.29998779296875,
+            "Volume": 971178,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-27 00:00:00+02:00": {
+            "Open": 261.5,
+            "High": 268.25,
+            "Low": 261.1000061035156,
+            "Close": 265.6499938964844,
+            "Volume": 1688263,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-28 00:00:00+02:00": {
+            "Open": 264.3500061035156,
+            "High": 265.95001220703125,
+            "Low": 262.3999938964844,
+            "Close": 263.29998779296875,
+            "Volume": 1575162,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-29 00:00:00+02:00": {
+            "Open": 266.70001220703125,
+            "High": 267.25,
+            "Low": 261.3999938964844,
+            "Close": 262.45001220703125,
+            "Volume": 1152671,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-05-30 00:00:00+02:00": {
+            "Open": 262.0,
+            "High": 267.25,
+            "Low": 261.8500061035156,
+            "Close": 265.8999938964844,
+            "Volume": 2486054,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-02 00:00:00+02:00": {
+            "Open": 263.20001220703125,
+            "High": 265.25,
+            "Low": 261.45001220703125,
+            "Close": 264.29998779296875,
+            "Volume": 1189371,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-03 00:00:00+02:00": {
+            "Open": 266.25,
+            "High": 269.54998779296875,
+            "Low": 264.0,
+            "Close": 269.54998779296875,
+            "Volume": 1566449,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-04 00:00:00+02:00": {
+            "Open": 269.95001220703125,
+            "High": 272.8500061035156,
+            "Low": 268.79998779296875,
+            "Close": 271.29998779296875,
+            "Volume": 1286762,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-05 00:00:00+02:00": {
+            "Open": 271.29998779296875,
+            "High": 273.54998779296875,
+            "Low": 269.95001220703125,
+            "Close": 270.95001220703125,
+            "Volume": 1041138,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-06 00:00:00+02:00": {
+            "Open": 271.0,
+            "High": 272.95001220703125,
+            "Low": 269.3999938964844,
+            "Close": 272.3500061035156,
+            "Volume": 918835,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-09 00:00:00+02:00": {
+            "Open": 272.3500061035156,
+            "High": 272.3500061035156,
+            "Low": 272.3500061035156,
+            "Close": 272.3500061035156,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-10 00:00:00+02:00": {
+            "Open": 267.0,
+            "High": 268.1000061035156,
+            "Low": 262.8999938964844,
+            "Close": 265.70001220703125,
+            "Volume": 1417249,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-11 00:00:00+02:00": {
+            "Open": 265.70001220703125,
+            "High": 266.20001220703125,
+            "Low": 262.3999938964844,
+            "Close": 263.1499938964844,
+            "Volume": 1838519,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-12 00:00:00+02:00": {
+            "Open": 259.8500061035156,
+            "High": 262.95001220703125,
+            "Low": 259.04998779296875,
+            "Close": 261.1499938964844,
+            "Volume": 1360676,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-13 00:00:00+02:00": {
+            "Open": 256.25,
+            "High": 257.8999938964844,
+            "Low": 254.0500030517578,
+            "Close": 254.75,
+            "Volume": 1998459,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-16 00:00:00+02:00": {
+            "Open": 255.35000610351562,
+            "High": 257.6499938964844,
+            "Low": 253.4499969482422,
+            "Close": 257.45001220703125,
+            "Volume": 1423494,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-17 00:00:00+02:00": {
+            "Open": 255.25,
+            "High": 257.3999938964844,
+            "Low": 254.0,
+            "Close": 256.04998779296875,
+            "Volume": 1377049,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-18 00:00:00+02:00": {
+            "Open": 255.35000610351562,
+            "High": 255.35000610351562,
+            "Low": 251.6999969482422,
+            "Close": 252.9499969482422,
+            "Volume": 1659776,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-19 00:00:00+02:00": {
+            "Open": 250.39999389648438,
+            "High": 251.10000610351562,
+            "Low": 247.75,
+            "Close": 247.75,
+            "Volume": 1525735,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-20 00:00:00+02:00": {
+            "Open": 249.35000610351562,
+            "High": 254.85000610351562,
+            "Low": 248.8000030517578,
+            "Close": 251.14999389648438,
+            "Volume": 7942129,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-23 00:00:00+02:00": {
+            "Open": 249.0,
+            "High": 252.75,
+            "Low": 248.89999389648438,
+            "Close": 249.9499969482422,
+            "Volume": 1248686,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-24 00:00:00+02:00": {
+            "Open": 255.60000610351562,
+            "High": 258.29998779296875,
+            "Low": 253.25,
+            "Close": 254.9499969482422,
+            "Volume": 1611964,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-25 00:00:00+02:00": {
+            "Open": 255.5,
+            "High": 256.0,
+            "Low": 252.5,
+            "Close": 252.5,
+            "Volume": 1097166,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-26 00:00:00+02:00": {
+            "Open": 252.60000610351562,
+            "High": 253.1999969482422,
+            "Low": 248.4499969482422,
+            "Close": 251.64999389648438,
+            "Volume": 1437007,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-27 00:00:00+02:00": {
+            "Open": 255.0500030517578,
+            "High": 258.3999938964844,
+            "Low": 252.6999969482422,
+            "Close": 258.0,
+            "Volume": 1471559,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-06-30 00:00:00+02:00": {
+            "Open": 259.0,
+            "High": 259.5,
+            "Low": 257.04998779296875,
+            "Close": 258.1499938964844,
+            "Volume": 1654829,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-01 00:00:00+02:00": {
+            "Open": 259.5,
+            "High": 261.45001220703125,
+            "Low": 255.60000610351562,
+            "Close": 255.60000610351562,
+            "Volume": 1301819,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-02 00:00:00+02:00": {
+            "Open": 256.04998779296875,
+            "High": 256.6499938964844,
+            "Low": 250.3000030517578,
+            "Close": 253.10000610351562,
+            "Volume": 1140295,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-03 00:00:00+02:00": {
+            "Open": 252.3000030517578,
+            "High": 258.20001220703125,
+            "Low": 251.8000030517578,
+            "Close": 258.20001220703125,
+            "Volume": 915608,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-04 00:00:00+02:00": {
+            "Open": 256.04998779296875,
+            "High": 257.20001220703125,
+            "Low": 254.75,
+            "Close": 255.5,
+            "Volume": 766320,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-07 00:00:00+02:00": {
+            "Open": 256.25,
+            "High": 261.29998779296875,
+            "Low": 256.1000061035156,
+            "Close": 261.1499938964844,
+            "Volume": 1074156,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-08 00:00:00+02:00": {
+            "Open": 262.5,
+            "High": 265.20001220703125,
+            "Low": 261.1000061035156,
+            "Close": 264.1499938964844,
+            "Volume": 1401615,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-09 00:00:00+02:00": {
+            "Open": 263.79998779296875,
+            "High": 266.3500061035156,
+            "Low": 262.1499938964844,
+            "Close": 265.5,
+            "Volume": 1011575,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-10 00:00:00+02:00": {
+            "Open": 267.3999938964844,
+            "High": 269.3500061035156,
+            "Low": 262.1499938964844,
+            "Close": 263.1000061035156,
+            "Volume": 1079386,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-11 00:00:00+02:00": {
+            "Open": 260.25,
+            "High": 262.1000061035156,
+            "Low": 258.75,
+            "Close": 258.75,
+            "Volume": 961114,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-14 00:00:00+02:00": {
+            "Open": 255.6999969482422,
+            "High": 258.25,
+            "Low": 253.6999969482422,
+            "Close": 258.04998779296875,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-15 00:00:00+02:00": {
+            "Open": 257.25,
+            "High": 261.1499938964844,
+            "Low": 257.0,
+            "Close": 259.79998779296875,
+            "Volume": 839287,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-16 00:00:00+02:00": {
+            "Open": 259.79998779296875,
+            "High": 259.79998779296875,
+            "Low": 259.79998779296875,
+            "Close": 259.79998779296875,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-17 00:00:00+02:00": {
+            "Open": 263.25,
+            "High": 266.04998779296875,
+            "Low": 261.3500061035156,
+            "Close": 265.79998779296875,
+            "Volume": 1070036,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-18 00:00:00+02:00": {
+            "Open": 266.5,
+            "High": 267.1000061035156,
+            "Low": 262.75,
+            "Close": 264.04998779296875,
+            "Volume": 955575,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-21 00:00:00+02:00": {
+            "Open": 264.04998779296875,
+            "High": 264.04998779296875,
+            "Low": 264.04998779296875,
+            "Close": 264.04998779296875,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-22 00:00:00+02:00": {
+            "Open": 262.6499938964844,
+            "High": 264.6499938964844,
+            "Low": 258.95001220703125,
+            "Close": 259.5,
+            "Volume": 1191724,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-23 00:00:00+02:00": {
+            "Open": 255.14999389648438,
+            "High": 256.79998779296875,
+            "Low": 244.4499969482422,
+            "Close": 248.85000610351562,
+            "Volume": 3968439,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-24 00:00:00+02:00": {
+            "Open": 247.4499969482422,
+            "High": 251.0500030517578,
+            "Low": 243.6999969482422,
+            "Close": 246.10000610351562,
+            "Volume": 1852714,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-25 00:00:00+02:00": {
+            "Open": 243.75,
+            "High": 246.0500030517578,
+            "Low": 243.0,
+            "Close": 245.0,
+            "Volume": 1311556,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-28 00:00:00+02:00": {
+            "Open": 248.14999389648438,
+            "High": 248.3000030517578,
+            "Low": 243.4499969482422,
+            "Close": 244.0500030517578,
+            "Volume": 1297484,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-29 00:00:00+02:00": {
+            "Open": 244.89999389648438,
+            "High": 250.14999389648438,
+            "Low": 244.60000610351562,
+            "Close": 248.4499969482422,
+            "Volume": 1279126,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-30 00:00:00+02:00": {
+            "Open": 248.8000030517578,
+            "High": 253.25,
+            "Low": 248.5,
+            "Close": 253.0,
+            "Volume": 1007571,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-07-31 00:00:00+02:00": {
+            "Open": 257.45001220703125,
+            "High": 258.70001220703125,
+            "Low": 250.1999969482422,
+            "Close": 250.8000030517578,
+            "Volume": 1776569,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-01 00:00:00+02:00": {
+            "Open": 248.89999389648438,
+            "High": 249.9499969482422,
+            "Low": 242.85000610351562,
+            "Close": 244.64999389648438,
+            "Volume": 1674730,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-04 00:00:00+02:00": {
+            "Open": 245.35000610351562,
+            "High": 246.5500030517578,
+            "Low": 243.85000610351562,
+            "Close": 244.75,
+            "Volume": 1058367,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-05 00:00:00+02:00": {
+            "Open": 245.89999389648438,
+            "High": 248.1999969482422,
+            "Low": 245.3000030517578,
+            "Close": 246.64999389648438,
+            "Volume": 1036854,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-06 00:00:00+02:00": {
+            "Open": 247.75,
+            "High": 249.64999389648438,
+            "Low": 246.85000610351562,
+            "Close": 248.85000610351562,
+            "Volume": 950677,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-07 00:00:00+02:00": {
+            "Open": 252.35000610351562,
+            "High": 257.70001220703125,
+            "Low": 250.6999969482422,
+            "Close": 254.75,
+            "Volume": 1418079,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-08 00:00:00+02:00": {
+            "Open": 251.5500030517578,
+            "High": 253.14999389648438,
+            "Low": 248.4499969482422,
+            "Close": 250.10000610351562,
+            "Volume": 1040750,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-11 00:00:00+02:00": {
+            "Open": 251.6999969482422,
+            "High": 251.6999969482422,
+            "Low": 248.14999389648438,
+            "Close": 249.35000610351562,
+            "Volume": 641404,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-12 00:00:00+02:00": {
+            "Open": 248.0,
+            "High": 248.35000610351562,
+            "Low": 231.75,
+            "Close": 232.0,
+            "Volume": 3428231,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-13 00:00:00+02:00": {
+            "Open": 236.0,
+            "High": 239.14999389648438,
+            "Low": 234.89999389648438,
+            "Close": 239.0,
+            "Volume": 1990691,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-14 00:00:00+02:00": {
+            "Open": 239.0,
+            "High": 239.0,
+            "Low": 239.0,
+            "Close": 239.0,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-15 00:00:00+02:00": {
+            "Open": 239.60000610351562,
+            "High": 241.3000030517578,
+            "Low": 237.0,
+            "Close": 237.0,
+            "Volume": 1749088,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-18 00:00:00+02:00": {
+            "Open": 237.6999969482422,
+            "High": 237.6999969482422,
+            "Low": 235.4499969482422,
+            "Close": 236.64999389648438,
+            "Volume": 1121582,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-19 00:00:00+02:00": {
+            "Open": 237.35000610351562,
+            "High": 238.60000610351562,
+            "Low": 235.85000610351562,
+            "Close": 236.89999389648438,
+            "Volume": 1197002,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-20 00:00:00+02:00": {
+            "Open": 233.39999389648438,
+            "High": 236.1999969482422,
+            "Low": 231.64999389648438,
+            "Close": 233.75,
+            "Volume": 1304126,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-21 00:00:00+02:00": {
+            "Open": 233.39999389648438,
+            "High": 233.6999969482422,
+            "Low": 231.5,
+            "Close": 232.14999389648438,
+            "Volume": 1154543,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-22 00:00:00+02:00": {
+            "Open": 231.39999389648438,
+            "High": 232.6999969482422,
+            "Low": 230.3000030517578,
+            "Close": 232.60000610351562,
+            "Volume": 1230678,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-25 00:00:00+02:00": {
+            "Open": 231.6999969482422,
+            "High": 233.9499969482422,
+            "Low": 230.85000610351562,
+            "Close": 233.0,
+            "Volume": 838506,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-26 00:00:00+02:00": {
+            "Open": 231.85000610351562,
+            "High": 235.75,
+            "Low": 231.6999969482422,
+            "Close": 231.85000610351562,
+            "Volume": 2208166,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-27 00:00:00+02:00": {
+            "Open": 231.0,
+            "High": 237.1999969482422,
+            "Low": 230.9499969482422,
+            "Close": 236.39999389648438,
+            "Volume": 1087706,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-28 00:00:00+02:00": {
+            "Open": 236.75,
+            "High": 237.85000610351562,
+            "Low": 235.0,
+            "Close": 236.35000610351562,
+            "Volume": 796628,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-08-29 00:00:00+02:00": {
+            "Open": 234.5500030517578,
+            "High": 235.14999389648438,
+            "Low": 231.14999389648438,
+            "Close": 231.6999969482422,
+            "Volume": 1280886,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-01 00:00:00+02:00": {
+            "Open": 232.5,
+            "High": 234.8000030517578,
+            "Low": 231.89999389648438,
+            "Close": 233.89999389648438,
+            "Volume": 603099,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-02 00:00:00+02:00": {
+            "Open": 232.39999389648438,
+            "High": 233.25,
+            "Low": 227.25,
+            "Close": 227.25,
+            "Volume": 1290152,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-03 00:00:00+02:00": {
+            "Open": 230.14999389648438,
+            "High": 231.8000030517578,
+            "Low": 229.1999969482422,
+            "Close": 231.35000610351562,
+            "Volume": 1031836,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-04 00:00:00+02:00": {
+            "Open": 231.89999389648438,
+            "High": 235.14999389648438,
+            "Low": 231.60000610351562,
+            "Close": 233.1999969482422,
+            "Volume": 871586,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-05 00:00:00+02:00": {
+            "Open": 233.39999389648438,
+            "High": 233.60000610351562,
+            "Low": 227.89999389648438,
+            "Close": 228.25,
+            "Volume": 1272378,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-08 00:00:00+02:00": {
+            "Open": 229.4499969482422,
+            "High": 231.4499969482422,
+            "Low": 228.1999969482422,
+            "Close": 230.4499969482422,
+            "Volume": 1277894,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-09 00:00:00+02:00": {
+            "Open": 229.6999969482422,
+            "High": 231.14999389648438,
+            "Low": 228.39999389648438,
+            "Close": 230.3000030517578,
+            "Volume": 1058827,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-10 00:00:00+02:00": {
+            "Open": 235.0,
+            "High": 236.64999389648438,
+            "Low": 222.9499969482422,
+            "Close": 223.6999969482422,
+            "Volume": 2344014,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-11 00:00:00+02:00": {
+            "Open": 222.0,
+            "High": 222.85000610351562,
+            "Low": 218.89999389648438,
+            "Close": 219.8000030517578,
+            "Volume": 1974628,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-12 00:00:00+02:00": {
+            "Open": 219.89999389648438,
+            "High": 221.8000030517578,
+            "Low": 219.1999969482422,
+            "Close": 220.89999389648438,
+            "Volume": 1360689,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-15 00:00:00+02:00": {
+            "Open": 220.3000030517578,
+            "High": 221.0500030517578,
+            "Low": 211.64999389648438,
+            "Close": 214.64999389648438,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-16 00:00:00+02:00": {
+            "Open": 215.0,
+            "High": 215.9499969482422,
+            "Low": 209.6999969482422,
+            "Close": 210.9499969482422,
+            "Volume": 1757332,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-17 00:00:00+02:00": {
+            "Open": 215.25,
+            "High": 220.1999969482422,
+            "Low": 214.3000030517578,
+            "Close": 217.6999969482422,
+            "Volume": 2002327,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-18 00:00:00+02:00": {
+            "Open": 223.89999389648438,
+            "High": 229.89999389648438,
+            "Low": 222.0,
+            "Close": 229.5,
+            "Volume": 2533588,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-19 00:00:00+02:00": {
+            "Open": 227.14999389648438,
+            "High": 229.64999389648438,
+            "Low": 227.0,
+            "Close": 227.5500030517578,
+            "Volume": 5436865,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-22 00:00:00+02:00": {
+            "Open": 227.5500030517578,
+            "High": 227.5500030517578,
+            "Low": 227.5500030517578,
+            "Close": 227.5500030517578,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-23 00:00:00+02:00": {
+            "Open": 225.60000610351562,
+            "High": 227.60000610351562,
+            "Low": 224.6999969482422,
+            "Close": 226.1999969482422,
+            "Volume": 1115327,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-24 00:00:00+02:00": {
+            "Open": 225.8000030517578,
+            "High": 232.85000610351562,
+            "Low": 224.5,
+            "Close": 228.0,
+            "Volume": 2418550,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-25 00:00:00+02:00": {
+            "Open": 228.85000610351562,
+            "High": 229.35000610351562,
+            "Low": 222.0,
+            "Close": 225.1999969482422,
+            "Volume": 1662331,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-26 00:00:00+02:00": {
+            "Open": 225.5500030517578,
+            "High": 225.64999389648438,
+            "Low": 221.89999389648438,
+            "Close": 225.14999389648438,
+            "Volume": 1029898,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-29 00:00:00+02:00": {
+            "Open": 225.5500030517578,
+            "High": 226.10000610351562,
+            "Low": 222.9499969482422,
+            "Close": 225.5500030517578,
+            "Volume": 950657,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-09-30 00:00:00+02:00": {
+            "Open": 225.5500030517578,
+            "High": 225.5500030517578,
+            "Low": 225.5500030517578,
+            "Close": 225.5500030517578,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-01 00:00:00+02:00": {
+            "Open": 225.0500030517578,
+            "High": 228.5,
+            "Low": 224.5,
+            "Close": 227.8000030517578,
+            "Volume": 1257008,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-02 00:00:00+02:00": {
+            "Open": 227.60000610351562,
+            "High": 233.60000610351562,
+            "Low": 226.4499969482422,
+            "Close": 232.10000610351562,
+            "Volume": 1197910,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-03 00:00:00+02:00": {
+            "Open": 232.64999389648438,
+            "High": 233.0,
+            "Low": 228.25,
+            "Close": 230.14999389648438,
+            "Volume": 1072154,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-06 00:00:00+02:00": {
+            "Open": 230.39999389648438,
+            "High": 232.60000610351562,
+            "Low": 229.0500030517578,
+            "Close": 231.60000610351562,
+            "Volume": 735402,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-07 00:00:00+02:00": {
+            "Open": 233.9499969482422,
+            "High": 236.39999389648438,
+            "Low": 233.10000610351562,
+            "Close": 235.0,
+            "Volume": 1354466,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-08 00:00:00+02:00": {
+            "Open": 235.4499969482422,
+            "High": 239.25,
+            "Low": 234.64999389648438,
+            "Close": 237.1999969482422,
+            "Volume": 1357884,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-09 00:00:00+02:00": {
+            "Open": 239.0,
+            "High": 239.35000610351562,
+            "Low": 235.0500030517578,
+            "Close": 237.8000030517578,
+            "Volume": 926821,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-10 00:00:00+02:00": {
+            "Open": 238.8000030517578,
+            "High": 239.10000610351562,
+            "Low": 230.5500030517578,
+            "Close": 230.5500030517578,
+            "Volume": 1300885,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-13 00:00:00+02:00": {
+            "Open": 231.8000030517578,
+            "High": 233.75,
+            "Low": 229.64999389648438,
+            "Close": 231.39999389648438,
+            "Volume": 738717,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-14 00:00:00+02:00": {
+            "Open": 230.9499969482422,
+            "High": 232.6999969482422,
+            "Low": 228.4499969482422,
+            "Close": 232.6999969482422,
+            "Volume": 1319040,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-15 00:00:00+02:00": {
+            "Open": 231.8000030517578,
+            "High": 234.64999389648438,
+            "Low": 231.4499969482422,
+            "Close": 234.1999969482422,
+            "Volume": 1102569,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-16 00:00:00+02:00": {
+            "Open": 231.1999969482422,
+            "High": 237.10000610351562,
+            "Low": 230.35000610351562,
+            "Close": 233.1999969482422,
+            "Volume": 1149922,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-17 00:00:00+02:00": {
+            "Open": 229.25,
+            "High": 232.0,
+            "Low": 227.0,
+            "Close": 230.9499969482422,
+            "Volume": 1160814,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-20 00:00:00+02:00": {
+            "Open": 233.8000030517578,
+            "High": 239.60000610351562,
+            "Low": 232.89999389648438,
+            "Close": 238.60000610351562,
+            "Volume": 1404631,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-21 00:00:00+02:00": {
+            "Open": 238.14999389648438,
+            "High": 241.25,
+            "Low": 236.35000610351562,
+            "Close": 240.39999389648438,
+            "Volume": 1444043,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-22 00:00:00+02:00": {
+            "Open": 241.14999389648438,
+            "High": 241.25,
+            "Low": 236.5,
+            "Close": 236.85000610351562,
+            "Volume": 1752971,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-23 00:00:00+02:00": {
+            "Open": 239.39999389648438,
+            "High": 244.3000030517578,
+            "Low": 229.6999969482422,
+            "Close": 242.0,
+            "Volume": 3172728,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-24 00:00:00+02:00": {
+            "Open": 241.25,
+            "High": 241.3000030517578,
+            "Low": 233.35000610351562,
+            "Close": 233.35000610351562,
+            "Volume": 1802588,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-27 00:00:00+01:00": {
+            "Open": 234.0,
+            "High": 235.8000030517578,
+            "Low": 233.14999389648438,
+            "Close": 235.5500030517578,
+            "Volume": 1155170,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-28 00:00:00+01:00": {
+            "Open": 233.89999389648438,
+            "High": 235.0500030517578,
+            "Low": 232.75,
+            "Close": 234.10000610351562,
+            "Volume": 1130651,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-29 00:00:00+01:00": {
+            "Open": 231.6999969482422,
+            "High": 232.1999969482422,
+            "Low": 223.3000030517578,
+            "Close": 224.3000030517578,
+            "Volume": 1934365,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-30 00:00:00+01:00": {
+            "Open": 224.3000030517578,
+            "High": 227.60000610351562,
+            "Low": 223.64999389648438,
+            "Close": 225.85000610351562,
+            "Volume": 1387271,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-10-31 00:00:00+01:00": {
+            "Open": 224.64999389648438,
+            "High": 226.3000030517578,
+            "Low": 223.75,
+            "Close": 224.4499969482422,
+            "Volume": 1209055,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-03 00:00:00+01:00": {
+            "Open": 225.39999389648438,
+            "High": 231.0500030517578,
+            "Low": 224.39999389648438,
+            "Close": 228.85000610351562,
+            "Volume": 1081196,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-04 00:00:00+01:00": {
+            "Open": 226.0,
+            "High": 226.6999969482422,
+            "Low": 224.0,
+            "Close": 226.0500030517578,
+            "Volume": 982932,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-05 00:00:00+01:00": {
+            "Open": 224.9499969482422,
+            "High": 229.9499969482422,
+            "Low": 223.75,
+            "Close": 227.9499969482422,
+            "Volume": 944453,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-06 00:00:00+01:00": {
+            "Open": 225.60000610351562,
+            "High": 226.85000610351562,
+            "Low": 217.5500030517578,
+            "Close": 217.9499969482422,
+            "Volume": 1263039,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-07 00:00:00+01:00": {
+            "Open": 217.9499969482422,
+            "High": 217.9499969482422,
+            "Low": 217.9499969482422,
+            "Close": 217.9499969482422,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-10 00:00:00+01:00": {
+            "Open": 218.75,
+            "High": 220.0500030517578,
+            "Low": 216.0,
+            "Close": 216.25,
+            "Volume": 1208040,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-11 00:00:00+01:00": {
+            "Open": 216.64999389648438,
+            "High": 219.0,
+            "Low": 216.1999969482422,
+            "Close": 217.0500030517578,
+            "Volume": 1024146,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-12 00:00:00+01:00": {
+            "Open": 219.35000610351562,
+            "High": 220.39999389648438,
+            "Low": 218.14999389648438,
+            "Close": 218.39999389648438,
+            "Volume": 1121213,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-13 00:00:00+01:00": {
+            "Open": 218.39999389648438,
+            "High": 218.39999389648438,
+            "Low": 218.39999389648438,
+            "Close": 218.39999389648438,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-14 00:00:00+01:00": {
+            "Open": 213.75,
+            "High": 214.1999969482422,
+            "Low": 207.5500030517578,
+            "Close": 211.10000610351562,
+            "Volume": 2184437,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-17 00:00:00+01:00": {
+            "Open": 211.60000610351562,
+            "High": 211.8000030517578,
+            "Low": 205.6999969482422,
+            "Close": 207.0,
+            "Volume": 1334374,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-18 00:00:00+01:00": {
+            "Open": 203.39999389648438,
+            "High": 206.60000610351562,
+            "Low": 202.5,
+            "Close": 205.35000610351562,
+            "Volume": 1354135,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-19 00:00:00+01:00": {
+            "Open": 205.1999969482422,
+            "High": 207.5500030517578,
+            "Low": 203.75,
+            "Close": 205.5,
+            "Volume": 1173122,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-20 00:00:00+01:00": {
+            "Open": 206.9499969482422,
+            "High": 209.60000610351562,
+            "Low": 206.25,
+            "Close": 206.60000610351562,
+            "Volume": 1092550,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-21 00:00:00+01:00": {
+            "Open": 204.0,
+            "High": 208.1999969482422,
+            "Low": 203.35000610351562,
+            "Close": 205.0,
+            "Volume": 1520744,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-24 00:00:00+01:00": {
+            "Open": 207.64999389648438,
+            "High": 209.5500030517578,
+            "Low": 206.25,
+            "Close": 207.5,
+            "Volume": 2706084,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-25 00:00:00+01:00": {
+            "Open": 205.0500030517578,
+            "High": 206.4499969482422,
+            "Low": 202.3000030517578,
+            "Close": 204.85000610351562,
+            "Volume": 1286031,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-26 00:00:00+01:00": {
+            "Open": 205.5,
+            "High": 206.9499969482422,
+            "Low": 203.64999389648438,
+            "Close": 206.6999969482422,
+            "Volume": 1239164,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-27 00:00:00+01:00": {
+            "Open": 207.1999969482422,
+            "High": 208.75,
+            "Low": 206.6999969482422,
+            "Close": 207.0,
+            "Volume": 473852,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-11-28 00:00:00+01:00": {
+            "Open": 206.85000610351562,
+            "High": 209.4499969482422,
+            "Low": 206.35000610351562,
+            "Close": 208.5500030517578,
+            "Volume": 901070,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-01 00:00:00+01:00": {
+            "Open": 208.60000610351562,
+            "High": 209.89999389648438,
+            "Low": 207.10000610351562,
+            "Close": 208.89999389648438,
+            "Volume": 1068756,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-02 00:00:00+01:00": {
+            "Open": 207.5500030517578,
+            "High": 209.4499969482422,
+            "Low": 206.4499969482422,
+            "Close": 207.85000610351562,
+            "Volume": 901545,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-03 00:00:00+01:00": {
+            "Open": 208.25,
+            "High": 210.39999389648438,
+            "Low": 206.14999389648438,
+            "Close": 206.5,
+            "Volume": 997604,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-04 00:00:00+01:00": {
+            "Open": 208.75,
+            "High": 213.5,
+            "Low": 208.0500030517578,
+            "Close": 210.14999389648438,
+            "Volume": 1760993,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-05 00:00:00+01:00": {
+            "Open": 211.25,
+            "High": 214.75,
+            "Low": 210.0500030517578,
+            "Close": 213.25,
+            "Volume": 1025075,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-08 00:00:00+01:00": {
+            "Open": 213.25,
+            "High": 213.3000030517578,
+            "Low": 209.0500030517578,
+            "Close": 210.10000610351562,
+            "Volume": 1104633,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-09 00:00:00+01:00": {
+            "Open": 209.14999389648438,
+            "High": 211.0,
+            "Low": 208.39999389648438,
+            "Close": 210.0,
+            "Volume": 798949,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-10 00:00:00+01:00": {
+            "Open": 210.5500030517578,
+            "High": 211.10000610351562,
+            "Low": 207.0,
+            "Close": 210.9499969482422,
+            "Volume": 1275692,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-11 00:00:00+01:00": {
+            "Open": 204.0,
+            "High": 211.10000610351562,
+            "Low": 201.85000610351562,
+            "Close": 209.3000030517578,
+            "Volume": 1724153,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-12 00:00:00+01:00": {
+            "Open": 210.25,
+            "High": 211.3000030517578,
+            "Low": 208.10000610351562,
+            "Close": 208.1999969482422,
+            "Volume": 1233372,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-15 00:00:00+01:00": {
+            "Open": 208.1999969482422,
+            "High": 208.1999969482422,
+            "Low": 208.1999969482422,
+            "Close": 208.1999969482422,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-16 00:00:00+01:00": {
+            "Open": 206.85000610351562,
+            "High": 208.3000030517578,
+            "Low": 204.85000610351562,
+            "Close": 206.64999389648438,
+            "Volume": 1368390,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-17 00:00:00+01:00": {
+            "Open": 206.64999389648438,
+            "High": 206.64999389648438,
+            "Low": 206.64999389648438,
+            "Close": 206.64999389648438,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-18 00:00:00+01:00": {
+            "Open": 206.64999389648438,
+            "High": 206.64999389648438,
+            "Low": 206.64999389648438,
+            "Close": 206.64999389648438,
+            "Volume": 0,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-19 00:00:00+01:00": {
+            "Open": 208.25,
+            "High": 209.3000030517578,
+            "Low": 205.10000610351562,
+            "Close": 208.8000030517578,
+            "Volume": 3975152,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-22 00:00:00+01:00": {
+            "Open": 208.0,
+            "High": 210.5,
+            "Low": 207.64999389648438,
+            "Close": 208.5500030517578,
+            "Volume": 823365,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-23 00:00:00+01:00": {
+            "Open": 208.9499969482422,
+            "High": 209.1999969482422,
+            "Low": 207.5,
+            "Close": 207.6999969482422,
+            "Volume": 621651,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-29 00:00:00+01:00": {
+            "Open": 208.25,
+            "High": 209.25,
+            "Low": 207.1999969482422,
+            "Close": 208.4499969482422,
+            "Volume": 706217,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2025-12-30 00:00:00+01:00": {
+            "Open": 208.6999969482422,
+            "High": 209.60000610351562,
+            "Low": 207.8000030517578,
+            "Close": 208.35000610351562,
+            "Volume": 608689,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-02 00:00:00+01:00": {
+            "Open": 207.89999389648438,
+            "High": 208.6999969482422,
+            "Low": 200.0500030517578,
+            "Close": 201.9499969482422,
+            "Volume": 1859956,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-05 00:00:00+01:00": {
+            "Open": 200.1999969482422,
+            "High": 206.1999969482422,
+            "Low": 199.60000610351562,
+            "Close": 206.1999969482422,
+            "Volume": 1313820,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-06 00:00:00+01:00": {
+            "Open": 203.60000610351562,
+            "High": 203.9499969482422,
+            "Low": 200.60000610351562,
+            "Close": 202.0500030517578,
+            "Volume": 1513269,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-07 00:00:00+01:00": {
+            "Open": 203.5500030517578,
+            "High": 208.39999389648438,
+            "Low": 202.75,
+            "Close": 208.39999389648438,
+            "Volume": 1606761,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-08 00:00:00+01:00": {
+            "Open": 208.64999389648438,
+            "High": 209.25,
+            "Low": 205.89999389648438,
+            "Close": 206.5,
+            "Volume": 1215756,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-09 00:00:00+01:00": {
+            "Open": 207.0,
+            "High": 214.25,
+            "Low": 206.0,
+            "Close": 212.35000610351562,
+            "Volume": 1743178,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-12 00:00:00+01:00": {
+            "Open": 212.5,
+            "High": 214.10000610351562,
+            "Low": 210.64999389648438,
+            "Close": 213.10000610351562,
+            "Volume": 1075939,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-13 00:00:00+01:00": {
+            "Open": 212.35000610351562,
+            "High": 219.39999389648438,
+            "Low": 211.25,
+            "Close": 213.4499969482422,
+            "Volume": 1595981,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-14 00:00:00+01:00": {
+            "Open": 213.0500030517578,
+            "High": 214.1999969482422,
+            "Low": 206.10000610351562,
+            "Close": 206.10000610351562,
+            "Volume": 1783626,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-15 00:00:00+01:00": {
+            "Open": 206.39999389648438,
+            "High": 206.39999389648438,
+            "Low": 203.14999389648438,
+            "Close": 205.60000610351562,
+            "Volume": 1654581,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-16 00:00:00+01:00": {
+            "Open": 203.5,
+            "High": 204.1999969482422,
+            "Low": 199.5,
+            "Close": 202.14999389648438,
+            "Volume": 2129166,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-19 00:00:00+01:00": {
+            "Open": 197.94000244140625,
+            "High": 199.3800048828125,
+            "Low": 195.47999572753906,
+            "Close": 195.9600067138672,
+            "Volume": 1653220,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-20 00:00:00+01:00": {
+            "Open": 192.8800048828125,
+            "High": 194.5399932861328,
+            "Low": 190.10000610351562,
+            "Close": 194.0,
+            "Volume": 2510708,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-21 00:00:00+01:00": {
+            "Open": 193.74000549316406,
+            "High": 194.39999389648438,
+            "Low": 188.94000244140625,
+            "Close": 191.0399932861328,
+            "Volume": 2402017,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-22 00:00:00+01:00": {
+            "Open": 191.5,
+            "High": 192.22000122070312,
+            "Low": 187.32000732421875,
+            "Close": 189.83999633789062,
+            "Volume": 3492201,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-23 00:00:00+01:00": {
+            "Open": 194.3000030517578,
+            "High": 199.5,
+            "Low": 191.72000122070312,
+            "Close": 197.9199981689453,
+            "Volume": 2762755,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-26 00:00:00+01:00": {
+            "Open": 196.3000030517578,
+            "High": 201.10000610351562,
+            "Low": 194.83999633789062,
+            "Close": 200.9499969482422,
+            "Volume": 1659316,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-27 00:00:00+01:00": {
+            "Open": 201.60000610351562,
+            "High": 203.0,
+            "Low": 194.25999450683594,
+            "Close": 195.5399932861328,
+            "Volume": 1900259,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-28 00:00:00+01:00": {
+            "Open": 195.5,
+            "High": 198.3800048828125,
+            "Low": 194.33999633789062,
+            "Close": 196.13999938964844,
+            "Volume": 1635649,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-29 00:00:00+01:00": {
+            "Open": 179.0,
+            "High": 180.16000366210938,
+            "Low": 162.1199951171875,
+            "Close": 164.6199951171875,
+            "Volume": 15846791,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-01-30 00:00:00+01:00": {
+            "Open": 167.74000549316406,
+            "High": 172.60000610351562,
+            "Low": 166.0800018310547,
+            "Close": 170.55999755859375,
+            "Volume": 5332696,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-02 00:00:00+01:00": {
+            "Open": 171.3000030517578,
+            "High": 175.17999267578125,
+            "Low": 169.10000610351562,
+            "Close": 175.10000610351562,
+            "Volume": 2798987,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-03 00:00:00+01:00": {
+            "Open": 177.89999389648438,
+            "High": 178.72000122070312,
+            "Low": 165.6999969482422,
+            "Close": 167.0,
+            "Volume": 5539886,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-04 00:00:00+01:00": {
+            "Open": 166.0,
+            "High": 167.75999450683594,
+            "Low": 159.60000610351562,
+            "Close": 167.1999969482422,
+            "Volume": 6228386,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-05 00:00:00+01:00": {
+            "Open": 170.02000427246094,
+            "High": 173.74000549316406,
+            "Low": 168.02000427246094,
+            "Close": 170.47999572753906,
+            "Volume": 5467507,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-06 00:00:00+01:00": {
+            "Open": 168.0,
+            "High": 171.44000244140625,
+            "Low": 166.72000122070312,
+            "Close": 171.22000122070312,
+            "Volume": 3765742,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-09 00:00:00+01:00": {
+            "Open": 171.60000610351562,
+            "High": 175.3800048828125,
+            "Low": 171.60000610351562,
+            "Close": 174.9199981689453,
+            "Volume": 3621850,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-10 00:00:00+01:00": {
+            "Open": 176.3000030517578,
+            "High": 178.94000244140625,
+            "Low": 174.1999969482422,
+            "Close": 178.27999877929688,
+            "Volume": 3975433,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-11 00:00:00+01:00": {
+            "Open": 174.72000122070312,
+            "High": 176.4199981689453,
+            "Low": 169.0,
+            "Close": 169.0,
+            "Volume": 4581824,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-12 00:00:00+01:00": {
+            "Open": 170.1199951171875,
+            "High": 172.72000122070312,
+            "Low": 168.66000366210938,
+            "Close": 169.6999969482422,
+            "Volume": 3882942,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-13 00:00:00+01:00": {
+            "Open": 170.8000030517578,
+            "High": 174.33999633789062,
+            "Low": 169.39999389648438,
+            "Close": 171.72000122070312,
+            "Volume": 3903966,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-16 00:00:00+01:00": {
+            "Open": 174.8000030517578,
+            "High": 174.8000030517578,
+            "Low": 168.33999633789062,
+            "Close": 168.36000061035156,
+            "Volume": 2679506,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        },
+        "2026-02-17 00:00:00+01:00": {
+            "Open": 167.5,
+            "High": 172.13999938964844,
+            "Low": 166.3000030517578,
+            "Close": 169.63999938964844,
+            "Volume": 3611161,
+            "Dividends": 0.0,
+            "Stock Splits": 0.0
+        }
+    },
+    "quarterly_income_stmt": {
+        "Tax Effect Of Unusual Items": {
+            "2025-12-31": NaN,
+            "2025-09-30": 4554000.0,
+            "2025-06-30": -5418000.0,
+            "2025-03-31": 0.0,
+            "2024-12-31": -157189397.371998,
+            "2024-09-30": 17160000.0,
+            "2024-06-30": NaN
+        },
+        "Tax Rate For Calcs": {
+            "2025-12-31": NaN,
+            "2025-09-30": 0.253,
+            "2025-06-30": 0.301,
+            "2025-03-31": 0.272,
+            "2024-12-31": 0.267784,
+            "2024-09-30": 0.33,
+            "2024-06-30": NaN
+        },
+        "Normalized EBITDA": {
+            "2025-12-31": NaN,
+            "2025-09-30": 3357000000.0,
+            "2025-06-30": 3107000000.0,
+            "2025-03-31": 3097000000.0,
+            "2024-12-31": 3436000000.0,
+            "2024-09-30": 2657000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Unusual Items": {
+            "2025-12-31": NaN,
+            "2025-09-30": 18000000.0,
+            "2025-06-30": -18000000.0,
+            "2025-03-31": 0.0,
+            "2024-12-31": -587000000.0,
+            "2024-09-30": 52000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Unusual Items Excluding Goodwill": {
+            "2025-12-31": NaN,
+            "2025-09-30": 18000000.0,
+            "2025-06-30": -18000000.0,
+            "2025-03-31": 0.0,
+            "2024-12-31": -587000000.0,
+            "2024-09-30": 52000000.0,
+            "2024-06-30": NaN
+        },
+        "Net Income From Continuing Operation Net Minority Interest": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2004000000.0,
+            "2025-06-30": 1697000000.0,
+            "2025-03-31": 1780000000.0,
+            "2024-12-31": 1601000000.0,
+            "2024-09-30": 1463000000.0,
+            "2024-06-30": NaN
+        },
+        "Reconciled Depreciation": {
+            "2025-12-31": NaN,
+            "2025-09-30": 318000000.0,
+            "2025-06-30": 319000000.0,
+            "2025-03-31": 349000000.0,
+            "2024-12-31": 337000000.0,
+            "2024-09-30": 317000000.0,
+            "2024-06-30": NaN
+        },
+        "Reconciled Cost Of Revenue": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2405000000.0,
+            "2025-06-30": 2407000000.0,
+            "2025-03-31": 2406000000.0,
+            "2024-12-31": 2435000000.0,
+            "2024-09-30": 2258000000.0,
+            "2024-06-30": NaN
+        },
+        "EBITDA": {
+            "2025-12-31": NaN,
+            "2025-09-30": 3375000000.0,
+            "2025-06-30": 3089000000.0,
+            "2025-03-31": 3097000000.0,
+            "2024-12-31": 2849000000.0,
+            "2024-09-30": 2709000000.0,
+            "2024-06-30": NaN
+        },
+        "EBIT": {
+            "2025-12-31": NaN,
+            "2025-09-30": 3057000000.0,
+            "2025-06-30": 2770000000.0,
+            "2025-03-31": 2748000000.0,
+            "2024-12-31": 2512000000.0,
+            "2024-09-30": 2392000000.0,
+            "2024-06-30": NaN
+        },
+        "Net Interest Income": {
+            "2025-12-31": NaN,
+            "2025-09-30": 212000000.0,
+            "2025-06-30": 49000000.0,
+            "2025-03-31": 125000000.0,
+            "2024-12-31": 274000000.0,
+            "2024-09-30": -1000000.0,
+            "2024-06-30": NaN
+        },
+        "Interest Expense": {
+            "2025-12-31": NaN,
+            "2025-09-30": 312000000.0,
+            "2025-06-30": 268000000.0,
+            "2025-03-31": 280000000.0,
+            "2024-12-31": 305000000.0,
+            "2024-09-30": 241000000.0,
+            "2024-06-30": NaN
+        },
+        "Interest Income": {
+            "2025-12-31": NaN,
+            "2025-09-30": 524000000.0,
+            "2025-06-30": 317000000.0,
+            "2025-03-31": 405000000.0,
+            "2024-12-31": 579000000.0,
+            "2024-09-30": 240000000.0,
+            "2024-06-30": NaN
+        },
+        "Normalized Income": {
+            "2025-12-31": NaN,
+            "2025-09-30": 1990554000.0,
+            "2025-06-30": 1709582000.0,
+            "2025-03-31": 1780000000.0,
+            "2024-12-31": 2030810602.628002,
+            "2024-09-30": 1428160000.0,
+            "2024-06-30": NaN
+        },
+        "Net Income From Continuing And Discontinued Operation": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2004000000.0,
+            "2025-06-30": 1697000000.0,
+            "2025-03-31": 1780000000.0,
+            "2024-12-31": 1601000000.0,
+            "2024-09-30": 1463000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Expenses": {
+            "2025-12-31": NaN,
+            "2025-09-30": 6606000000.0,
+            "2025-06-30": 6553000000.0,
+            "2025-03-31": 6680000000.0,
+            "2024-12-31": 7038000000.0,
+            "2024-09-30": 6307000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Operating Income As Reported": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2487000000.0,
+            "2025-06-30": 2456000000.0,
+            "2025-03-31": 2333000000.0,
+            "2024-12-31": 2017000000.0,
+            "2024-09-30": 2214000000.0,
+            "2024-06-30": NaN
+        },
+        "Diluted Average Shares": {
+            "2025-12-31": 1172000000.0,
+            "2025-09-30": NaN,
+            "2025-06-30": 1175000000.0,
+            "2025-03-31": 1177000000.0,
+            "2024-12-31": 1176000000.0,
+            "2024-09-30": 1178000000.0,
+            "2024-06-30": NaN
+        },
+        "Basic Average Shares": {
+            "2025-12-31": 1166000000.0,
+            "2025-09-30": NaN,
+            "2025-06-30": 1166000000.0,
+            "2025-03-31": 1167000000.0,
+            "2024-12-31": 1165000000.0,
+            "2024-09-30": 1166000000.0,
+            "2024-06-30": NaN
+        },
+        "Diluted EPS": {
+            "2025-12-31": 1.57,
+            "2025-09-30": NaN,
+            "2025-06-30": 1.44,
+            "2025-03-31": 1.51,
+            "2024-12-31": 1.36,
+            "2024-09-30": 1.24,
+            "2024-06-30": NaN
+        },
+        "Basic EPS": {
+            "2025-12-31": 1.58,
+            "2025-09-30": NaN,
+            "2025-06-30": 1.45,
+            "2025-03-31": 1.52,
+            "2024-12-31": 1.37,
+            "2024-09-30": 1.25,
+            "2024-06-30": NaN
+        },
+        "Diluted NI Availto Com Stockholders": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2004000000.0,
+            "2025-06-30": 1697000000.0,
+            "2025-03-31": 1780000000.0,
+            "2024-12-31": 1601000000.0,
+            "2024-09-30": 1463000000.0,
+            "2024-06-30": NaN
+        },
+        "Net Income Common Stockholders": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2004000000.0,
+            "2025-06-30": 1697000000.0,
+            "2025-03-31": 1780000000.0,
+            "2024-12-31": 1601000000.0,
+            "2024-09-30": 1463000000.0,
+            "2024-06-30": NaN
+        },
+        "Net Income": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2004000000.0,
+            "2025-06-30": 1697000000.0,
+            "2025-03-31": 1780000000.0,
+            "2024-12-31": 1601000000.0,
+            "2024-09-30": 1463000000.0,
+            "2024-06-30": NaN
+        },
+        "Minority Interests": {
+            "2025-12-31": NaN,
+            "2025-09-30": -47000000.0,
+            "2025-06-30": -52000000.0,
+            "2025-03-31": -16000000.0,
+            "2024-12-31": -15000000.0,
+            "2024-09-30": 23000000.0,
+            "2024-06-30": NaN
+        },
+        "Net Income Including Noncontrolling Interests": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2051000000.0,
+            "2025-06-30": 1749000000.0,
+            "2025-03-31": 1796000000.0,
+            "2024-12-31": 1616000000.0,
+            "2024-09-30": 1441000000.0,
+            "2024-06-30": NaN
+        },
+        "Net Income Discontinuous Operations": {
+            "2025-12-31": NaN,
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 0.0,
+            "2024-09-30": 0.0,
+            "2024-06-30": 0.0
+        },
+        "Net Income Continuous Operations": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2051000000.0,
+            "2025-06-30": 1749000000.0,
+            "2025-03-31": 1796000000.0,
+            "2024-12-31": 1616000000.0,
+            "2024-09-30": 1441000000.0,
+            "2024-06-30": NaN
+        },
+        "Tax Provision": {
+            "2025-12-31": NaN,
+            "2025-09-30": 694000000.0,
+            "2025-06-30": 753000000.0,
+            "2025-03-31": 672000000.0,
+            "2024-12-31": 591000000.0,
+            "2024-09-30": 710000000.0,
+            "2024-06-30": NaN
+        },
+        "Pretax Income": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2745000000.0,
+            "2025-06-30": 2502000000.0,
+            "2025-03-31": 2468000000.0,
+            "2024-12-31": 2207000000.0,
+            "2024-09-30": 2151000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Income Expense": {
+            "2025-12-31": NaN,
+            "2025-09-30": 64000000.0,
+            "2025-06-30": -21000000.0,
+            "2025-03-31": 10000000.0,
+            "2024-12-31": -406000000.0,
+            "2024-09-30": -10000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Non Operating Income Expenses": {
+            "2025-12-31": NaN,
+            "2025-09-30": 46000000.0,
+            "2025-06-30": -3000000.0,
+            "2025-03-31": 10000000.0,
+            "2024-12-31": 181000000.0,
+            "2024-09-30": -62000000.0,
+            "2024-06-30": NaN
+        },
+        "Special Income Charges": {
+            "2025-12-31": NaN,
+            "2025-09-30": 18000000.0,
+            "2025-06-30": -18000000.0,
+            "2025-03-31": 0.0,
+            "2024-12-31": -341000000.0,
+            "2024-09-30": 52000000.0,
+            "2024-06-30": NaN
+        },
+        "Restructuring And Mergern Acquisition": {
+            "2025-12-31": NaN,
+            "2025-09-30": -18000000.0,
+            "2025-06-30": 18000000.0,
+            "2025-03-31": 0.0,
+            "2024-12-31": 323000000.0,
+            "2024-09-30": -52000000.0,
+            "2024-06-30": NaN
+        },
+        "Net Non Operating Interest Income Expense": {
+            "2025-12-31": NaN,
+            "2025-09-30": 212000000.0,
+            "2025-06-30": 49000000.0,
+            "2025-03-31": 125000000.0,
+            "2024-12-31": 274000000.0,
+            "2024-09-30": -1000000.0,
+            "2024-06-30": NaN
+        },
+        "Interest Expense Non Operating": {
+            "2025-12-31": NaN,
+            "2025-09-30": 312000000.0,
+            "2025-06-30": 268000000.0,
+            "2025-03-31": 280000000.0,
+            "2024-12-31": 305000000.0,
+            "2024-09-30": 241000000.0,
+            "2024-06-30": NaN
+        },
+        "Interest Income Non Operating": {
+            "2025-12-31": NaN,
+            "2025-09-30": 524000000.0,
+            "2025-06-30": 317000000.0,
+            "2025-03-31": 405000000.0,
+            "2024-12-31": 579000000.0,
+            "2024-09-30": 240000000.0,
+            "2024-06-30": NaN
+        },
+        "Operating Income": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2470000000.0,
+            "2025-06-30": 2474000000.0,
+            "2025-03-31": 2333000000.0,
+            "2024-12-31": 2339000000.0,
+            "2024-09-30": 2163000000.0,
+            "2024-06-30": NaN
+        },
+        "Operating Expense": {
+            "2025-12-31": NaN,
+            "2025-09-30": 4201000000.0,
+            "2025-06-30": 4146000000.0,
+            "2025-03-31": 4274000000.0,
+            "2024-12-31": 4603000000.0,
+            "2024-09-30": 4049000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Operating Expenses": {
+            "2025-12-31": NaN,
+            "2025-09-30": 8000000.0,
+            "2025-06-30": 11000000.0,
+            "2025-03-31": 8000000.0,
+            "2024-12-31": 54000000.0,
+            "2024-09-30": 22000000.0,
+            "2024-06-30": NaN
+        },
+        "Research And Development": {
+            "2025-12-31": NaN,
+            "2025-09-30": 1644000000.0,
+            "2025-06-30": 1618000000.0,
+            "2025-03-31": 1673000000.0,
+            "2024-12-31": 1675000000.0,
+            "2024-09-30": 1568000000.0,
+            "2024-06-30": NaN
+        },
+        "Selling General And Administration": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2549000000.0,
+            "2025-06-30": 2517000000.0,
+            "2025-03-31": 2593000000.0,
+            "2024-12-31": 2874000000.0,
+            "2024-09-30": 2459000000.0,
+            "2024-06-30": NaN
+        },
+        "Selling And Marketing Expense": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2185000000.0,
+            "2025-06-30": 2156000000.0,
+            "2025-03-31": 2235000000.0,
+            "2024-12-31": 2496000000.0,
+            "2024-09-30": 2098000000.0,
+            "2024-06-30": NaN
+        },
+        "General And Administrative Expense": {
+            "2025-12-31": NaN,
+            "2025-09-30": 364000000.0,
+            "2025-06-30": 361000000.0,
+            "2025-03-31": 358000000.0,
+            "2024-12-31": 378000000.0,
+            "2024-09-30": 361000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Gand A": {
+            "2025-12-31": NaN,
+            "2025-09-30": 364000000.0,
+            "2025-06-30": 361000000.0,
+            "2025-03-31": 358000000.0,
+            "2024-12-31": 378000000.0,
+            "2024-09-30": 361000000.0,
+            "2024-06-30": NaN
+        },
+        "Gross Profit": {
+            "2025-12-31": NaN,
+            "2025-09-30": 6671000000.0,
+            "2025-06-30": 6620000000.0,
+            "2025-03-31": 6607000000.0,
+            "2024-12-31": 6942000000.0,
+            "2024-09-30": 6212000000.0,
+            "2024-06-30": NaN
+        },
+        "Cost Of Revenue": {
+            "2025-12-31": NaN,
+            "2025-09-30": 2405000000.0,
+            "2025-06-30": 2407000000.0,
+            "2025-03-31": 2406000000.0,
+            "2024-12-31": 2435000000.0,
+            "2024-09-30": 2258000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Revenue": {
+            "2025-12-31": NaN,
+            "2025-09-30": 9076000000.0,
+            "2025-06-30": 9027000000.0,
+            "2025-03-31": 9013000000.0,
+            "2024-12-31": 9377000000.0,
+            "2024-09-30": 8470000000.0,
+            "2024-06-30": NaN
+        },
+        "Operating Revenue": {
+            "2025-12-31": NaN,
+            "2025-09-30": 9076000000.0,
+            "2025-06-30": 9027000000.0,
+            "2025-03-31": 9013000000.0,
+            "2024-12-31": 9377000000.0,
+            "2024-09-30": 8470000000.0,
+            "2024-06-30": NaN
+        }
+    },
+    "quarterly_balance_sheet": {
+        "Treasury Shares Number": {
+            "2025-09-30": NaN,
+            "2025-06-30": 63900000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 61914771.0,
+            "2024-09-30": NaN,
+            "2024-06-30": 62000000.0
+        },
+        "Ordinary Shares Number": {
+            "2025-09-30": 1164604232.0,
+            "2025-06-30": 1164604232.0,
+            "2025-03-31": 1166589461.0,
+            "2024-12-31": 1166589461.0,
+            "2024-09-30": 1166504232.0,
+            "2024-06-30": NaN
+        },
+        "Share Issued": {
+            "2025-09-30": 1164604232.0,
+            "2025-06-30": 1228504232.0,
+            "2025-03-31": 1166589461.0,
+            "2024-12-31": 1228504232.0,
+            "2024-09-30": 1166504232.0,
+            "2024-06-30": NaN
+        },
+        "Total Debt": {
+            "2025-09-30": 9121000000.0,
+            "2025-06-30": 8746000000.0,
+            "2025-03-31": 10107000000.0,
+            "2024-12-31": 10651000000.0,
+            "2024-09-30": 10903000000.0,
+            "2024-06-30": NaN
+        },
+        "Tangible Book Value": {
+            "2025-09-30": 11389000000.0,
+            "2025-06-30": 10172000000.0,
+            "2025-03-31": 12902000000.0,
+            "2024-12-31": 11587000000.0,
+            "2024-09-30": 9017000000.0,
+            "2024-06-30": NaN
+        },
+        "Invested Capital": {
+            "2025-09-30": 42807000000.0,
+            "2025-06-30": 48112000000.0,
+            "2025-03-31": 45713000000.0,
+            "2024-12-31": 54376000000.0,
+            "2024-09-30": 41212000000.0,
+            "2024-06-30": NaN
+        },
+        "Working Capital": {
+            "2025-09-30": 1796000000.0,
+            "2025-06-30": 588000000.0,
+            "2025-03-31": 3418000000.0,
+            "2024-12-31": 2322000000.0,
+            "2024-09-30": 1851000000.0,
+            "2024-06-30": NaN
+        },
+        "Net Tangible Assets": {
+            "2025-09-30": 11389000000.0,
+            "2025-06-30": 10172000000.0,
+            "2025-03-31": 12902000000.0,
+            "2024-12-31": 11587000000.0,
+            "2024-09-30": 9017000000.0,
+            "2024-06-30": NaN
+        },
+        "Capital Lease Obligations": {
+            "2025-09-30": NaN,
+            "2025-06-30": 1632000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 1715000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Common Stock Equity": {
+            "2025-09-30": 42807000000.0,
+            "2025-06-30": 40998000000.0,
+            "2025-03-31": 45713000000.0,
+            "2024-12-31": 45440000000.0,
+            "2024-09-30": 41212000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Capitalization": {
+            "2025-09-30": 42807000000.0,
+            "2025-06-30": 45258000000.0,
+            "2025-03-31": 45713000000.0,
+            "2024-12-31": 50740000000.0,
+            "2024-09-30": 41212000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Equity Gross Minority Interest": {
+            "2025-09-30": 43241000000.0,
+            "2025-06-30": 41399000000.0,
+            "2025-03-31": 46086000000.0,
+            "2024-12-31": 45808000000.0,
+            "2024-09-30": 41467000000.0,
+            "2024-06-30": NaN
+        },
+        "Minority Interest": {
+            "2025-09-30": 434000000.0,
+            "2025-06-30": 401000000.0,
+            "2025-03-31": 373000000.0,
+            "2024-12-31": 368000000.0,
+            "2024-09-30": 255000000.0,
+            "2024-06-30": NaN
+        },
+        "Stockholders Equity": {
+            "2025-09-30": 42807000000.0,
+            "2025-06-30": 40998000000.0,
+            "2025-03-31": 45713000000.0,
+            "2024-12-31": 45440000000.0,
+            "2024-09-30": 41212000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Equity Interest": {
+            "2025-09-30": 280000000.0,
+            "2025-06-30": 463000000.0,
+            "2025-03-31": 3132000000.0,
+            "2024-12-31": 4694000000.0,
+            "2024-09-30": 1932000000.0,
+            "2024-06-30": NaN
+        },
+        "Treasury Stock": {
+            "2025-09-30": 7163000000.0,
+            "2025-06-30": 7123000000.0,
+            "2025-03-31": 5902000000.0,
+            "2024-12-31": 5954000000.0,
+            "2024-09-30": 5793000000.0,
+            "2024-06-30": NaN
+        },
+        "Retained Earnings": {
+            "2025-09-30": 45671000000.0,
+            "2025-06-30": 43653000000.0,
+            "2025-03-31": 44692000000.0,
+            "2024-12-31": 42907000000.0,
+            "2024-09-30": 41424000000.0,
+            "2024-06-30": NaN
+        },
+        "Additional Paid In Capital": {
+            "2025-09-30": 2790000000.0,
+            "2025-06-30": 2776000000.0,
+            "2025-03-31": 2562000000.0,
+            "2024-12-31": 2564000000.0,
+            "2024-09-30": 2420000000.0,
+            "2024-06-30": NaN
+        },
+        "Capital Stock": {
+            "2025-09-30": 1229000000.0,
+            "2025-06-30": 1229000000.0,
+            "2025-03-31": 1229000000.0,
+            "2024-12-31": 1229000000.0,
+            "2024-09-30": 1229000000.0,
+            "2024-06-30": NaN
+        },
+        "Common Stock": {
+            "2025-09-30": 1229000000.0,
+            "2025-06-30": 1229000000.0,
+            "2025-03-31": 1229000000.0,
+            "2024-12-31": 1229000000.0,
+            "2024-09-30": 1229000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Liabilities Net Minority Interest": {
+            "2025-09-30": 25155000000.0,
+            "2025-06-30": 27000000000.0,
+            "2025-03-31": 29543000000.0,
+            "2024-12-31": 28314000000.0,
+            "2024-09-30": 28181000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Non Current Liabilities Net Minority Interest": {
+            "2025-09-30": 8044000000.0,
+            "2025-06-30": 7950000000.0,
+            "2025-03-31": 8993000000.0,
+            "2024-12-31": 9235000000.0,
+            "2024-09-30": 9526000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Non Current Liabilities": {
+            "2025-09-30": 519000000.0,
+            "2025-06-30": 940000000.0,
+            "2025-03-31": 852000000.0,
+            "2024-12-31": 450000000.0,
+            "2024-09-30": 799000000.0,
+            "2024-06-30": NaN
+        },
+        "Employee Benefits": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 749000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Tradeand Other Payables Non Current": {
+            "2025-09-30": 557000000.0,
+            "2025-06-30": 476000000.0,
+            "2025-03-31": 556000000.0,
+            "2024-12-31": 519000000.0,
+            "2024-09-30": 861000000.0,
+            "2024-06-30": NaN
+        },
+        "Non Current Deferred Liabilities": {
+            "2025-09-30": 332000000.0,
+            "2025-06-30": 431000000.0,
+            "2025-03-31": 408000000.0,
+            "2024-12-31": 303000000.0,
+            "2024-09-30": 385000000.0,
+            "2024-06-30": NaN
+        },
+        "Non Current Deferred Revenue": {
+            "2025-09-30": 145000000.0,
+            "2025-06-30": 139000000.0,
+            "2025-03-31": 99000000.0,
+            "2024-12-31": 88000000.0,
+            "2024-09-30": 67000000.0,
+            "2024-06-30": NaN
+        },
+        "Non Current Deferred Taxes Liabilities": {
+            "2025-09-30": 187000000.0,
+            "2025-06-30": 292000000.0,
+            "2025-03-31": 309000000.0,
+            "2024-12-31": 215000000.0,
+            "2024-09-30": 318000000.0,
+            "2024-06-30": NaN
+        },
+        "Long Term Debt And Capital Lease Obligation": {
+            "2025-09-30": 6089000000.0,
+            "2025-06-30": 5635000000.0,
+            "2025-03-31": 6701000000.0,
+            "2024-12-31": 6720000000.0,
+            "2024-09-30": 7039000000.0,
+            "2024-06-30": NaN
+        },
+        "Long Term Capital Lease Obligation": {
+            "2025-09-30": NaN,
+            "2025-06-30": 1375000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 1420000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Long Term Debt": {
+            "2025-09-30": NaN,
+            "2025-06-30": 4260000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 5300000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Long Term Provisions": {
+            "2025-09-30": 547000000.0,
+            "2025-06-30": 468000000.0,
+            "2025-03-31": 476000000.0,
+            "2024-12-31": 494000000.0,
+            "2024-09-30": 442000000.0,
+            "2024-06-30": NaN
+        },
+        "Current Liabilities": {
+            "2025-09-30": 17111000000.0,
+            "2025-06-30": 19050000000.0,
+            "2025-03-31": 20550000000.0,
+            "2024-12-31": 19079000000.0,
+            "2024-09-30": 18655000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Current Liabilities": {
+            "2025-09-30": 4152000000.0,
+            "2025-06-30": 4149000000.0,
+            "2025-03-31": 4292000000.0,
+            "2024-12-31": 359000000.0,
+            "2024-09-30": 4219000000.0,
+            "2024-06-30": NaN
+        },
+        "Current Deferred Liabilities": {
+            "2025-09-30": 6749000000.0,
+            "2025-06-30": 8395000000.0,
+            "2025-03-31": 9211000000.0,
+            "2024-12-31": 5978000000.0,
+            "2024-09-30": 5989000000.0,
+            "2024-06-30": NaN
+        },
+        "Current Deferred Revenue": {
+            "2025-09-30": 6749000000.0,
+            "2025-06-30": 8395000000.0,
+            "2025-03-31": 9211000000.0,
+            "2024-12-31": 5978000000.0,
+            "2024-09-30": 5989000000.0,
+            "2024-06-30": NaN
+        },
+        "Current Debt And Capital Lease Obligation": {
+            "2025-09-30": 3032000000.0,
+            "2025-06-30": 3111000000.0,
+            "2025-03-31": 3406000000.0,
+            "2024-12-31": 3931000000.0,
+            "2024-09-30": 3864000000.0,
+            "2024-06-30": NaN
+        },
+        "Current Capital Lease Obligation": {
+            "2025-09-30": NaN,
+            "2025-06-30": 257000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 295000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Current Debt": {
+            "2025-09-30": NaN,
+            "2025-06-30": 2854000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 3636000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Other Current Borrowings": {
+            "2025-09-30": NaN,
+            "2025-06-30": 2356000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 3138000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Commercial Paper": {
+            "2025-09-30": NaN,
+            "2025-06-30": 498000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 498000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Pensionand Other Post Retirement Benefit Plans Current": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 4511000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Current Provisions": {
+            "2025-09-30": 170000000.0,
+            "2025-06-30": 220000000.0,
+            "2025-03-31": 502000000.0,
+            "2024-12-31": 716000000.0,
+            "2024-09-30": 2149000000.0,
+            "2024-06-30": NaN
+        },
+        "Payables And Accrued Expenses": {
+            "2025-09-30": 3008000000.0,
+            "2025-06-30": 3175000000.0,
+            "2025-03-31": 3139000000.0,
+            "2024-12-31": 3584000000.0,
+            "2024-09-30": 2434000000.0,
+            "2024-06-30": NaN
+        },
+        "Payables": {
+            "2025-09-30": 3008000000.0,
+            "2025-06-30": 3175000000.0,
+            "2025-03-31": 3139000000.0,
+            "2024-12-31": 3584000000.0,
+            "2024-09-30": 2434000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Tax Payable": {
+            "2025-09-30": 934000000.0,
+            "2025-06-30": 965000000.0,
+            "2025-03-31": 929000000.0,
+            "2024-12-31": 1594000000.0,
+            "2024-09-30": 502000000.0,
+            "2024-06-30": NaN
+        },
+        "Accounts Payable": {
+            "2025-09-30": 2074000000.0,
+            "2025-06-30": 2210000000.0,
+            "2025-03-31": 2210000000.0,
+            "2024-12-31": 1990000000.0,
+            "2024-09-30": 1932000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Assets": {
+            "2025-09-30": 68396000000.0,
+            "2025-06-30": 68399000000.0,
+            "2025-03-31": 75629000000.0,
+            "2024-12-31": 74122000000.0,
+            "2024-09-30": 69648000000.0,
+            "2024-06-30": NaN
+        },
+        "Total Non Current Assets": {
+            "2025-09-30": 49490000000.0,
+            "2025-06-30": 48761000000.0,
+            "2025-03-31": 51661000000.0,
+            "2024-12-31": 52721000000.0,
+            "2024-09-30": 49142000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Non Current Assets": {
+            "2025-09-30": 3965000000.0,
+            "2025-06-30": 3839000000.0,
+            "2025-03-31": 3932000000.0,
+            "2024-12-31": 1000000.0,
+            "2024-09-30": 3449000000.0,
+            "2024-06-30": NaN
+        },
+        "Non Current Prepaid Assets": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 430000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Non Current Deferred Assets": {
+            "2025-09-30": 2210000000.0,
+            "2025-06-30": 2503000000.0,
+            "2025-03-31": 2873000000.0,
+            "2024-12-31": 6168000000.0,
+            "2024-09-30": 2639000000.0,
+            "2024-06-30": NaN
+        },
+        "Non Current Deferred Taxes Assets": {
+            "2025-09-30": 2210000000.0,
+            "2025-06-30": 2503000000.0,
+            "2025-03-31": 2873000000.0,
+            "2024-12-31": 2676000000.0,
+            "2024-09-30": 2639000000.0,
+            "2024-06-30": NaN
+        },
+        "Non Current Accounts Receivable": {
+            "2025-09-30": 443000000.0,
+            "2025-06-30": 447000000.0,
+            "2025-03-31": 505000000.0,
+            "2024-12-31": 635000000.0,
+            "2024-09-30": 475000000.0,
+            "2024-06-30": NaN
+        },
+        "Financial Assets": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 593000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Investments And Advances": {
+            "2025-09-30": 7058000000.0,
+            "2025-06-30": 6807000000.0,
+            "2025-03-31": 7079000000.0,
+            "2024-12-31": 6548000000.0,
+            "2024-09-30": 6145000000.0,
+            "2024-06-30": NaN
+        },
+        "Investmentin Financial Assets": {
+            "2025-09-30": 7058000000.0,
+            "2025-06-30": 6807000000.0,
+            "2025-03-31": 7079000000.0,
+            "2024-12-31": 6404000000.0,
+            "2024-09-30": 6145000000.0,
+            "2024-06-30": NaN
+        },
+        "Available For Sale Securities": {
+            "2025-09-30": 7058000000.0,
+            "2025-06-30": 6807000000.0,
+            "2025-03-31": 7079000000.0,
+            "2024-12-31": 6404000000.0,
+            "2024-09-30": 6145000000.0,
+            "2024-06-30": NaN
+        },
+        "Long Term Equity Investment": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 144000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Investmentsin Associatesat Cost": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 144000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Goodwill And Other Intangible Assets": {
+            "2025-09-30": 31418000000.0,
+            "2025-06-30": 30826000000.0,
+            "2025-03-31": 32811000000.0,
+            "2024-12-31": 33853000000.0,
+            "2024-09-30": 32195000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Intangible Assets": {
+            "2025-09-30": 2390000000.0,
+            "2025-06-30": 2289000000.0,
+            "2025-03-31": 2507000000.0,
+            "2024-12-31": 2706000000.0,
+            "2024-09-30": 2708000000.0,
+            "2024-06-30": NaN
+        },
+        "Goodwill": {
+            "2025-09-30": 29028000000.0,
+            "2025-06-30": 28537000000.0,
+            "2025-03-31": 30304000000.0,
+            "2024-12-31": 31147000000.0,
+            "2024-09-30": 29487000000.0,
+            "2024-06-30": NaN
+        },
+        "Net PPE": {
+            "2025-09-30": 4396000000.0,
+            "2025-06-30": 4339000000.0,
+            "2025-03-31": 4461000000.0,
+            "2024-12-31": 4493000000.0,
+            "2024-09-30": 4239000000.0,
+            "2024-06-30": NaN
+        },
+        "Gross PPE": {
+            "2025-09-30": NaN,
+            "2025-06-30": 4339000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 4493000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Leases": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 1391000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Construction In Progress": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 156000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Other Properties": {
+            "2025-09-30": NaN,
+            "2025-06-30": 4339000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 66000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Machinery Furniture Equipment": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 1379000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Land And Improvements": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 1501000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Properties": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 0.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Current Assets": {
+            "2025-09-30": 18907000000.0,
+            "2025-06-30": 19638000000.0,
+            "2025-03-31": 23968000000.0,
+            "2024-12-31": 21401000000.0,
+            "2024-09-30": 20506000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Current Assets": {
+            "2025-09-30": 2777000000.0,
+            "2025-06-30": 2651000000.0,
+            "2025-03-31": 2478000000.0,
+            "2024-12-31": 88000000.0,
+            "2024-09-30": 2436000000.0,
+            "2024-06-30": NaN
+        },
+        "Current Deferred Assets": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 1350000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Prepaid Assets": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 988000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Receivables": {
+            "2025-09-30": 6196000000.0,
+            "2025-06-30": 6809000000.0,
+            "2025-03-31": 8507000000.0,
+            "2024-12-31": 7737000000.0,
+            "2024-09-30": 5998000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Receivables": {
+            "2025-09-30": NaN,
+            "2025-06-30": 514000000.0,
+            "2025-03-31": NaN,
+            "2024-12-31": 543000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Taxes Receivable": {
+            "2025-09-30": 418000000.0,
+            "2025-06-30": 520000000.0,
+            "2025-03-31": 526000000.0,
+            "2024-12-31": 963000000.0,
+            "2024-09-30": 517000000.0,
+            "2024-06-30": NaN
+        },
+        "Accounts Receivable": {
+            "2025-09-30": 5778000000.0,
+            "2025-06-30": 5775000000.0,
+            "2025-03-31": 7981000000.0,
+            "2024-12-31": 6231000000.0,
+            "2024-09-30": 5481000000.0,
+            "2024-06-30": NaN
+        },
+        "Cash Cash Equivalents And Short Term Investments": {
+            "2025-09-30": 9934000000.0,
+            "2025-06-30": 10178000000.0,
+            "2025-03-31": 12983000000.0,
+            "2024-12-31": 11238000000.0,
+            "2024-09-30": 12072000000.0,
+            "2024-06-30": NaN
+        },
+        "Other Short Term Investments": {
+            "2025-09-30": 1380000000.0,
+            "2025-06-30": 2236000000.0,
+            "2025-03-31": 1638000000.0,
+            "2024-12-31": 1629000000.0,
+            "2024-09-30": 2067000000.0,
+            "2024-06-30": NaN
+        },
+        "Cash And Cash Equivalents": {
+            "2025-09-30": 8554000000.0,
+            "2025-06-30": 7942000000.0,
+            "2025-03-31": 11345000000.0,
+            "2024-12-31": 9609000000.0,
+            "2024-09-30": 10005000000.0,
+            "2024-06-30": NaN
+        },
+        "Cash Equivalents": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 5647000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        },
+        "Cash Financial": {
+            "2025-09-30": NaN,
+            "2025-06-30": NaN,
+            "2025-03-31": NaN,
+            "2024-12-31": 3962000000.0,
+            "2024-09-30": NaN,
+            "2024-06-30": NaN
+        }
+    }
+}

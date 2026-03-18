@@ -14,6 +14,8 @@ from services.rate_limiter import tsRateLimiter
 from services.queue import tsQueue, QueuedRequest
 from services.full_ticker_data import FullTickerData
 from services.calculations import try_calculate_field
+from services.request_bucket import RequestBucket
+from services.batch_processor import BatchProcessor
 
 import yfinance as yf
 
@@ -42,6 +44,9 @@ ALL_SECTIONS: set[str] = {
     "quarterly_income_stmt",
     "quarterly_balance_sheet",
 }
+
+BUCKET_WINDOW_SECONDS: float = 3.0
+MAX_BUCKET_SIZE: int = 50
 
 ##############################################################################
 #                             PRIVATE FUNCTIONS                              #
@@ -176,6 +181,12 @@ class JobDispatcher:
     _worker_thread: Optional[tg.Thread]
     _shutdown_event: tg.Event
 
+    # Bucket-related attributes
+    _bucket_lock: tg.Lock
+    _current_bucket: Optional[RequestBucket]
+    _bucket_timer: Optional[tg.Timer]
+    _batch_processor: BatchProcessor
+
     def __new__(cls) -> "JobDispatcher":
         """Singleton pattern implementation."""
         if cls._instance is None:
@@ -203,6 +214,12 @@ class JobDispatcher:
         self._rate_limit_checker, self._rate_limit_reset = check_rate_limit_exceptions(
             self.rate_limiter
         )
+
+        self._bucket_lock = tg.Lock()
+        self._current_bucket: Optional[RequestBucket] = None
+        self._bucket_timer: Optional[tg.Timer] = None
+        self._batch_processor = BatchProcessor(self.cache, self.rate_limiter)
+
         self._initialized = True
 
     def _process_cache_ready_job(self, job: QueuedRequest) -> None:
@@ -307,11 +324,10 @@ class JobDispatcher:
 
     def _fetch_sections(self, ticker: str, sections: set[str]) -> FullTickerData:
         """
-        Internal method to fetch specific sections via queue.
+        Fetch specific sections via bucket-based batching.
         """
         cached_data: Optional[FullTickerData] = self.cache.get_ticker(ticker)
 
-        # Determine what's missing
         if cached_data:
             cached_sections = {
                 k
@@ -319,25 +335,63 @@ class JobDispatcher:
                 if v is not None and k != "ticker"
             }
             missing_sections = sections - cached_sections
+            app_logger.debug(
+                f"Cache hit for {ticker}: have {cached_sections}, need {sections}, "
+                f"missing {missing_sections}"
+            )
         else:
             missing_sections = sections
+            app_logger.debug(f"Cache miss for {ticker}, need {sections}")
 
         if cached_data and not missing_sections:
+            app_logger.debug(f"Returning cached data for {ticker}")
             return cached_data
 
-        # Queue request for missing sections
-        request = self.queue.add_job(ticker, sections=missing_sections)
+        holder = QueuedRequest(
+            ticker=ticker,
+            sections=sections,
+            timestamp=datetime.now(),
+            result_event=tg.Event(),
+        )
 
-        if request.wait_for_result(timeout=MAX_SECONDS_PER_REQUEST):
-            if request.error:
-                raise request.error
-            if request.result is None:
-                raise Exception(
-                    f"⁉️ Unknown error fetching {missing_sections} for {ticker}"
-                )
-            return request.result
+        self._add_to_bucket(holder, missing_sections)
+
+        if holder.wait_for_result(timeout=MAX_SECONDS_PER_REQUEST):
+            if holder.error:
+                raise holder.error
+            if holder.result is None:
+                raise Exception(f"Unknown error fetching {sections} for {ticker}")
+            return holder.result
         else:
-            raise TimeoutError(f"Timeout fetching {missing_sections} for {ticker}")
+            raise TimeoutError(f"Timeout fetching {sections} for {ticker}")
+
+    def _add_to_bucket(self, holder: QueuedRequest, sections: set[str]) -> None:
+        """Add request to current bucket."""
+        with self._bucket_lock:
+            if self._current_bucket is None:
+                app_logger.info("🆕 Creating new request bucket")
+                self._current_bucket = RequestBucket()
+                self._bucket_timer = tg.Timer(BUCKET_WINDOW_SECONDS, self._flush_bucket)
+                self._bucket_timer.start()
+
+            self._current_bucket.add_request(holder.ticker, sections, holder)
+
+            if self._current_bucket.size() >= MAX_BUCKET_SIZE:
+                app_logger.debug(f"Bucket full ({MAX_BUCKET_SIZE}), flushing early")
+                self._flush_bucket()
+
+    def _flush_bucket(self) -> None:
+        """Flush current bucket to batch processor."""
+        with self._bucket_lock:
+            if self._bucket_timer:
+                self._bucket_timer.cancel()
+                self._bucket_timer = None
+
+            bucket = self._current_bucket
+            self._current_bucket = None
+
+        if bucket and bucket.size() > 0:
+            self._batch_processor.process_bucket(bucket)
 
     def start_worker(self) -> None:
         """Start the background worker thread (Workflow 2)."""
