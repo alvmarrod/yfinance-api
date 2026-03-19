@@ -14,10 +14,7 @@ from services.rate_limiter import tsRateLimiter
 from services.queue import tsQueue, QueuedRequest
 from services.full_ticker_data import FullTickerData
 from services.calculations import try_calculate_field
-from services.request_bucket import RequestBucket
-from services.batch_processor import BatchProcessor
-
-import yfinance as yf
+from services.pending_ticker import PendingTicker
 
 app_logger = logging.getLogger("yfinance_api")
 
@@ -25,10 +22,8 @@ app_logger = logging.getLogger("yfinance_api")
 #                                CONSTANTS                                   #
 ##############################################################################
 
-# Considering delays and retries
 MAX_SECONDS_PER_REQUEST: float = 300
 
-# We don't sleep too much, to avoid reaching MAX_SECONDS_PER_REQUEST
 SECONDS_SLEEP_WHEN_RATE_HIT: float = 1
 
 MAX_RETRIES_PER_REQUEST: int = 3
@@ -44,9 +39,6 @@ ALL_SECTIONS: set[str] = {
     "quarterly_income_stmt",
     "quarterly_balance_sheet",
 }
-
-BUCKET_WINDOW_SECONDS: float = 3.0
-MAX_BUCKET_SIZE: int = 100
 
 ##############################################################################
 #                             PRIVATE FUNCTIONS                              #
@@ -97,62 +89,6 @@ def check_rate_limit_exceptions(
     return check_rate_limit_exception, reset_consecutive_errors
 
 
-def _fetch_section(yf_ticker: yf.Ticker, section: str) -> Any:
-    """Fetch a single section from yfinance ticker."""
-    section_map = {
-        "info": lambda: yf_ticker.info,
-        "financials": lambda: yf_ticker.financials,
-        "balance_sheet": lambda: yf_ticker.balance_sheet,
-        "cashflow": lambda: yf_ticker.cashflow,
-        "history": lambda: yf_ticker.history(period="1y"),
-        "dividends": lambda: yf_ticker.dividends,
-        "quarterly_income_stmt": lambda: yf_ticker.quarterly_income_stmt,
-        "quarterly_balance_sheet": lambda: yf_ticker.quarterly_balance_sheet,
-    }
-
-    fetcher = section_map.get(section)
-    if not fetcher:
-        app_logger.warning(f"Unknown section: {section}")
-        return None
-
-    return fetcher()
-
-
-def _fetch_specific_sections(
-    ticker: str,
-    sections: set[str],
-    rate_limiter: tsRateLimiter,
-    check_rate_limit_exception: Callable,
-    reset_consecutive_errors: Callable,
-) -> FullTickerData:
-    """
-    Fetches only specific sections from yfinance.
-    """
-    app_logger.debug(f"Fetching sections for {ticker}: {sections}")
-
-    yf_ticker = yf.Ticker(ticker)
-    result = FullTickerData(ticker=ticker)
-
-    for section in sections:
-        while not rate_limiter.ratio_allows():
-            app_logger.info(
-                f"⏳ Rate limit hit, sleeping before fetching {section} for {ticker}"
-            )
-            time.sleep(SECONDS_SLEEP_WHEN_RATE_HIT)
-
-        try:
-            app_logger.debug(f"🌐 Fetching {section} for {ticker}")
-            data = _fetch_section(yf_ticker, section)
-            setattr(result, section, data)
-            reset_consecutive_errors()
-
-        except Exception as e:
-            app_logger.warning(f"❌ Failed to fetch {section} for {ticker}: {e}")
-            check_rate_limit_exception(e)
-
-    return result
-
-
 ##############################################################################
 #                              JOB DISPATCHER                               #
 ##############################################################################
@@ -161,31 +97,25 @@ def _fetch_specific_sections(
 class JobDispatcher:
     """
     Coordinates cache, queue, and rate limiter to implement the job dispatcher workflows.
-    This is a singleton that manages both the request receiver (workflow 1) and worker (workflow 2).
+    This is a singleton that manages both the request receiver and PendingTicker processing.
     """
 
-    # Singleton instance control
     _instance: Optional["JobDispatcher"] = None
     _lock: tg.Lock = tg.Lock()
 
-    # Instance attributes
     cache: tsCache
     queue: tsQueue
     rate_limiter: tsRateLimiter
 
-    # Rate limit exception handlers
     _rate_limit_checker: Callable
     _rate_limit_reset: Callable
 
-    # Worker thread control
     _worker_thread: Optional[tg.Thread]
     _shutdown_event: tg.Event
 
-    # Bucket-related attributes
-    _bucket_lock: tg.Lock
-    _current_bucket: Optional[RequestBucket]
-    _bucket_timer: Optional[tg.Timer]
-    _batch_processor: BatchProcessor
+    _pending_tickers: dict[str, PendingTicker]
+    _pending_lock: tg.Lock
+    _fetching_lock: tg.Lock
 
     def __new__(cls) -> "JobDispatcher":
         """Singleton pattern implementation."""
@@ -196,18 +126,15 @@ class JobDispatcher:
         return cls._instance
 
     def __init__(self):
-        # Only initialize once
         if hasattr(self, "_initialized"):
             return
 
         app_logger.info("🆕 Initializing Job Dispatcher")
 
-        # Initialize components
         self.cache = tsCache()
         self.queue = tsQueue()
         self.rate_limiter = tsRateLimiter()
 
-        # Worker thread control
         self._worker_thread: Optional[tg.Thread] = None
         self._shutdown_event = tg.Event()
 
@@ -215,10 +142,9 @@ class JobDispatcher:
             self.rate_limiter
         )
 
-        self._bucket_lock = tg.Lock()
-        self._current_bucket: Optional[RequestBucket] = None
-        self._bucket_timer: Optional[tg.Timer] = None
-        self._batch_processor = BatchProcessor(self.cache, self.rate_limiter)
+        self._pending_tickers = {}
+        self._pending_lock = tg.Lock()
+        self._fetching_lock = tg.Lock()
 
         self._initialized = True
 
@@ -230,7 +156,6 @@ class JobDispatcher:
                 job.set_result(cached_data)
                 app_logger.debug(f"🚀 Fast-serving cached job for {job.ticker}")
             else:
-                # Cache state changed, put back in queue
                 self.queue.add_job(job.ticker, job.sections)
                 app_logger.debug(f"🔄 Cache miss for {job.ticker} - re-queued")
                 job.set_error(
@@ -256,12 +181,14 @@ class JobDispatcher:
 
             try:
                 app_logger.debug(f"🌐 Making API call for: {job.ticker}")
-                result = _fetch_specific_sections(
+
+                from services.pending_ticker import fetch_sections_for_ticker
+
+                result = fetch_sections_for_ticker(
                     job.ticker,
                     job.sections,
                     self.rate_limiter,
-                    self._rate_limit_checker,
-                    self._rate_limit_reset,
+                    self._fetching_lock,
                 )
 
                 self.cache.add_ticker(job.ticker, result)
@@ -283,25 +210,19 @@ class JobDispatcher:
 
     def _worker_loop(self) -> None:
         """
-        Workflow 2: Background worker thread.
-
-        Continuously processes queued requests. Prioritizes cache-ready jobs
-        while respecting rate limits for API calls.
+        Background worker thread for queue-based processing.
         """
         app_logger.info("👷 Worker thread started")
 
         while not self._shutdown_event.is_set():
-            # Add small sleep to prevent tight loop even with cache hits
             time.sleep(0.01)
 
             try:
-                # Prioritize cache-ready jobs
                 cache_ready_job = self.queue.get_cache_ready_job(self.cache)
                 if cache_ready_job:
                     self._process_cache_ready_job(cache_ready_job)
                     continue
 
-                # Get next job from queue
                 job: Optional[QueuedRequest] = self.queue.get_job()
                 if not job:
                     time.sleep(1)
@@ -324,7 +245,7 @@ class JobDispatcher:
 
     def _fetch_sections(self, ticker: str, sections: set[str]) -> FullTickerData:
         """
-        Fetch specific sections via bucket-based batching.
+        Fetch specific sections via PendingTicker windowing.
         """
         cached_data: Optional[FullTickerData] = self.cache.get_ticker(ticker)
 
@@ -354,47 +275,43 @@ class JobDispatcher:
             result_event=tg.Event(),
         )
 
-        self._add_to_bucket(holder, missing_sections)
+        with self._pending_lock:
+            if ticker in self._pending_tickers:
+                self._pending_tickers[ticker].add_request(missing_sections, holder)
+                app_logger.debug(
+                    f"Added request to existing PendingTicker for {ticker}"
+                )
+            else:
+                pt = PendingTicker(
+                    ticker=ticker,
+                    cache=self.cache,
+                    rate_limiter=self.rate_limiter,
+                    fetching_lock=self._fetching_lock,
+                )
+                pt.add_request(missing_sections, holder)
+                self._pending_tickers[ticker] = pt
+                app_logger.debug(f"Created new PendingTicker for {ticker}")
 
         if holder.wait_for_result(timeout=MAX_SECONDS_PER_REQUEST):
             if holder.error:
                 raise holder.error
             if holder.result is None:
                 raise Exception(f"Unknown error fetching {sections} for {ticker}")
+
+            with self._pending_lock:
+                if ticker in self._pending_tickers:
+                    del self._pending_tickers[ticker]
+
             return holder.result
         else:
+            with self._pending_lock:
+                if ticker in self._pending_tickers:
+                    del self._pending_tickers[ticker]
+
             raise TimeoutError(f"Timeout fetching {sections} for {ticker}")
 
-    def _add_to_bucket(self, holder: QueuedRequest, sections: set[str]) -> None:
-        """Add request to current bucket."""
-        with self._bucket_lock:
-            if self._current_bucket is None:
-                app_logger.info("🆕 Creating new request bucket")
-                self._current_bucket = RequestBucket()
-                self._bucket_timer = tg.Timer(BUCKET_WINDOW_SECONDS, self._flush_bucket)
-                self._bucket_timer.start()
-
-            self._current_bucket.add_request(holder.ticker, sections, holder)
-
-            if self._current_bucket.size() >= MAX_BUCKET_SIZE:
-                app_logger.debug(f"Bucket full ({MAX_BUCKET_SIZE}), flushing early")
-                self._flush_bucket()
-
-    def _flush_bucket(self) -> None:
-        """Flush current bucket to batch processor."""
-        with self._bucket_lock:
-            if self._bucket_timer:
-                self._bucket_timer.cancel()
-                self._bucket_timer = None
-
-            bucket = self._current_bucket
-            self._current_bucket = None
-
-        if bucket and bucket.size() > 0:
-            self._batch_processor.process_bucket(bucket)
-
     def start_worker(self) -> None:
-        """Start the background worker thread (Workflow 2)."""
+        """Start the background worker thread."""
         if self._worker_thread is None or not self._worker_thread.is_alive():
             app_logger.info("🚀 Starting worker thread")
             self._shutdown_event.clear()
@@ -428,10 +345,8 @@ class JobDispatcher:
                 return value
 
             if missing_sections is None:
-                # Unrecoverable error
                 raise Exception(f"Failed to calculate {field_name}: unknown error")
 
-            # Fetch missing data and merge
             app_logger.debug(f"🔍 Field {field_name} needs: {missing_sections}")
             updated_data = self._fetch_sections(ticker, missing_sections)
             cached_data.update_with_data(updated_data)
@@ -442,21 +357,15 @@ class JobDispatcher:
         )
 
     def get_basic_ticker_data(self, ticker: str) -> FullTickerData:
-        """
-        Ensure basic info is available.
-        """
+        """Ensure basic info is available."""
         return self._fetch_sections(ticker, {"info"})
 
     def get_complete_ticker_data(self, ticker: str) -> FullTickerData:
-        """
-        Fetch all available data sections.
-        """
+        """Fetch all available data sections."""
         return self._fetch_sections(ticker, ALL_SECTIONS)
 
     def get_specific_sections(self, ticker: str, sections: set[str]) -> FullTickerData:
-        """
-        Fetch specific sections only.
-        """
+        """Fetch specific sections only."""
         return self._fetch_sections(ticker, sections)
 
 
@@ -464,7 +373,6 @@ class JobDispatcher:
 #                              GLOBAL INSTANCE                               #
 ##############################################################################
 
-# Global singleton instance
 _dispatcher: Optional[JobDispatcher] = None
 
 

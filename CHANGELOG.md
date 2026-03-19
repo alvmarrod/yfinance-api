@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.11.0] - 2026-03-19
+
+### Added
+
+- **PendingTicker Architecture**: Refactored request batching to per-ticker windowing
+  - Each ticker gets its own `PendingTicker` instance with independent timer
+  - Timer restarts when new sections are requested (not duplicates)
+  - Serial fetch: one ticker at a time to avoid rate limit issues
+  - Window duration: 20 seconds per ticker
+
+### Changed
+
+- Renamed from "bucket" to "pending_ticker" terminology throughout
+- Removed `MAX_BUCKET_SIZE` constant (no longer needed)
+- Increased `PENDING_TICKER_WINDOW_SECONDS` from 3s to 20s
+- Removed parallel batch processing in favor of serial per-ticker fetch
+
+### Files Added
+
+- `services/pending_ticker.py`: PendingTicker and TickerWaitingRequest classes
+
+### Files Removed
+
+- `services/request_bucket.py`: Replaced by pending_ticker
+- `services/batch_processor.py`: No longer needed
+
 ## [0.10.0] - 2026-03-18
 
 ### Added
