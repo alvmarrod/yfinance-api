@@ -325,6 +325,31 @@ class JobDispatcher:
             self._shutdown_event.set()
             self._worker_thread.join(timeout=5.0)
 
+    def warmup_ticker(self, ticker: str, sections: set[str]) -> None:
+        """Create a PendingTicker for warm-up (called at startup for expired cache entries)."""
+        with self._pending_lock:
+            if ticker in self._pending_tickers:
+                app_logger.debug(
+                    f"PendingTicker already exists for {ticker}, skipping warmup"
+                )
+                return
+
+            holder = QueuedRequest(
+                ticker=ticker,
+                sections=sections,
+                timestamp=datetime.now(),
+                result_event=tg.Event(),
+            )
+
+            pt = PendingTicker(
+                ticker=ticker,
+                cache=self.cache,
+                rate_limiter=self.rate_limiter,
+                fetching_lock=self._fetching_lock,
+            )
+            pt.add_request(sections, holder)
+            self._pending_tickers[ticker] = pt
+
     ##########################################################################
     #                          PUBLIC API METHODS                            #
     ##########################################################################

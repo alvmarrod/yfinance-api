@@ -9,6 +9,17 @@
   - Timer restarts when new sections are requested (not duplicates)
   - Serial fetch: one ticker at a time to avoid rate limit issues
   - Window duration: 20 seconds per ticker
+- **Cache Persistence**: Pickle-based cache persistence across server restarts
+  - Cache is persisted to disk on Ctrl+C or normal shutdown
+  - Cache is loaded from disk on startup
+  - New constants: `MAX_PERSISTED_CACHE_SIZE` (225), `CACHE_PICKLE_FILE`
+  - Signal handler for SIGINT ensures clean persistence
+- **Cache Warmup**: Expired cache entries are automatically re-fetched on startup
+  - Each expired ticker creates a `PendingTicker` to re-fetch its data
+  - Warmup runs in parallel with server accepting requests
+  - Requests during warmup are deduplicated with pending tickers
+  - New `warmup_ticker()` method in `JobDispatcher`
+  - New `ExpiredTickerInfo` dataclass and `get_cached_sections()` helper
 
 ### Changed
 
@@ -16,10 +27,13 @@
 - Removed `MAX_BUCKET_SIZE` constant (no longer needed)
 - Increased `PENDING_TICKER_WINDOW_SECONDS` from 3s to 20s
 - Removed parallel batch processing in favor of serial per-ticker fetch
+- Split `_cache_has_expired()` into separate function (returns bool)
+- Improved cache expiration check in `get_ticker()`
+- `tsCache.load_from_disk()` now returns list of expired tickers for warmup
 
 ### Files Added
 
-- `services/pending_ticker.py`: PendingTicker and TickerWaitingRequest classes
+- `services/pending_ticker.py`: PendingTicker, TickerWaitingRequest classes
 
 ### Files Removed
 

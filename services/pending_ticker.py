@@ -37,7 +37,7 @@ class TickerWaitingRequest:
     """A request waiting for its ticker's data to be fetched."""
 
     sections: set[str]
-    response_holder: QueuedRequest
+    response_holder: Optional[QueuedRequest]
 
 
 class PendingTicker:
@@ -119,12 +119,14 @@ class PendingTicker:
             self._cache.add_ticker(self.ticker, result)
 
             for req in self.waiting_requests:
-                req.response_holder.set_result(result)
+                if req.response_holder:
+                    req.response_holder.set_result(result)
 
         except Exception as e:
             app_logger.debug(f"Error fetching {self.ticker}: {e}")
             for req in self.waiting_requests:
-                req.response_holder.set_error(e)
+                if req.response_holder:
+                    req.response_holder.set_error(e)
 
     def _fetch_data(self, sections: set[str]) -> FullTickerData:
         """Fetch data with rate limiting and serial fetch control."""
