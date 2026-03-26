@@ -126,6 +126,9 @@ class JobDispatcher:
     _scheduler: Optional["PrefetchScheduler"]
     _cache_config: Optional["CacheConfig"]
 
+    _window_seconds: float
+    _sleep_when_rate_hit: float
+
     def __new__(cls) -> "JobDispatcher":
         """Singleton pattern implementation."""
         if cls._instance is None:
@@ -158,6 +161,9 @@ class JobDispatcher:
 
         self._scheduler: Optional["PrefetchScheduler"] = None
         self._cache_config: Optional["CacheConfig"] = None
+
+        self._window_seconds = 20.0
+        self._sleep_when_rate_hit = 1.0
 
         self._initialized = True
 
@@ -202,6 +208,7 @@ class JobDispatcher:
                     job.sections,
                     self.rate_limiter,
                     self._fetching_lock,
+                    sleep_when_rate_hit=self._sleep_when_rate_hit,
                 )
 
                 self.cache.add_ticker(job.ticker, result)
@@ -308,6 +315,8 @@ class JobDispatcher:
                     cache=self.cache,
                     rate_limiter=self.rate_limiter,
                     fetching_lock=self._fetching_lock,
+                    window_seconds=self._window_seconds,
+                    sleep_when_rate_hit=self._sleep_when_rate_hit,
                 )
                 pt.add_request(missing_sections, holder)
                 self._pending_tickers[ticker] = pt
@@ -358,6 +367,17 @@ class JobDispatcher:
             cache_size=config.cache_size,
             ttl_seconds=config.ttl_seconds.ttl,
         )
+        self._window_seconds = config.pending_ticker_window_seconds
+        self._sleep_when_rate_hit = config.seconds_sleep_when_rate_hit
+
+        if config.rate_limiter:
+            self.rate_limiter = tsRateLimiter(
+                request_period_seconds=config.rate_limiter.request_period_seconds,
+                max_requests_per_period=config.rate_limiter.max_requests_per_period,
+                cooldown_seconds=config.rate_limiter.cooldown_seconds,
+                cooldown_fake_events=config.rate_limiter.cooldown_fake_events,
+            )
+
         self._start_scheduler()
 
     def _start_scheduler(self) -> None:
@@ -395,6 +415,8 @@ class JobDispatcher:
                 cache=self.cache,
                 rate_limiter=self.rate_limiter,
                 fetching_lock=self._fetching_lock,
+                window_seconds=self._window_seconds,
+                sleep_when_rate_hit=self._sleep_when_rate_hit,
             )
             pt.add_request(sections, holder)
             self._pending_tickers[ticker] = pt

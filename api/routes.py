@@ -81,6 +81,7 @@ def cache_status():
             "queue_sizes": {
                 "regular": dispatcher.queue.queue_size(),
                 "cron": dispatcher.cron_queue.queue_size(),
+                "batching": len(dispatcher._pending_tickers),
             },
         }
     )

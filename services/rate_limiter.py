@@ -16,12 +16,6 @@ app_logger = logging.getLogger("yfinance_api")
 #                                CONSTANTS                                   #
 ##############################################################################
 
-REQUEST_PERIOD_SECONDS: int = 120
-MAX_REQUESTS_PER_PERIOD: int = 65
-
-YFINANCE_API_RATE_LIMIT_COOLDOWN_SECONDS: int = 80
-YFINANCE_API_COOLDOWN_FAKE_EVENTS: int = 10
-
 RATE_LIMITER_LOG_MSG: str = "📊 Rate Limiter status: %s"
 
 ##############################################################################
@@ -44,12 +38,28 @@ class tsRateLimiter:
     max_ratio: float
     yfinance_408_hit: Optional[datetime]
 
-    def __init__(self):
+    _request_period_seconds: int
+    _max_requests_per_period: int
+    _cooldown_seconds: int
+    _cooldown_fake_events: int
+
+    def __init__(
+        self,
+        request_period_seconds: int = 120,
+        max_requests_per_period: int = 65,
+        cooldown_seconds: int = 80,
+        cooldown_fake_events: int = 10,
+    ):
         app_logger.info("🆕 Initializating the Rate Limiter")
         self.lock = tg.Lock()
         self.event_register = []
 
-        self.max_ratio = MAX_REQUESTS_PER_PERIOD / REQUEST_PERIOD_SECONDS
+        self._request_period_seconds = request_period_seconds
+        self._max_requests_per_period = max_requests_per_period
+        self._cooldown_seconds = cooldown_seconds
+        self._cooldown_fake_events = cooldown_fake_events
+
+        self.max_ratio = max_requests_per_period / request_period_seconds
         self.yfinance_408_hit = None
 
     def _current_ratio(self) -> float:
@@ -57,7 +67,7 @@ class tsRateLimiter:
 
         In charge of deleting obsolete events"""
         should_delete: list[bool] = [
-            ts + timedelta(seconds=REQUEST_PERIOD_SECONDS) < datetime.now()
+            ts + timedelta(seconds=self._request_period_seconds) < datetime.now()
             for ts in self.event_register
         ]
 
@@ -65,12 +75,14 @@ class tsRateLimiter:
             if delete:
                 self.event_register.remove(item)
 
-        return len(self.event_register) / REQUEST_PERIOD_SECONDS
+        return len(self.event_register) / self._request_period_seconds
 
     def _rate_limiter_report(self) -> None:
         """Reports the current status of the rate limiter"""
         report_msg: str = RATE_LIMITER_LOG_MSG % create_progress_bar(
-            current=len(self.event_register), total=MAX_REQUESTS_PER_PERIOD, width=10
+            current=len(self.event_register),
+            total=self._max_requests_per_period,
+            width=10,
         )
 
         app_logger.debug(report_msg)
@@ -86,11 +98,11 @@ class tsRateLimiter:
         """Adds fake events to slowly ramp up the rate after a yfinance API rate limit hit"""
         app_logger.warning(
             "🚨 Entering conservative mode - Adding %d fake events",
-            YFINANCE_API_COOLDOWN_FAKE_EVENTS,
+            self._cooldown_fake_events,
         )
 
         current_time = datetime.now()
-        for i in range(YFINANCE_API_COOLDOWN_FAKE_EVENTS):
+        for i in range(self._cooldown_fake_events):
             self.event_register.append(current_time + timedelta(seconds=i))
 
     def ratio_allows(self) -> bool:
@@ -105,8 +117,7 @@ class tsRateLimiter:
         with self.lock:
             if self.yfinance_408_hit is not None:
                 cooldown_over: bool = (
-                    self.yfinance_408_hit
-                    + timedelta(seconds=YFINANCE_API_RATE_LIMIT_COOLDOWN_SECONDS)
+                    self.yfinance_408_hit + timedelta(seconds=self._cooldown_seconds)
                     < datetime.now()
                 )
 

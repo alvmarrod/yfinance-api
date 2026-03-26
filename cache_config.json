@@ -292,5 +292,13 @@
     "quarterly_financials": 86400,
     "quarterly_balance_sheet": 86400,
     "history": 86400
+  },
+  "pending_ticker_window_seconds": 1,
+  "seconds_sleep_when_rate_hit": 5,
+  "rate_limiter": {
+    "request_period_seconds": 120,
+    "max_requests_per_period": 65,
+    "cooldown_seconds": 80,
+    "cooldown_fake_events": 10
   }
 }

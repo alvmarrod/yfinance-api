@@ -20,7 +20,7 @@ Notice that this API is not a complete replacement for Yahoo Finance, but rather
 
 Systems:
 
-- Rate limiter
+- Rate limiter (configurable)
 - Cache (with LRU eviction and disk offload)
 - Job Queue (regular + cron)
 - Pre-fetch scheduler
@@ -36,34 +36,90 @@ Systems:
 ## Setup
 
 ### Local Environment
+
 1. Clone the repository:
    ```bash
    git clone <repository-url>
    cd yfinance-api
    ```
+
 2. Create a virtual environment and install dependencies:
    ```bash
    python3.13 -m venv test_env
    source test_env/bin/activate
    pip install --upgrade --no-cache-dir -r requirements.txt
    ```
+
 3. Run the application:
    ```bash
    python3 app.py
    ```
 
-### Docker
+### Docker Compose (Recommended)
 
-1. Build and run with Docker Compose:
+#### Initial Deployment
+
+1. Clone the repository:
    ```bash
-   docker-compose up -d
+   git clone <repository-url>
+   cd yfinance-api
    ```
 
-2. Or manually with Docker:
+2. Ensure `cache_config.json` exists in the project root.
+
+3. Build and start:
    ```bash
-   make build-docker
-   make run-docker
+   docker compose up -d
    ```
+
+4. Verify the service:
+   ```bash
+   curl http://localhost:5001/health
+   ```
+
+The `cache/` directory is created automatically on first run.
+
+#### Upgrading the Service
+
+To upgrade to a new version:
+
+```bash
+# 1. Pull latest changes
+git pull
+
+# 2. Rebuild and restart (preserves cache)
+docker compose down
+docker compose up -d --build
+```
+
+The `cache/` directory is mounted as a volume, so cache data persists across restarts.
+
+#### Hot Reload Configuration
+
+To reload configuration without restarting:
+
+```bash
+docker kill --signal=HUP yfinance_api_instance
+```
+
+This reloads `cache_config.json` and reconfigures the scheduler.
+
+#### Manual Docker Setup
+
+```bash
+# Build
+make build-docker
+
+# Run (with cache and config mounts)
+make run-docker
+```
+
+#### Volume Mounts
+
+| Host Path | Container Path | Purpose |
+|-----------|---------------|---------|
+| `./cache` | `/app/cache` | Cache persistence |
+| `./cache_config.json` | `/app/cache_config.json` | Configuration |
 
 ## Configuration
 
@@ -73,36 +129,83 @@ Systems:
 |----------|---------|-------------|
 | `CACHE_CONFIG_PATH` | `./cache_config.json` | Path to cache configuration file |
 
-### Cache Configuration (`cache_config.json`)
+### cache_config.json
+
+The main configuration file. The `cache/` directory is created automatically on first run.
 
 ```json
 {
-  "tickers": ["AAPL", "GOOGL", "MSFT"],
+  "tickers": ["AAPL", "GOOGL"],
   "blocks": ["info", "financials", "balance_sheet", "dividends"],
   "concurrency": 1,
   "adaptive_cache": false,
   "cache_size": 100,
   "prefetch_schedule": {
     "info": "15 * * * *",
-    "dividends": "0 0 */1 * *",
-    "financials": "2 0 */1 * *"
+    "dividends": "0 0 */1 * *"
   },
   "ttl_seconds": {
     "info": 3600,
-    "dividends": 86400,
-    "financials": 86400
+    "dividends": 86400
+  },
+  "pending_ticker_window_seconds": 1,
+  "seconds_sleep_when_rate_hit": 5,
+  "rate_limiter": {
+    "request_period_seconds": 120,
+    "max_requests_per_period": 65,
+    "cooldown_seconds": 80,
+    "cooldown_fake_events": 10
   }
 }
 ```
 
-**Fields:**
-- `tickers`: List of stock symbols to track
-- `blocks`: Data blocks to fetch (info, financials, balance_sheet, etc.)
-- `concurrency`: Max parallel fetches for pre-fetch jobs
-- `adaptive_cache`: If true, no max cache size
-- `cache_size`: Max tickers in memory (when adaptive_cache is false)
-- `prefetch_schedule`: Cron expression per block for proactive caching
-- `ttl_seconds`: Time-to-live per block
+#### Core Settings
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `tickers` | list[str] | [] | Stock symbols to track |
+| `blocks` | list[str] | [] | Data blocks to fetch (info, financials, etc.) |
+| `concurrency` | int | 1 | Max parallel fetches for pre-fetch jobs |
+
+#### Cache Settings
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `adaptive_cache` | bool | false | If true, no max cache size |
+| `cache_size` | int | 100 | Max tickers in memory |
+| `ttl_seconds` | dict | {} | Time-to-live per block (seconds) |
+
+#### Scheduler Settings
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `prefetch_schedule` | dict | {} | Cron expression per block |
+
+#### Rate Limiter Settings
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `request_period_seconds` | int | 120 | Time window for rate tracking |
+| `max_requests_per_period` | int | 65 | Max requests per window |
+| `cooldown_seconds` | int | 80 | Cooldown after API rate limit hit |
+| `cooldown_fake_events` | int | 10 | Fake events for slow ramp-up |
+
+##### Rate Limiter Behavior
+
+When Yahoo Finance returns HTTP 408 (rate limit), the system:
+
+1. **Blocks all requests** for `cooldown_seconds` (80s default)
+2. **After cooldown**, adds `cooldown_fake_events` (10) fake events to the register
+3. **Resumes at reduced rate** - only (65 - 10) = 55 real slots available
+
+This prevents immediately hitting the rate limit again after recovery.
+
+#### Pending Ticker Settings
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `pending_ticker_window_seconds` | float | 1 | Window to batch requests per ticker |
+| `seconds_sleep_when_rate_hit` | float | 5 | Sleep duration when rate limited |
 
 ## Cache Behavior
 
@@ -124,6 +227,12 @@ When memory cache is full:
 Send `kill -HUP <pid>` to reload configuration without restarting:
 - Reloads `cache_config.json`
 - Reconfigures scheduler
+- Reconfigures rate limiter
+
+In Docker:
+```bash
+docker kill --signal=HUP yfinance_api_instance
+```
 
 ## API Endpoints
 
@@ -131,10 +240,13 @@ Send `kill -HUP <pid>` to reload configuration without restarting:
 
 `http://<host>:<port>`
 
-### Endpoints
+### Health & Monitoring
 
 - **GET `/health`**: Health check for container orchestration
 - **GET `/cache/status`**: Cache statistics and scheduler status
+
+### Symbol Endpoints
+
 - **GET `/symbol/<tag>`**: Fetch all available data for a stock symbol
 - **GET `/symbol/<tag>/<field>/`**: Fetch a specific field's value
 - **GET `/symbol/<tag>/<field>/raw`**: Fetch raw field value
@@ -165,7 +277,7 @@ curl http://localhost:5001/symbol/AAPL/ROE/
 - **Queue-based processing**: Handles high load gracefully
 - **Pre-fetch scheduler**: Proactive caching using APScheduler
 
-## Pre-commit Hooks
+### Pre-commit Hooks
 
 1. Install pre-commit:
    ```bash

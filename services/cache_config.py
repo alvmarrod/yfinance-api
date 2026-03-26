@@ -22,6 +22,16 @@ class TtlConfig:
 
 
 @dataclass
+class RateLimiterConfig:
+    """Rate limiter configuration."""
+
+    request_period_seconds: int
+    max_requests_per_period: int
+    cooldown_seconds: int
+    cooldown_fake_events: int
+
+
+@dataclass
 class CacheConfig:
     """Main configuration for the cache system."""
 
@@ -32,6 +42,9 @@ class CacheConfig:
     cache_size: int
     prefetch_schedule: PrefetchScheduleConfig
     ttl_seconds: TtlConfig
+    pending_ticker_window_seconds: float
+    seconds_sleep_when_rate_hit: float
+    rate_limiter: RateLimiterConfig
 
 
 def load_config(path: str) -> CacheConfig:
@@ -58,6 +71,22 @@ def load_config(path: str) -> CacheConfig:
         raise TypeError("prefetch_schedule must be a dict")
     if not isinstance(raw.get("ttl_seconds"), dict):
         raise TypeError("ttl_seconds must be a dict")
+    if not isinstance(raw.get("pending_ticker_window_seconds"), (int, float)):
+        raise TypeError("pending_ticker_window_seconds must be a number")
+    if not isinstance(raw.get("seconds_sleep_when_rate_hit"), (int, float)):
+        raise TypeError("seconds_sleep_when_rate_hit must be a number")
+    if not isinstance(raw.get("rate_limiter"), dict):
+        raise TypeError("rate_limiter must be a dict")
+
+    rate_limiter_raw = raw["rate_limiter"]
+    if not isinstance(rate_limiter_raw.get("request_period_seconds"), int):
+        raise TypeError("rate_limiter.request_period_seconds must be an int")
+    if not isinstance(rate_limiter_raw.get("max_requests_per_period"), int):
+        raise TypeError("rate_limiter.max_requests_per_period must be an int")
+    if not isinstance(rate_limiter_raw.get("cooldown_seconds"), int):
+        raise TypeError("rate_limiter.cooldown_seconds must be an int")
+    if not isinstance(rate_limiter_raw.get("cooldown_fake_events"), int):
+        raise TypeError("rate_limiter.cooldown_fake_events must be an int")
 
     return CacheConfig(
         tickers=raw["tickers"],
@@ -67,4 +96,12 @@ def load_config(path: str) -> CacheConfig:
         cache_size=raw["cache_size"],
         prefetch_schedule=PrefetchScheduleConfig(raw["prefetch_schedule"]),
         ttl_seconds=TtlConfig(raw["ttl_seconds"]),
+        pending_ticker_window_seconds=float(raw["pending_ticker_window_seconds"]),
+        seconds_sleep_when_rate_hit=float(raw["seconds_sleep_when_rate_hit"]),
+        rate_limiter=RateLimiterConfig(
+            request_period_seconds=rate_limiter_raw["request_period_seconds"],
+            max_requests_per_period=rate_limiter_raw["max_requests_per_period"],
+            cooldown_seconds=rate_limiter_raw["cooldown_seconds"],
+            cooldown_fake_events=rate_limiter_raw["cooldown_fake_events"],
+        ),
     )

@@ -17,9 +17,6 @@ from services.rate_limiter import tsRateLimiter
 
 app_logger = logging.getLogger("yfinance-api")
 
-PENDING_TICKER_WINDOW_SECONDS: float = 20.0
-SECONDS_SLEEP_WHEN_RATE_HIT: float = 1.0
-
 SECTIONS_MAP = {
     "info": lambda t: t.info,
     "financials": lambda t: t.financials,
@@ -54,6 +51,8 @@ class PendingTicker:
     _rate_limiter: tsRateLimiter
     _fetching_lock: tg.Lock
     _cache: Any
+    _window_seconds: float
+    _sleep_when_rate_hit: float
 
     def __init__(
         self,
@@ -61,6 +60,8 @@ class PendingTicker:
         cache,
         rate_limiter: tsRateLimiter,
         fetching_lock: tg.Lock,
+        window_seconds: float,
+        sleep_when_rate_hit: float,
     ):
         self.ticker = ticker
         self.waiting_requests = []
@@ -70,6 +71,8 @@ class PendingTicker:
         self._cache = cache
         self._rate_limiter = rate_limiter
         self._fetching_lock = fetching_lock
+        self._window_seconds = window_seconds
+        self._sleep_when_rate_hit = sleep_when_rate_hit
 
     def add_request(self, sections: set[str], holder: QueuedRequest) -> bool:
         """
@@ -97,10 +100,10 @@ class PendingTicker:
         if self._timer:
             self._timer.cancel()
 
-        self._timer = tg.Timer(PENDING_TICKER_WINDOW_SECONDS, self._flush)
+        self._timer = tg.Timer(self._window_seconds, self._flush)
         self._timer.start()
         app_logger.info(
-            f"🆕 PendingTicker created for {self.ticker}, window: {PENDING_TICKER_WINDOW_SECONDS}s"
+            f"🆕 PendingTicker created for {self.ticker}, window: {self._window_seconds}s"
         )
 
     def _flush(self) -> None:
@@ -135,7 +138,7 @@ class PendingTicker:
                 app_logger.info(
                     f"⏳ Rate limited, waiting before fetching {sections} for {self.ticker}"
                 )
-                time.sleep(SECONDS_SLEEP_WHEN_RATE_HIT)
+                time.sleep(self._sleep_when_rate_hit)
 
             app_logger.info(f"🌐 Fetching {sections} for {self.ticker}")
 
@@ -164,6 +167,7 @@ def fetch_sections_for_ticker(
     sections: set[str],
     rate_limiter: tsRateLimiter,
     fetching_lock: tg.Lock,
+    sleep_when_rate_hit: float = 1.0,
 ) -> FullTickerData:
     """Fetch specific sections for a ticker with rate limiting."""
     with fetching_lock:
@@ -171,7 +175,7 @@ def fetch_sections_for_ticker(
             app_logger.info(
                 f"⏳ Rate limited, waiting before fetching {sections} for {ticker}"
             )
-            time.sleep(SECONDS_SLEEP_WHEN_RATE_HIT)
+            time.sleep(sleep_when_rate_hit)
 
         app_logger.info(f"🌐 Fetching {sections} for {ticker}")
 

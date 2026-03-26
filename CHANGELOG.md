@@ -1,5 +1,45 @@
 # Changelog
 
+## [0.19.0] - 2026-03-19
+
+### Changed
+
+- **README.md**: Comprehensive documentation update
+  - Expanded configuration section with all fields documented
+  - Detailed rate limiter behavior explanation (cooldown, fake events)
+  - Docker Compose deployment instructions (initial, upgrade, hot reload)
+  - Volume mount documentation
+  - SIGHUP hot reload for Docker
+
+## [0.18.0] - 2026-03-19
+
+### Added
+
+- **External Config for Rate Limiter**: Moved rate limiter constants to `cache_config.json`
+  - New `rate_limiter` section with configurable values
+  - `request_period_seconds`: Time period for rate tracking (default: 120s)
+  - `max_requests_per_period`: Max requests per period (default: 65)
+  - `cooldown_seconds`: Cooldown after API rate limit hit (default: 80s)
+  - `cooldown_fake_events`: Fake events for slow start after cooldown (default: 10)
+
+### Changed
+
+- Rate limiter now receives values from config instead of module constants
+- Rate limiter is recreated when config is reloaded via SIGHUP
+
+## [0.17.0] - 2026-03-19
+
+### Added
+
+- **External Config for PendingTicker**: Moved timing constants to `cache_config.json`
+  - `pending_ticker_window_seconds`: Timer window for PendingTicker (default: 1s)
+  - `seconds_sleep_when_rate_hit`: Sleep duration when rate limited (default: 5s)
+
+### Changed
+
+- PendingTicker now receives timing values from config instead of module constants
+- Default values: window=1s (was 20s), rate_limit_sleep=5s (was 1s)
+
 ## [0.16.0] - 2026-03-19
 
 ### Added
