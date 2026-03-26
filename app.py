@@ -1,11 +1,16 @@
 import logging
+import os
 import atexit
 import signal
 import sys
+from typing import TYPE_CHECKING, Optional
 
 from flask import Flask
 
 from api.routes import api
+
+if TYPE_CHECKING:
+    from services.cache_config import CacheConfig
 
 app_logger = logging.getLogger("yfinance-api")
 
@@ -19,6 +24,64 @@ app = Flask(__name__)
 app.register_blueprint(api)
 
 _pickle_cache_on_exit = True
+_cache_config: Optional["CacheConfig"] = None
+
+
+def _load_cache_config() -> "Optional[CacheConfig]":
+    """Load cache configuration from file."""
+    global _cache_config
+
+    try:
+        from services.cache_config import load_config
+        from services.cache import tsCache
+
+        config_path = os.environ.get("CACHE_CONFIG_PATH", "./cache_config.json")
+        app_logger.info(f"📁 Loading cache config from: {config_path}")
+
+        config = load_config(config_path)
+        _cache_config = config
+
+        cache = tsCache.get_instance()
+        cache.configure(
+            adaptive_cache=config.adaptive_cache,
+            cache_size=config.cache_size,
+            ttl_seconds=config.ttl_seconds.ttl,
+        )
+
+        app_logger.info("🗂️ Cache configuration loaded:")
+        app_logger.info(f"   Tickers: {len(config.tickers)}")
+        app_logger.info(f"   Blocks: {len(config.blocks)}")
+        app_logger.info(f"   Concurrency: {config.concurrency}")
+        app_logger.info(f"   Cache size: {config.cache_size}")
+        app_logger.info(f"   Adaptive cache: {config.adaptive_cache}")
+        app_logger.info(
+            f"   Prefetch schedules: {len(config.prefetch_schedule.schedule)}"
+        )
+        app_logger.info(f"   TTL entries: {len(config.ttl_seconds.ttl)}")
+
+        return config
+
+    except Exception as e:
+        app_logger.error(f"❌ Failed to load cache config: {e}")
+        return None
+
+
+def _reload_handler(signum, frame) -> None:
+    """Handle SIGHUP to reload configuration without restarting."""
+    global _cache_config
+
+    app_logger.info("🔄 Received SIGHUP, reloading cache configuration...")
+
+    try:
+        config = _load_cache_config()
+        if config:
+            from services.job_dispatcher import get_dispatcher
+
+            dispatcher = get_dispatcher()
+            dispatcher.configure_scheduler(config)
+            app_logger.info("🔄 Scheduler reconfigured with new config")
+    except Exception as e:
+        app_logger.error(f"Error reloading config: {e}")
 
 
 def _persist_cache() -> None:
@@ -30,7 +93,7 @@ def _persist_cache() -> None:
     try:
         from services.cache import tsCache
 
-        cache = tsCache()
+        cache = tsCache.get_instance()
         cache.persist_to_disk()
     except Exception as e:
         app_logger.error(f"Error persisting cache: {e}")
@@ -45,19 +108,24 @@ def _signal_handler(signum, frame) -> None:
 
 def _load_cache_on_startup() -> None:
     """Load cache from pickle file and warmup expired entries."""
+    global _cache_config
+
     try:
         from services.cache import tsCache
         from services.job_dispatcher import get_dispatcher
 
-        cache = tsCache()
+        cache = tsCache.get_instance()
         expired_tickers = cache.load_from_disk()
+
+        dispatcher = get_dispatcher()
+
+        if _cache_config:
+            dispatcher.configure_scheduler(_cache_config)
 
         if expired_tickers:
             app_logger.info(
                 f"🔥 {len(expired_tickers)} expired cache entries, scheduling warmup..."
             )
-
-            dispatcher = get_dispatcher()
 
             for expired in expired_tickers:
                 dispatcher.warmup_ticker(expired.ticker, expired.cached_sections)
@@ -88,6 +156,15 @@ def cleanup():
 atexit.register(cleanup)
 
 signal.signal(signal.SIGINT, _signal_handler)
+signal.signal(signal.SIGHUP, _reload_handler)
+
+_load_cache_config()
+
+
+def get_cache_config() -> "Optional[CacheConfig]":
+    """Get the current cache configuration."""
+    return _cache_config
+
 
 _load_cache_on_startup()
 

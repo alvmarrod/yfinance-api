@@ -8,6 +8,7 @@ import logging
 import datetime
 
 from typing import Optional
+from pathlib import Path
 
 from flask import Blueprint
 from pandas import DataFrame
@@ -18,6 +19,72 @@ import services.yf_wrapper as yfw
 api = Blueprint("api", __name__)
 
 app_logger = logging.getLogger("yfinance-api")
+
+##############################################################################
+#                                   HEALTH                                   #
+##############################################################################
+
+
+@api.route("/health", methods=["GET"])
+def health_check():
+    """Health check endpoint for container orchestration."""
+    return json.dumps({"status": "healthy"}), 200
+
+
+@api.route("/cache/status", methods=["GET"])
+def cache_status():
+    """Cache status endpoint."""
+    from services.cache import tsCache
+    from services.job_dispatcher import get_dispatcher
+
+    cache = tsCache.get_instance()
+    dispatcher = get_dispatcher()
+
+    memory_tickers = len(cache.cache)
+
+    cache_dir = Path("cache")
+    disk_tickers = (
+        len([d for d in cache_dir.iterdir() if d.is_dir()]) if cache_dir.exists() else 0
+    )
+
+    config = dispatcher._cache_config
+    config_info = None
+    if config:
+        config_info = {
+            "tickers_count": len(config.tickers),
+            "blocks": config.blocks,
+            "adaptive_cache": config.adaptive_cache,
+            "cache_size": config.cache_size,
+        }
+
+    scheduler_info = None
+    if dispatcher._scheduler:
+        last_prefetch = {}
+        for block, ts in dispatcher._scheduler.last_prefetch_timestamps.items():
+            last_prefetch[block] = ts.isoformat()
+
+        scheduler_info = {
+            "active": (
+                dispatcher._scheduler.scheduler.running
+                if dispatcher._scheduler.scheduler
+                else False
+            ),
+            "last_prefetch": last_prefetch,
+        }
+
+    return json.dumps(
+        {
+            "memory_tickers": memory_tickers,
+            "disk_tickers": disk_tickers,
+            "config": config_info,
+            "scheduler": scheduler_info,
+            "queue_sizes": {
+                "regular": dispatcher.queue.queue_size(),
+                "cron": dispatcher.cron_queue.queue_size(),
+            },
+        }
+    )
+
 
 ##############################################################################
 #                                    API                                     #

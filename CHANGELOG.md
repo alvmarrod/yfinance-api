@@ -1,5 +1,91 @@
 # Changelog
 
+## [0.16.0] - 2026-03-19
+
+### Added
+
+- **Health Endpoint**: `GET /health` for container orchestration
+- **Cache Status Endpoint**: `GET /cache/status` with detailed metrics
+  - Memory and disk ticker counts
+  - Configuration summary
+  - Scheduler status and last prefetch timestamps
+  - Queue sizes (regular and cron)
+- **Docker Compose**: New `docker-compose.yml` with proper volume mounts
+- **Prefetch Timestamps**: Scheduler tracks last prefetch time per block
+
+### Changed
+
+- **Dockerfile**: Updated to copy all source files, create cache directory
+- **Makefile**: Added cache/config mounts and docker-compose targets
+- **README.md**: Comprehensive update with new documentation
+- **.gitignore**: Added `cache/` directory
+
+## [0.15.0] - 2026-03-19
+
+### Added
+
+- **Proactive Pre-fetch Jobs**: APScheduler-based cache warming
+  - One cron job per block type using `prefetch_schedule` from config
+  - Each job fetches all tickers for its block type
+  - Separate cron queue with unlimited capacity (no timeout)
+  - Worker processes regular queue first, then cron queue
+  - Logging shows queue size before/after each cron batch
+- **New files**:
+  - `services/cron_queue.py`: Unlimited thread-safe queue for cron jobs
+  - `services/scheduler.py`: APScheduler wrapper for prefetch jobs
+- **APScheduler dependency** added to requirements.txt
+
+### Changed
+
+- Worker loop now processes regular queue before cron queue
+- Scheduler lifecycle tied to `start_worker()`/`stop_worker()`
+- Config reload via SIGHUP also reconfigures scheduler
+
+## [0.14.0] - 2026-03-19
+
+### Added
+
+- **Per-Block Retrieval Times**: Each block in `FullTickerData` now has its own retrieval time
+- **LRU Eviction with Disk Offload**: When memory cache is full, evict oldest ticker to disk
+  - Disk structure: `cache/{ticker}/{block}.pkl` and `cache/{ticker}/metadata.pkl`
+  - On memory miss, check disk and load back if not expired
+  - Expired block files are automatically deleted
+- **New `FullTickerData` methods**:
+  - `get_max_block_time()`: Most recent block access time
+  - `get_block_sections()`: Set of blocks with data
+
+### Changed
+
+- Cache now uses `FullTickerData` directly (removed `CacheEntry` wrapper)
+- Cache now uses configurable `ttl_seconds` per block (from config)
+- Single pickle file persistence replaced with directory structure
+
+### Removed
+
+- `services/cache_entry.py`: Cache now uses `FullTickerData` directly
+
+## [0.13.0] - 2026-03-19
+
+### Added
+
+- **Cache Configuration**: Load configuration from JSON file on startup
+  - New `services/cache_config.py` with dataclasses: `CacheConfig`, `PrefetchScheduleConfig`, `TtlConfig`
+  - Configuration path via `CACHE_CONFIG_PATH` env var (default: `./cache_config.json`)
+  - Type validation for all config fields
+  - Log config summary on startup (without printing arrays)
+- **Config Hot Reload**: SIGHUP signal reloads configuration without restarting Flask
+  - Send `kill -HUP <pid>` to reload config
+  - Config stored globally and accessible via `get_cache_config()`
+
+## [0.12.0] - 2026-03-19
+
+### Fixed
+
+- **Cache Singleton Bug**: Fixed persistence bug where a new empty cache instance was being pickled instead of the actual cache
+  - Made `tsCache` a singleton pattern
+  - Now `persist_to_disk()` correctly saves the cache being used by `JobDispatcher`
+  - Added `tsCache.get_instance()` class method for singleton access
+
 ## [0.11.0] - 2026-03-19
 
 ### Added

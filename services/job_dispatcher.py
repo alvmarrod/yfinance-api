@@ -7,7 +7,7 @@ import time
 import logging
 import threading as tg
 from datetime import timedelta, datetime
-from typing import Optional, Any, Callable
+from typing import TYPE_CHECKING, Optional, Any, Callable
 
 from services.cache import tsCache
 from services.rate_limiter import tsRateLimiter
@@ -15,6 +15,11 @@ from services.queue import tsQueue, QueuedRequest
 from services.full_ticker_data import FullTickerData
 from services.calculations import try_calculate_field
 from services.pending_ticker import PendingTicker
+from services.cron_queue import tsCronQueue
+
+if TYPE_CHECKING:
+    from services.scheduler import PrefetchScheduler
+    from services.cache_config import CacheConfig
 
 app_logger = logging.getLogger("yfinance_api")
 
@@ -105,6 +110,7 @@ class JobDispatcher:
 
     cache: tsCache
     queue: tsQueue
+    cron_queue: tsCronQueue
     rate_limiter: tsRateLimiter
 
     _rate_limit_checker: Callable
@@ -116,6 +122,9 @@ class JobDispatcher:
     _pending_tickers: dict[str, PendingTicker]
     _pending_lock: tg.Lock
     _fetching_lock: tg.Lock
+
+    _scheduler: Optional["PrefetchScheduler"]
+    _cache_config: Optional["CacheConfig"]
 
     def __new__(cls) -> "JobDispatcher":
         """Singleton pattern implementation."""
@@ -131,8 +140,9 @@ class JobDispatcher:
 
         app_logger.info("🆕 Initializing Job Dispatcher")
 
-        self.cache = tsCache()
+        self.cache = tsCache.get_instance()
         self.queue = tsQueue()
+        self.cron_queue = tsCronQueue()
         self.rate_limiter = tsRateLimiter()
 
         self._worker_thread: Optional[tg.Thread] = None
@@ -145,6 +155,9 @@ class JobDispatcher:
         self._pending_tickers = {}
         self._pending_lock = tg.Lock()
         self._fetching_lock = tg.Lock()
+
+        self._scheduler: Optional["PrefetchScheduler"] = None
+        self._cache_config: Optional["CacheConfig"] = None
 
         self._initialized = True
 
@@ -211,6 +224,7 @@ class JobDispatcher:
     def _worker_loop(self) -> None:
         """
         Background worker thread for queue-based processing.
+        Processes regular queue first, then cron queue.
         """
         app_logger.info("👷 Worker thread started")
 
@@ -224,6 +238,10 @@ class JobDispatcher:
                     continue
 
                 job: Optional[QueuedRequest] = self.queue.get_job()
+
+                if not job:
+                    job = self.cron_queue.get_job()
+
                 if not job:
                     time.sleep(1)
                     continue
@@ -231,7 +249,10 @@ class JobDispatcher:
                 app_logger.debug(f"👷 Processing job for: {job.ticker}")
 
                 if not self.rate_limiter.ratio_allows():
-                    self.queue.put_job_back(job)
+                    if hasattr(job, "source") and job.source == "cron":
+                        self.cron_queue.put_job_back(job)
+                    else:
+                        self.queue.put_job_back(job)
                     app_logger.debug("⏳ Rate limited - will retry")
                     continue
 
@@ -311,19 +332,47 @@ class JobDispatcher:
             raise TimeoutError(f"Timeout fetching {sections} for {ticker}")
 
     def start_worker(self) -> None:
-        """Start the background worker thread."""
+        """Start the background worker thread and scheduler."""
         if self._worker_thread is None or not self._worker_thread.is_alive():
             app_logger.info("🚀 Starting worker thread")
             self._shutdown_event.clear()
             self._worker_thread = tg.Thread(target=self._worker_loop, daemon=True)
             self._worker_thread.start()
 
+        self._start_scheduler()
+
     def stop_worker(self) -> None:
-        """Stop the background worker thread."""
+        """Stop the background worker thread and scheduler."""
+        self._stop_scheduler()
+
         if self._worker_thread and self._worker_thread.is_alive():
             app_logger.info("✋ Stopping worker thread")
             self._shutdown_event.set()
             self._worker_thread.join(timeout=5.0)
+
+    def configure_scheduler(self, config: "CacheConfig") -> None:
+        """Configure the prefetch scheduler with the given config."""
+        self._cache_config = config
+        self.cache.configure(
+            adaptive_cache=config.adaptive_cache,
+            cache_size=config.cache_size,
+            ttl_seconds=config.ttl_seconds.ttl,
+        )
+        self._start_scheduler()
+
+    def _start_scheduler(self) -> None:
+        """Start the prefetch scheduler if config is available."""
+        if self._cache_config and self._scheduler is None:
+            from services.scheduler import PrefetchScheduler
+
+            self._scheduler = PrefetchScheduler(self._cache_config, self.cron_queue)
+            self._scheduler.start()
+
+    def _stop_scheduler(self) -> None:
+        """Stop the prefetch scheduler."""
+        if self._scheduler:
+            self._scheduler.stop()
+            self._scheduler = None
 
     def warmup_ticker(self, ticker: str, sections: set[str]) -> None:
         """Create a PendingTicker for warm-up (called at startup for expired cache entries)."""

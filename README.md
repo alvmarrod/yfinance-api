@@ -21,15 +21,17 @@ Notice that this API is not a complete replacement for Yahoo Finance, but rather
 Systems:
 
 - Rate limiter
-- Cache
-- Job Queue
+- Cache (with LRU eviction and disk offload)
+- Job Queue (regular + cron)
+- Pre-fetch scheduler
 
 ## Requirements
 
+- Python 3.13
 - Flask
-- yfinance
-  - Beware that an outdated `yfinance` version may break all your requests to the API.
+- yfinance (beware that an outdated version may break all requests)
 - pandas
+- APScheduler
 
 ## Setup
 
@@ -41,24 +43,87 @@ Systems:
    ```
 2. Create a virtual environment and install dependencies:
    ```bash
-   python3.12 -m venv test_env
+   python3.13 -m venv test_env
    source test_env/bin/activate
    pip install --upgrade --no-cache-dir -r requirements.txt
    ```
 3. Run the application:
    ```bash
-   FLASK_APP=app FLASK_ENV=development flask run --host=0.0.0.0
+   python3 app.py
    ```
 
 ### Docker
-1. Build the Docker image:
+
+1. Build and run with Docker Compose:
    ```bash
-   docker build -t yahoo_finance_api .
+   docker-compose up -d
    ```
-2. Run the Docker container:
+
+2. Or manually with Docker:
    ```bash
-   docker run -d -p 5001:5000 --name yfinance_api_instance yahoo_finance_api
+   make build-docker
+   make run-docker
    ```
+
+## Configuration
+
+### Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `CACHE_CONFIG_PATH` | `./cache_config.json` | Path to cache configuration file |
+
+### Cache Configuration (`cache_config.json`)
+
+```json
+{
+  "tickers": ["AAPL", "GOOGL", "MSFT"],
+  "blocks": ["info", "financials", "balance_sheet", "dividends"],
+  "concurrency": 1,
+  "adaptive_cache": false,
+  "cache_size": 100,
+  "prefetch_schedule": {
+    "info": "15 * * * *",
+    "dividends": "0 0 */1 * *",
+    "financials": "2 0 */1 * *"
+  },
+  "ttl_seconds": {
+    "info": 3600,
+    "dividends": 86400,
+    "financials": 86400
+  }
+}
+```
+
+**Fields:**
+- `tickers`: List of stock symbols to track
+- `blocks`: Data blocks to fetch (info, financials, balance_sheet, etc.)
+- `concurrency`: Max parallel fetches for pre-fetch jobs
+- `adaptive_cache`: If true, no max cache size
+- `cache_size`: Max tickers in memory (when adaptive_cache is false)
+- `prefetch_schedule`: Cron expression per block for proactive caching
+- `ttl_seconds`: Time-to-live per block
+
+## Cache Behavior
+
+### Persistence
+
+- Cache is persisted to disk on shutdown (Ctrl+C)
+- Cache is loaded from disk on startup
+- Disk structure: `cache/{ticker}/{block}.pkl`
+
+### LRU Eviction
+
+When memory cache is full:
+1. Oldest ticker (by max block access time) is evicted to disk
+2. On next read, disk is checked and loaded back if not expired
+3. Expired blocks are automatically deleted
+
+### SIGHUP Hot Reload
+
+Send `kill -HUP <pid>` to reload configuration without restarting:
+- Reloads `cache_config.json`
+- Reconfigures scheduler
 
 ## API Endpoints
 
@@ -68,87 +133,60 @@ Systems:
 
 ### Endpoints
 
-- **GET `/symbol/<tag>`**: Fetch all available data for a stock symbol.
-- **GET `/symbol/<tag>/<field>/`**: Fetch a specific field's value in JSON format.
-- **GET `/symbol/<tag>/<field>/raw`**: Fetch a specific field's raw value for a stock symbol.
-- **GET `/symbol/historic/candle/<tag>`**: Download historical stock data as a CSV file, using the `5m` interval resolution and the maximum available period of 60 days.
+- **GET `/health`**: Health check for container orchestration
+- **GET `/cache/status`**: Cache statistics and scheduler status
+- **GET `/symbol/<tag>`**: Fetch all available data for a stock symbol
+- **GET `/symbol/<tag>/<field>/`**: Fetch a specific field's value
+- **GET `/symbol/<tag>/<field>/raw`**: Fetch raw field value
+- **GET `/symbol/historic/candle/<tag>`**: Download historical data as CSV
 
 ### Example Usage
 
-Fetch the ROI ratio for a stock:
-
 ```bash
+# Health check
+curl http://localhost:5001/health
+
+# Cache status
+curl http://localhost:5001/cache/status
+
+# Fetch ROE ratio
 curl http://localhost:5001/symbol/AAPL/ROE/
 ```
 
 ### Alias and Calculated Fields
 
-- Some fields have aliases for easier access. They are defined as a constant map: `USUAL_FIELDS`.
-- `yfinance` provides a set of parameters, but sometimes we want non-inmediate values that can be calculated from the data. Aiming to provide a more user-friendly experience, we have created a set of calculated fields that can be accessed via the API.
-- The calculated fields are defined in the `CALCULATED_FIELDS` constant map.
-- The API will return the calculated value for these fields as part of the response.
+- Some fields have aliases for easier access defined in `USUAL_FIELDS`
+- Calculated fields are defined in `CALCULATED_FIELDS`
 
 ## Development
 
-- The project implements intelligent **rate limiting and caching** instead of `yfinance`'s `CachedSession` (which didn't work as expected)
-- **Cache-first strategy**: Popular tickers get instant responses, reducing API calls
-- **Queue-based processing**: Handles high load gracefully without hitting rate limits
-- Calculations for financial metrics are implemented at [calculations.py](services/calculations.py)
+- **Rate limiting**: Configurable via `cache_config.json`
+- **Cache-first strategy**: Popular tickers get instant responses
+- **Queue-based processing**: Handles high load gracefully
+- **Pre-fetch scheduler**: Proactive caching using APScheduler
 
-## FAQ / Troubleshooting
+## Pre-commit Hooks
 
-- Q: The service was working fine, and suddenly it has stopped retrieving the data! What can I do?
-  - A: Most probably, if nothing else changed, `Yahoo Finance` updates broke the current `yfinance` version that you are using. Go to the [requirements.txt](requirements.txt) file and update the version of `yfinance`, which is fixed to the latest one available. Do not forget to install the new dependency version or re-build your docker image, before running your service again.
-
-## Version
-
-Find the version of the API in the [version.txt](version.txt) file.
-
-## Contribute
-
-### Setting up pre-commit hooks
-
-**Pre-commit hooks** run automatically when you try to commit changes (`git commit`). They check and reformat any staged files that do not conform to our style guides.
-
-1. To set up the hooks, you first need to install `pre-commit`. On **macOS**, you can use Homebrew:
-
+1. Install pre-commit:
    ```bash
-   brew install pre-commit
+   brew install pre-commit  # macOS
+   pip install pre-commit   # Alternative
    ```
 
-   Alternatively, install it via pip:
-
-   ```bash
-   pip install pre-commit
-   ```
-
-2. Once `pre-commit` is installed, set up the git hooks by running the following command from the project¡s root directory:
-
+2. Set up hooks:
    ```bash
    pre-commit install
    ```
 
-   On success, it will display:
-
+3. Run manually:
    ```bash
-   pre-commit installed at .git/hooks/pre-commit
+   pre-commit run --all-files
+   pre-commit run ruff --all-files
    ```
 
-Now, the hooks will automatically check your staged files every time you commit.
+## Version
 
-### Manually run pre-commit hooks
-
-To run all configured hooks on every file in the repository:
-
-```bash
-pre-commit run --all-files
-```
-
-You can select a specific rule instead of all hooks:
-
-```bash
-pre-commit run ruff --all-files
-```
+Find the version in [version.txt](version.txt).
 
 ## License
 

@@ -141,6 +141,7 @@ class PendingTicker:
 
             yf_ticker = yf.Ticker(self.ticker)
             result = FullTickerData(ticker=self.ticker)
+            now = datetime.now()
 
             for section in sections:
                 try:
@@ -148,6 +149,8 @@ class PendingTicker:
                     if fetcher:
                         data = fetcher(yf_ticker)
                         setattr(result, section, data)
+                        time_field = f"{section}_retrieval_time"
+                        setattr(result, time_field, now)
                 except Exception as e:
                     app_logger.debug(
                         f"Failed to fetch {section} for {self.ticker}: {e}"
@@ -174,6 +177,7 @@ def fetch_sections_for_ticker(
 
         yf_ticker = yf.Ticker(ticker)
         result = FullTickerData(ticker=ticker)
+        now = datetime.now()
 
         for section in sections:
             try:
@@ -181,6 +185,8 @@ def fetch_sections_for_ticker(
                 if fetcher:
                     data = fetcher(yf_ticker)
                     setattr(result, section, data)
+                    time_field = f"{section}_retrieval_time"
+                    setattr(result, time_field, now)
             except Exception as e:
                 app_logger.debug(f"Failed to fetch {section} for {ticker}: {e}")
 

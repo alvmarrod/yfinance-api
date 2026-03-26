@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  yfinance-api:
+    build: .
+    container_name: yfinance_api_instance
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./cache:/app/cache
+      - ./cache_config.json:/app/cache_config.json
+    environment:
+      - CACHE_CONFIG_PATH=/app/cache_config.json
+    restart: unless-stopped
