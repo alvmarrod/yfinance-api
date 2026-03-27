@@ -34,12 +34,13 @@ class tsCronQueue:
             return len(self.item_deque)
 
     def add_job(self, ticker: str, sections: set[str]) -> QueuedRequest:
-        """Add a job to the cron queue (unlimited capacity)."""
+        """Add a job to the cron queue (unlimited capacity, no timeout)."""
         request = QueuedRequest(
             ticker=ticker,
             sections=sections,
             timestamp=datetime.now(),
             result_event=tg.Event(),
+            no_timeout=True,
         )
 
         with self.lock:

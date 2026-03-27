@@ -190,13 +190,17 @@ class JobDispatcher:
             if self._shutdown_event.is_set():
                 return
 
-            if (
-                job.timestamp + timedelta(seconds=MAX_SECONDS_PER_REQUEST)
-                < datetime.now()
-            ):
-                app_logger.error(f"⏱️ Job for {job.ticker} timed out")
-                job.set_error(TimeoutError(f"Job for {job.ticker} timed out in queue"))
-                return
+            # Skip timeout check for cron jobs (no_timeout=True)
+            if not job.no_timeout:
+                if (
+                    job.timestamp + timedelta(seconds=MAX_SECONDS_PER_REQUEST)
+                    < datetime.now()
+                ):
+                    app_logger.error(f"⏱️ Job for {job.ticker} timed out")
+                    job.set_error(
+                        TimeoutError(f"Job for {job.ticker} timed out in queue")
+                    )
+                    return
 
             try:
                 app_logger.debug(f"🌐 Making API call for: {job.ticker}")

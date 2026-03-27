@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.19.1] - 2026-03-19
+
+### Fixed
+
+- **Cron Jobs No Longer Expire**: Fixed bug where cron jobs were expiring after 300s
+  - Added `no_timeout` field to `QueuedRequest`
+  - Cron queue creates requests with `no_timeout=True`
+  - `_process_api_job` skips timeout check for cron jobs
+
 ## [0.19.0] - 2026-03-19
 
 ### Changed

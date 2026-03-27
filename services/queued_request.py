@@ -16,6 +16,7 @@ class QueuedRequest:
     result_event: tg.Event  # Used to signal when processing is complete
     result: Optional[FullTickerData] = None
     error: Optional[Exception] = None
+    no_timeout: bool = False  # For cron jobs that should never expire
 
     def set_result(self, data: FullTickerData) -> None:
         """Set the successful result and signal completion."""
