@@ -49,11 +49,11 @@ def _load_cache_config() -> "Optional[CacheConfig]":
         )
 
         app_logger.info("🗂️ Cache configuration loaded:")
-        app_logger.info(f"   Tickers: {len(config.tickers)}")
         app_logger.info(f"   Blocks: {len(config.blocks)}")
         app_logger.info(f"   Concurrency: {config.concurrency}")
         app_logger.info(f"   Cache size: {config.cache_size}")
         app_logger.info(f"   Adaptive cache: {config.adaptive_cache}")
+        app_logger.info(f"   Proactive fetch top N: {config.proactive_fetch_top_n}")
         app_logger.info(
             f"   Prefetch schedules: {len(config.prefetch_schedule.schedule)}"
         )
@@ -113,6 +113,11 @@ def _load_cache_on_startup() -> None:
     try:
         from services.cache import tsCache
         from services.job_dispatcher import get_dispatcher
+        from services.ticker_ranking import TickerRanking
+
+        # Load ticker ranking
+        ranking = TickerRanking.get_instance()
+        ranking.load_from_disk()
 
         cache = tsCache.get_instance()
         expired_tickers = cache.load_from_disk()
@@ -143,6 +148,15 @@ def cleanup():
         app_logger.info("💾 Cache persisted on shutdown")
     except Exception as e:
         app_logger.error(f"Error during cache persistence: {e}")
+
+    try:
+        from services.ticker_ranking import TickerRanking
+
+        ranking = TickerRanking.get_instance()
+        ranking.persist_to_disk()
+        app_logger.info("💾 Ticker ranking persisted on shutdown")
+    except Exception as e:
+        app_logger.error(f"Error persisting ticker ranking: {e}")
 
     try:
         from services.job_dispatcher import shutdown_dispatcher

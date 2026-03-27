@@ -429,8 +429,18 @@ class JobDispatcher:
     #                          PUBLIC API METHODS                            #
     ##########################################################################
 
+    def _track_ticker_request(self, ticker: str, sections: set[str]) -> None:
+        """Track user-initiated request for ranking (info block only)."""
+        if "info" in sections:
+            from services.ticker_ranking import TickerRanking
+
+            TickerRanking.get_instance().track_request(ticker)
+
     def get_field_value(self, ticker: str, field_name: str) -> Any:
         """Smart field retrieval with automatic data fetching."""
+        # Track user request (info block is always fetched first)
+        self._track_ticker_request(ticker, {"info"})
+
         cached_data: Optional[FullTickerData] = self.cache.get_ticker(ticker)
         if not cached_data:
             cached_data = self._fetch_sections(ticker, {"info"})
@@ -458,14 +468,23 @@ class JobDispatcher:
 
     def get_basic_ticker_data(self, ticker: str) -> FullTickerData:
         """Ensure basic info is available."""
+        # Track user request (info block)
+        self._track_ticker_request(ticker, {"info"})
+
         return self._fetch_sections(ticker, {"info"})
 
     def get_complete_ticker_data(self, ticker: str) -> FullTickerData:
         """Fetch all available data sections."""
+        # Track user request (info block is included)
+        self._track_ticker_request(ticker, ALL_SECTIONS)
+
         return self._fetch_sections(ticker, ALL_SECTIONS)
 
     def get_specific_sections(self, ticker: str, sections: set[str]) -> FullTickerData:
         """Fetch specific sections only."""
+        # Track user request if info block is included
+        self._track_ticker_request(ticker, sections)
+
         return self._fetch_sections(ticker, sections)
 
 

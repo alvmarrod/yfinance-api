@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.20.0] - 2026-03-19
+
+### Added
+
+- **Dynamic Ticker Ranking**: Tracks user request frequency for intelligent prefetching
+  - New `services/ticker_ranking.py` service
+  - Only tracks "info" block requests from user-initiated API calls
+  - Persists ranking to `cache/ticker_ranking.pkl`
+  - Cron jobs use ranking instead of static ticker list
+
+### Changed
+
+- **Removed static ticker list**: `tickers` field removed from `cache_config.json`
+- **New config parameter**: `proactive_fetch_top_n` controls how many top tickers to prefetch
+- Scheduler now only prefetches top N most requested tickers
+
+### Removed
+
+- `tickers` field from `cache_config.json` and `CacheConfig` dataclass
+
 ## [0.19.1] - 2026-03-19
 
 ### Fixed

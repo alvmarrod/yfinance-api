@@ -35,11 +35,11 @@ class RateLimiterConfig:
 class CacheConfig:
     """Main configuration for the cache system."""
 
-    tickers: list[str]
     blocks: list[str]
     concurrency: int
     adaptive_cache: bool
     cache_size: int
+    proactive_fetch_top_n: int
     prefetch_schedule: PrefetchScheduleConfig
     ttl_seconds: TtlConfig
     pending_ticker_window_seconds: float
@@ -57,8 +57,6 @@ def load_config(path: str) -> CacheConfig:
     with open(config_path, "r") as f:
         raw = json.load(f)
 
-    if not isinstance(raw.get("tickers"), list):
-        raise TypeError("tickers must be a list")
     if not isinstance(raw.get("blocks"), list):
         raise TypeError("blocks must be a list")
     if not isinstance(raw.get("concurrency"), int):
@@ -67,6 +65,8 @@ def load_config(path: str) -> CacheConfig:
         raise TypeError("adaptive_cache must be a bool")
     if not isinstance(raw.get("cache_size"), int):
         raise TypeError("cache_size must be an int")
+    if not isinstance(raw.get("proactive_fetch_top_n"), int):
+        raise TypeError("proactive_fetch_top_n must be an int")
     if not isinstance(raw.get("prefetch_schedule"), dict):
         raise TypeError("prefetch_schedule must be a dict")
     if not isinstance(raw.get("ttl_seconds"), dict):
@@ -89,11 +89,11 @@ def load_config(path: str) -> CacheConfig:
         raise TypeError("rate_limiter.cooldown_fake_events must be an int")
 
     return CacheConfig(
-        tickers=raw["tickers"],
         blocks=raw["blocks"],
         concurrency=raw["concurrency"],
         adaptive_cache=raw["adaptive_cache"],
         cache_size=raw["cache_size"],
+        proactive_fetch_top_n=raw["proactive_fetch_top_n"],
         prefetch_schedule=PrefetchScheduleConfig(raw["prefetch_schedule"]),
         ttl_seconds=TtlConfig(raw["ttl_seconds"]),
         pending_ticker_window_seconds=float(raw["pending_ticker_window_seconds"]),

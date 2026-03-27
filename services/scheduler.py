@@ -62,11 +62,20 @@ class PrefetchScheduler:
             app_logger.info("🛑 Prefetch scheduler stopped")
 
     def _prefetch_block(self, block: str) -> None:
-        """Prefetch a block for all tickers."""
+        """Prefetch a block for top N tickers."""
+        from services.ticker_ranking import TickerRanking
+
+        ranking = TickerRanking.get_instance()
+        top_tickers = ranking.get_top_n(self.config.proactive_fetch_top_n)
+
+        if not top_tickers:
+            app_logger.debug(f"📊 No tickers to prefetch for {block}")
+            return
+
         before_count = self.cron_queue.queue_size()
         count = 0
 
-        for ticker in self.config.tickers:
+        for ticker in top_tickers:
             self.cron_queue.add_job(ticker, {block})
             count += 1
 
