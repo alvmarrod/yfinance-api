@@ -310,6 +310,101 @@ def _growth_to_pct(g: Optional[float]) -> Optional[float]:
     return None
 
 
+def calculate_roic_ratio(data: FullTickerData) -> float:
+    """
+    Calculates the Return on Invested Capital (ROIC) ratio.
+
+    ROIC = NOPAT / Invested Capital
+    NOPAT = Operating Income x (1 - Tax Rate)
+
+    Returns:
+        float: ROIC ratio (decimal), or -1 if uncomputable.
+
+    Raises:
+        MissingDataException: If necessary financial data is missing.
+    """
+    if data.financials is None:
+        raise MissingDataException(data.ticker, {"financials"})
+
+    if data.balance_sheet is None:
+        raise MissingDataException(data.ticker, {"balance_sheet"})
+
+    # --- Operating Income ---
+    try:
+        operating_income = data.financials.loc["Operating Income"].iloc[0]
+    except KeyError:
+        operating_income = data.info.get("operatingIncome", None)
+
+    if not isinstance(operating_income, (int, float)):
+        app_logger.warning("Operating Income is needed to calculate ROIC")
+        return -1
+
+    # --- Tax Rate ---
+    try:
+        tax_provision = data.financials.loc["Tax Provision"].iloc[0]
+        pretax_income = data.financials.loc["Pretax Income"].iloc[0]
+        tax_rate = tax_provision / pretax_income if pretax_income != 0 else 0
+    except (KeyError, ZeroDivisionError):
+        tax_rate = data.info.get("effectiveTaxRate", 0.25)
+
+    if not isinstance(tax_rate, (int, float)):
+        tax_rate = 0.25
+
+    tax_rate = max(0.0, min(1.0, tax_rate))
+
+    nopat = operating_income * (1 - tax_rate)
+
+    # --- Invested Capital ---
+    try:
+        invested_capital = data.balance_sheet.loc["Invested Capital"].iloc[0]
+    except KeyError:
+        total_debt = _get_balance_sheet_field(data, "Total Debt", info_key="totalDebt")
+        total_equity = _get_balance_sheet_field(
+            data,
+            "Stockholders Equity",
+            alt_bs_keys=["Total Stockholder Equity"],
+            info_key="totalStockholderEquity",
+        )
+        cash = _get_balance_sheet_field(
+            data, "Cash And Cash Equivalents", info_key="totalCash"
+        )
+
+        if not all(
+            isinstance(v, (int, float)) for v in [total_debt, total_equity, cash]
+        ):
+            app_logger.warning("Cannot compute Invested Capital for ROIC")
+            return -1
+
+        invested_capital = total_debt + total_equity - cash
+
+    if not isinstance(invested_capital, (int, float)) or invested_capital == 0:
+        app_logger.warning("Invested Capital is needed to calculate ROIC")
+        return -1
+
+    return nopat / invested_capital
+
+
+def _get_balance_sheet_field(
+    data: FullTickerData,
+    primary_key: str,
+    alt_bs_keys: Optional[list[str]] = None,
+    info_key: Optional[str] = None,
+) -> Any:
+    """Extract a value from balance_sheet with fallback chain."""
+    try:
+        return data.balance_sheet.loc[primary_key].iloc[0]
+    except KeyError:
+        if alt_bs_keys:
+            for key in alt_bs_keys:
+                try:
+                    return data.balance_sheet.loc[key].iloc[0]
+                except KeyError:
+                    continue
+        if info_key and data.info:
+            return data.info.get(info_key, None)
+        return None
+
+
 def calculate_peg_ratio(data: FullTickerData) -> Optional[float]:
     """
     Calculates the Price/Earnings to Growth (PEG) ratio for a given stock.
@@ -342,6 +437,7 @@ def calculate_peg_ratio(data: FullTickerData) -> Optional[float]:
 CALCULATED_FIELDS: dict[str, Callable] = {
     "exDividendDate": exdividend_to_datetime,
     "ROE": calculate_roe_ratio,
+    "ROIC": calculate_roic_ratio,
     "annualGrowthRatio": calculate_annual_growth_ratio,
     "intrinsicValue": calculate_intrinsic_value,
     "discountToIntrinsicValueRatio": calculate_discount_to_intrinsic_value_ratio,

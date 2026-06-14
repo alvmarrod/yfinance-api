@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.21.0] - 2026-03-19
+
+### Added
+
+- **ROIC Calculation**: New custom field `ROIC` using NOPAT-based formula
+  - `ROIC = NOPAT / Invested Capital`
+  - `NOPAT = Operating Income x (1 - Tax Rate)`
+  - Primary "Invested Capital" from balance_sheet with computed fallback (`Total Debt + Total Equity - Cash`)
+  - Helper `_get_balance_sheet_field()` for multi-key fallback resolution
+  - Registered in `CALCULATED_FIELDS` alongside ROE and other custom fields
+
 ## [0.20.0] - 2026-03-19
 
 ### Added
