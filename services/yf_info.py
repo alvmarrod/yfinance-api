@@ -12,6 +12,7 @@ import yfinance as yf
 
 from services.job_dispatcher import get_dispatcher
 from services.full_ticker_data import FullTickerData
+from services.sequential_direct_fetcher import fetch_ticker_for_range
 
 ##############################################################################
 #                              PUBLIC FUNCTIONS                              #
@@ -52,6 +53,16 @@ def get_specific_sections(ticker: str, sections: set[str]) -> FullTickerData:
     """
     dispatcher = get_dispatcher()
     return dispatcher.get_specific_sections(ticker, sections)
+
+
+def get_full_ticker_data_for_range(ticker: str, start: str, end: str) -> FullTickerData:
+    """
+    Get complete ticker data with a custom history date range.
+
+    Bypasses cache and job dispatcher; requests are serialized and rate-limited
+    via a global cooldown queue.
+    """
+    return fetch_ticker_for_range(ticker, start, end)
 
 
 def get_ticker_historic_candle(

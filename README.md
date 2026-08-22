@@ -248,6 +248,12 @@ docker kill --signal=HUP yfinance_api_instance
 ### Symbol Endpoints
 
 - **GET `/symbol/<tag>`**: Fetch all available data for a stock symbol
+  - Optional query parameters:
+    - `start` (YYYY-MM-DD): Start date for the history block
+    - `end` (YYYY-MM-DD): End date for the history block
+  - When `start` or `end` is provided, the `history` block is replaced with data for the requested range.
+  - Maximum allowed range is 365 days. If only one bound is provided, the other is computed to form a 1-year window.
+  - Date-range requests bypass the cache and are serialized with a 5-second cooldown.
 - **GET `/symbol/<tag>/<field>/`**: Fetch a specific field's value
 - **GET `/symbol/<tag>/<field>/raw`**: Fetch raw field value
 - **GET `/symbol/historic/candle/<tag>`**: Download historical data as CSV
@@ -263,6 +269,9 @@ curl http://localhost:5001/cache/status
 
 # Fetch ROE ratio
 curl http://localhost:5001/symbol/AAPL/ROE/
+
+# Fetch FX data for a specific date range
+curl "http://localhost:5001/symbol/JPYEUR=X?start=2024-01-01&end=2024-06-01"
 ```
 
 ### Alias and Calculated Fields

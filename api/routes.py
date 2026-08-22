@@ -10,7 +10,7 @@ import datetime
 from typing import Optional
 from pathlib import Path
 
-from flask import Blueprint
+from flask import Blueprint, request
 from pandas import DataFrame
 
 import services.yf_info as yfi
@@ -151,6 +151,40 @@ def get_symbol_value(tag, field):
     return json.dumps({field: field_value})
 
 
+def _validate_date_range(start: Optional[str], end: Optional[str]) -> tuple[str, str]:
+    """
+    Validate and normalize start/end dates for a custom history range.
+
+    Enforces a maximum 365-day window. If only one bound is provided, the
+    other is computed to form a 1-year window.
+
+    Returns:
+        tuple[str, str]: Normalized (start, end) strings in YYYY-MM-DD format.
+
+    Raises:
+        ValueError: If dates are invalid or the range exceeds 365 days.
+    """
+    fmt = "%Y-%m-%d"
+    MAX_DAYS = 365
+
+    start_date = datetime.datetime.strptime(start, fmt).date() if start else None
+    end_date = datetime.datetime.strptime(end, fmt).date() if end else None
+
+    if start_date and end_date:
+        if end_date < start_date:
+            raise ValueError("End date must be after start date")
+        if (end_date - start_date).days > MAX_DAYS:
+            raise ValueError(f"Date range must not exceed {MAX_DAYS} days")
+    elif start_date:
+        end_date = start_date + datetime.timedelta(days=MAX_DAYS)
+    elif end_date:
+        start_date = end_date - datetime.timedelta(days=MAX_DAYS)
+    else:
+        raise ValueError("Either start or end must be provided")
+
+    return start_date.strftime(fmt), end_date.strftime(fmt)
+
+
 @api.route("/symbol/<tag>", methods=["GET"])
 def get_symbol(tag):
     """
@@ -159,17 +193,37 @@ def get_symbol(tag):
     Args:
         tag (str): The stock symbol or tag to fetch data for.
 
+    Query Parameters:
+        start (str, optional): Start date in YYYY-MM-DD format.
+        end (str, optional): End date in YYYY-MM-DD format.
+            If provided, the history block is replaced with data for the
+            requested range. Date-range requests bypass the cache and are
+            serialized with a 5-second cooldown. Maximum range is 365 days.
+
     Returns:
         str: A JSON-formatted string containing the full data for the requested symbol.
 
     Example:
         GET /symbol/AAPL
+        GET /symbol/JPYEUR=X?start=2024-01-01&end=2024-06-01
 
     Notes:
-        - The response is serialized as a JSON string.
-        - Utilizes the `get_symbol_data_full` function to fetch symbol data.
+        The response is serialized as a JSON string.
+        Utilizes the `get_symbol_data_full` function to fetch symbol data.
     """
-    full_data = yfi.get_full_ticker_data(tag)
+    start = request.args.get("start", "").strip() or None
+    end = request.args.get("end", "").strip() or None
+
+    if start or end:
+        try:
+            start, end = _validate_date_range(start, end)
+        except ValueError as e:
+            return json.dumps({"error": str(e)}), 400
+
+        full_data = yfi.get_full_ticker_data_for_range(tag, start, end)
+    else:
+        full_data = yfi.get_full_ticker_data(tag)
+
     composed_dict = yfw.compose_ticker_dict(full_data)
 
     return json.dumps(composed_dict)

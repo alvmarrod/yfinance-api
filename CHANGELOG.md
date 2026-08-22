@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.22.0] - 2026-08-22
+
+### Added
+
+- **Date-range support for `/symbol/<tag>`**: Optional `start` and `end` query parameters
+  - Example: `GET /symbol/JPYEUR=X?start=2024-01-01&end=2024-06-01`
+  - Replaces the `history` block with data for the requested range
+  - Maximum range is 365 days; missing bound is computed to form a 1-year window
+  - Date-range requests bypass the cache and are serialized with a 5-second cooldown
+  - New `services/sequential_direct_fetcher.py` module implements the cooldown-gated direct fetcher
+
 ## [0.21.0] - 2026-03-19
 
 ### Added
