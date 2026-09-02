@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.23.0] - 2026-09-02
+
+### Fixed
+
+- Updated `yfinance` requirement from `1.0` to `1.7`
+
 ## [0.22.0] - 2026-08-22
 
 ### Added
